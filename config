@@ -1,0 +1,12 @@
+[core]
+	symlinks = false
+	repositoryformatversion = 0
+	filemode = false
+	logallrefupdates = true
+	bare = false
+[remote "origin"]
+	url = https://github.com/iipaytest/automationApril.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "orgin"]
+	url = https://github.com/iipaytest/automationApril.git
+	fetch = +refs/heads/*:refs/remotes/orgin/*
