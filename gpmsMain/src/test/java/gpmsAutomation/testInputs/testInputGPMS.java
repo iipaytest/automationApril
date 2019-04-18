@@ -85,7 +85,8 @@ public class testInputGPMS {
 	
 	//EPA details to add
 		public static final String[] EPAs= {"Payments", "Deductions"};
-		public static final String[] paymentsTypesToAdd= {"Salary (Net)", "13th salary"};
+		
+		public static final Object[][] paymentsTypesToAdd= {{"Salary (Net)", "P4 2019", "P4 2019", "10"},{"13th salary", "P4 2019", "P4 2019", "20"}};
 			public static final String[] paymentsType1= {"P4 2019", "P4 2019", "10"};
 			public static final String[] paymentsType2= {"P4 2019", "P4 2019", "20"};
 		

@@ -19,7 +19,7 @@
       		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
       		<exclude name="editPayrollPeriods"/>
       		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->
-      		</methods>    			
+      	</methods>    			
       </class>
       
     </classes>
