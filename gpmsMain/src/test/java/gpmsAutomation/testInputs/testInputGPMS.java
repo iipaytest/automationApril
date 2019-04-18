@@ -14,15 +14,15 @@ public class testInputGPMS {
 	//Locations to external files
 		public static final String gpmsFileLocation 	="C:\\Users\\sribur19\\Desktop\\Test Results\\GPMS_Test Results\\";	//location to save all GPMS Test outputs
 		public static final String gpmsTestInputsLocation 	=System.getProperty("user.dir")+"\\testInputs\\";
-		public static final String gpmsTestOutputsLocation 	=System.getProperty("user.home")+"\\Box\\SriTestFolder\\Automation\\TestApril15\\";
+		public static final String gpmsTestOutputsLocation 	=System.getProperty("user.dir")+"\\testOutputs\\";
 	
 	//TST3, Client ID, Login credentials
 		public static final String urlTST3redirector 	="https://tst3-redirector.iipaysp.com";
-		public static final String clientID				="PRO9";
+		public static final String clientID				="AUTO";
 		public static final String userName				="srisainaveen";
 		public static final String password				="Test@2019";
 		public static final String versionNo			="04.08.10";	//v020200-tc2_#16 / 04.08.00
-		public static final String versionTC			="tc2_#16";		//v020200-tc2_#16 / 04.08.00
+		public static final String versionTC			="tc3_#19";		//v020200-tc2_#16 / 04.08.00
 	
 	
 	//Create new Employee 
@@ -77,7 +77,7 @@ public class testInputGPMS {
 			public static final Boolean payDaybutton	=true;		//to select payOffset, given payDay=false
 			public static final String payDayToSelect	="Monday";
 			public static final String payOffsetToGive	="2";
-			public static final Boolean payDayFirst		=true;		//to select Last, give payDayFirst=false
+			public static final Boolean payDayFirst		=false;		//to select Last, give payDayFirst=false
 			public static final Boolean payOffsetAfter	=true;		//to select payOffsetBefore, give payOffsetAfter=false
 			public static final String bankTransferOffset	="2";
 	

@@ -5,14 +5,11 @@
     <classes>
       <class name="gpmsAutomation.gpmsMain.addingNewDetails">
         <methods>
-          <include name="addPayroll"/>
-        </methods>
-      </class> <!-- gpmsAutomation.gpmsMain.addingNewDetails -->
-      <class name="gpmsAutomation.gpmsMain.basicDetails">
-        <methods>
+          <include name="homePage"/>
+          <include name="addEmployee"/>
           <include name="loginTST3"/>
         </methods>
-      </class> <!-- gpmsAutomation.gpmsMain.basicDetails -->
+      </class> <!-- gpmsAutomation.gpmsMain.addingNewDetails -->
     </classes>
   </test> <!-- GPMS Version(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->
