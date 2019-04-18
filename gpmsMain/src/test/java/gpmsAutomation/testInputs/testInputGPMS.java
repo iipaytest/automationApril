@@ -11,7 +11,7 @@ public class testInputGPMS {
 		static String strDateFormat = "MMMdd"; 									//Date format is Specified
 		static SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); 	//Date format string is passed as an argument to the Date format object
 	
-	//External variable name
+	//Locations to external files
 		public static final String gpmsFileLocation 	="C:\\Users\\sribur19\\Desktop\\Test Results\\GPMS_Test Results\\";	//location to save all GPMS Test outputs
 		public static final String gpmsTestInputsLocation 	=System.getProperty("user.dir")+"\\testInputs\\";
 		public static final String gpmsTestOutputsLocation 	=System.getProperty("user.home")+"\\Box\\SriTestFolder\\Automation\\TestApril15\\";
@@ -25,7 +25,7 @@ public class testInputGPMS {
 		public static final String versionTC			="tc2_#16";		//v020200-tc2_#16 / 04.08.00
 	
 	
-	//Employee to create 
+	//Create new Employee 
 		public static final String title 		="Mr";
 		public static final String forename		="Fore1";
 		public static final String surname		="Sur1";
@@ -66,7 +66,7 @@ public class testInputGPMS {
 		public static final Boolean newElementTypeObsolete		=false;
 		
 		
-	//Payroll to create
+	//Create new Payroll
 		public static final String rulesetCountry	="United Kingdom";
 		public static final String rulesetCurrency	="GBP";
 		public static final String payrollName		="Test Payroll Apr10";	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
@@ -97,9 +97,9 @@ public class testInputGPMS {
 		public static final String[] entitlementsPermToAdd= {};
 		public static final String[] entitlementsUnitPayToAdd= {};
 	
-	//public static final Object[][] paymentsToAdd= {{"Salary (Net)", "13th salary"},{"effectiveFrom", "effectiveTo", "amount"}};
+	public static final Object[][] paymentsToAdd= {{"Salary (Net)", "13th salary"},{"effectiveFrom", "effectiveTo", "amount"}};
 	
-	
+	public static String paymentsToAdd[1][0]="hi";
 	
 	
 }
