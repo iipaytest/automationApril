@@ -34,6 +34,7 @@ public class mainTestClassGPMS {
 		
 		
 		driver.get(testInputGPMS.urlTST3redirector);
+		driver.findElement(By.cssSelector("input#ClientId")).clear();
 		driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
 		driver.findElement(By.cssSelector("input[type='submit']")).click();
 		

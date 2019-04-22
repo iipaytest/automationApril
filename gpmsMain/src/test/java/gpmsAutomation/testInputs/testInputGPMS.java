@@ -18,7 +18,7 @@ public class testInputGPMS {
 	
 	//TST3, Client ID, Login credentials
 		public static final String urlTST3redirector 	="https://tst3-redirector.iipaysp.com";
-		public static final String clientID				="AUTO";
+		public static final String clientID				="PRO2";
 		public static final String userName				="srisainaveen";
 		public static final String password				="Test@2019";
 		public static final String versionNo			="04.08.10";	//v020200-tc2_#16 / 04.08.00

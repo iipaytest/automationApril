@@ -30,18 +30,16 @@ import gpmsAutomation.pageObjectsGPMS.userDefinedOrgUnitAdminPageObjects;
 import gpmsAutomation.reusableMethods.commonMethods;
 import gpmsAutomation.testInputs.testInputGPMS;
 
-
-
 public class addingNewDetails {
 
 	
 	public static WebDriver driver;
-	static Properties prop=new Properties();
+	//static Properties prop=new Properties();
 	static PrintStream o;
 		
 		public void variable() throws IOException {
-			FileInputStream fis=new FileInputStream("C:\\Users\\sribur19\\eclipse-workspace-Test0307\\Test0307\\src\\userDetails.properties");
-			prop.load(fis);
+			//FileInputStream fis=new FileInputStream("C:\\Users\\sribur19\\eclipse-workspace-Test0307\\Test0307\\src\\userDetails.properties");
+			//prop.load(fis);
 			o = new PrintStream(new File(testInputGPMS.gpmsTestOutputsLocation+"00 GPMS Test Output.txt"));
 			System.setOut(o);
 		}
@@ -54,7 +52,8 @@ public class addingNewDetails {
 			driver.manage().window().maximize();
 			
 			driver.get(testInputGPMS.urlTST3redirector);
-			driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
+			System.out.println("11");
+			driver.findElement(By.cssSelector("input#ClientId")).sendKeys("");
 			driver.findElement(By.cssSelector("input[type='submit']")).click();
 			
 			String version=driver.findElement(By.xpath("//img[@class='loginProviderImage']/parent::p/following-sibling::p[1]")).getText();	

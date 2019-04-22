@@ -5,8 +5,8 @@
     <classes>
       <class name="gpmsAutomation.gpmsMain.basicDetails">
       	<methods>
-      		<exclude name="homePage"/>					<!-- This will open Login page foe given client and checks for given GPMS version -->
-      		<exclude name="loginTST3"/>					<!--This will Login TST3 GPMS and verify of the login is successful for given -->	
+      		<include name="homePage"/>					<!-- This will open Login page foe given client and checks for given GPMS version -->
+      		<include name="loginTST3"/>					<!--This will Login TST3 GPMS and verify of the login is successful for given -->	
       	</methods>    			
       </class>
       
