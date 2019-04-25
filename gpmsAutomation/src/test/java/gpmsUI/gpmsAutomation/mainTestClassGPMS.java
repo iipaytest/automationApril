@@ -2,9 +2,12 @@ package gpmsUI.gpmsAutomation;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
@@ -35,8 +38,50 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
-        
+		
 		driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
+		menuBarLinks.goToJumpToEmployeeNumber(driver);
+		
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();
+		String paymentAdded=commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.dropDownPayments);
+		System.out.println("Element '"+paymentAdded+"' added as payment");
+		
+		commonMethods.selectFromListPartialText(driver, employeeDetailsEPAPageObjects.paymentEffectiveFrom, "P10 2019");
+		commonMethods.selectFromListPartialText(driver, employeeDetailsEPAPageObjects.paymentEffectiveTo, "inde");
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.paymentAmount)).sendKeys("1000");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+/*		menuBarLinks.goToUserDefinedOrgUnits(driver);
+		int i=driver.findElements(By.xpath("//*[@id='customTypes']/tbody/tr")).size();
+		System.out.println(i);
+        for(int j=1; j<=i; j++) {
+        	String s= driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[1]/input")).getAttribute("defaultValue");
+        	System.out.println(s);
+        	if(testInputGPMS.newOrgUnit.contentEquals(s)) {
+        		System.out.println(s);
+        		driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[2]/input")).click();
+        		for(int x=0; x<2; x++) {
+        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.newName)).sendKeys(testInputGPMS.newNamesReferences[x][x]);
+        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.newReference)).sendKeys(testInputGPMS.newNamesReferences[x][x+1]);
+        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.save)).click();
+        			Thread.sleep(1000);
+        			}
+        	}
+        }*/
+        
+     //   userDefinedOrgUnitAdminPageObjects.newUserOrgUnitConfiguration(driver, testInputGPMS.newOrgUnit, testInputGPMS.newNamesReferences);
+        
+	/*	driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
 		menuBarLinks.goToJumpToEmployeeNumber(driver);
 		int warning = driver.findElements(By.xpath(menuPageObjects.warning)).size();
 		
@@ -88,7 +133,7 @@ public class mainTestClassGPMS {
 			}
 		}
 		
-        
+      */  
         
 	}
 }

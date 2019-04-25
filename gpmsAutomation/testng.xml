@@ -13,13 +13,14 @@
       
       <class name="gpmsUI.gpmsAutomation.addingNewDetails">
       	<methods>
-      		<include name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
-      		<include name="addNewCompany"/>
-      		<include name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
-      		<include name="addNewElementType"/>
+      		<exclude name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
+      		<exclude name="addNewCompany"/>
+      		<exclude name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
+      		<exclude name="addNewElementType"/>
       		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
-      		<include name="editPayrollPeriods"/>
+      		<exclude name="editPayrollPeriods"/>
       		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      		<exclude name="addPayDeds"/>
       	</methods>
       </class> 
     

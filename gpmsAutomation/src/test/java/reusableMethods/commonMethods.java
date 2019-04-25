@@ -4,6 +4,8 @@ import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -90,7 +92,7 @@ public class commonMethods {
 		Thread.sleep(1500);
 	}
 
-	public static void selectFromList(WebDriver driver, String xpathString, String textToMatch) {
+	public static void selectFromListExactText(WebDriver driver, String xpathString, String textToMatch) {
 		
 		Select drpList = new Select(driver.findElement(By.xpath(xpathString)));
 		try{
@@ -108,15 +110,35 @@ public class commonMethods {
 		}*/
 	}
 	
+	public static void selectFromListPartialText(WebDriver driver, String xpathString, String textToMatch) {
+		
+		List <WebElement> list=driver.findElements(By.xpath(xpathString+"/option"));
+		for(WebElement select :list) {
+			if (select.getText().contains(textToMatch)) {
+				select.click();
+	        break;
+			}
+		}
+	}
+	
 	public static void errorMesssage(WebDriver driver, String fileName) {
 		
 	}
 	
 	public static void addPayDedsDetails(WebDriver driver, String effectiveFrom, String effectiveTo, String Amount) throws InterruptedException {
 		Thread.sleep(500);
-		selectFromList(driver, employeeDetailsEPAPageObjects.paymentEffectiveFrom, effectiveFrom);Thread.sleep(500);
-		selectFromList(driver, employeeDetailsEPAPageObjects.paymentEffectiveTo, effectiveTo);Thread.sleep(500);
+		selectFromListExactText(driver, employeeDetailsEPAPageObjects.paymentEffectiveFrom, effectiveFrom);Thread.sleep(500);
+		selectFromListExactText(driver, employeeDetailsEPAPageObjects.paymentEffectiveTo, effectiveTo);Thread.sleep(500);
 		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.paymentAmount)).sendKeys(Amount);
 		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
+	}
+	
+	public static String selectRandomFromList(WebDriver driver, String xpathForDropDown) {		
+		List <WebElement> randomOption = driver.findElements(By.xpath(xpathForDropDown+"/option"));
+		int sizeOfOptions=randomOption.size();
+		int randomNo=ThreadLocalRandom.current().nextInt(2, sizeOfOptions);
+		randomOption.get(randomNo).getText();
+		randomOption.get(randomNo).click();
+		return randomOption.get(randomNo).getText();
 	}
 }

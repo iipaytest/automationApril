@@ -109,27 +109,11 @@ public class addingNewDetails extends basicDetails {
 		
 		menuBarLinks.goToUserDefinedOrgUnits(driver);
 		
-		int i=driver.findElements(By.xpath(userDefinedOrgUnitAdminPageObjects.userDefinedOrgsTable+"/tbody/tr")).size();
-		Actions action = new Actions(driver);
-		WebElement mainMenu = driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.userDefinedOrgsTable+"/tbody/tr["+i+"]"));
-		action.moveToElement(mainMenu).click().sendKeys(testInputGPMS.newOrgUnit).perform();
-		driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.save)).click();
-		
-		if(driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.sucessful)).getAttribute("innerText").contains("successfully")) {
-			commonMethods.takeScreenShot(driver, "Passed Saving New Org unit");
-			System.out.println("Passed: New Org unit saved successfully");
-		}else {
-			System.out.println("Failed: Saving New Org unit");
-			if(driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.error)).getAttribute("innerText").contains("ERROR")) {
-				System.out.println(driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.error)).getAttribute("innerText"));}
-			if(driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.warning)).getAttribute("innerText").contains("Warning")) {
-				System.out.println(driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.warning)).getAttribute("innerText"));}
-			commonMethods.takeScreenShot(driver, "Failed Saving New Org unit");
-			Assert.fail("Failed: Saving New Org unit");
-		}
+	//Adding new Org unit created
+	userDefinedOrgUnitAdminPageObjects.createNewUserOrgUnit(driver, testInputGPMS.newOrgUnit);
 	
 	//Adding details for new Org unit created	
-		userDefinedOrgUnitAdminPageObjects.newUserOrgUnitConfiguration(driver, testInputGPMS.newOrgUnit, testInputGPMS.newNames, testInputGPMS.newReferences);
+	userDefinedOrgUnitAdminPageObjects.newUserOrgUnitConfiguration(driver, testInputGPMS.newOrgUnit, testInputGPMS.newNamesReferences);
 	}
 	
 	@Test
@@ -190,6 +174,7 @@ public class addingNewDetails extends basicDetails {
 			menuBarLinks.goToAddPayroll(driver);
 			
 			//Ruleset selection
+			//commonMethods.selectFromList(driver, addNewPayrollPageObjects.ruleset, testInputGPMS.rulesetCountry+testInputGPMS.rulesetCurrency);
 			List <WebElement> rulesets=driver.findElements(By.xpath(addNewPayrollPageObjects.ruleset+"/option"));
 			for(WebElement option :rulesets) {
 				if (option.getText().contains(testInputGPMS.rulesetCountry) && option.getText().contains(testInputGPMS.rulesetCurrency)) {
@@ -342,7 +327,7 @@ public class addingNewDetails extends basicDetails {
 
 	@Test 
 	//To add PayDeds and Entitlements
-	public void addPayDedsEntitlements() throws IOException, AWTException, InterruptedException {
+	public void addPayDeds() throws IOException, AWTException, InterruptedException {
 		
 		driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
 		menuBarLinks.goToJumpToEmployeeNumber(driver);
@@ -357,24 +342,107 @@ public class addingNewDetails extends basicDetails {
 				System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
 				commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont have any Current Actice Payroll Assignments");
 				Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
-			}else {
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();
-				commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.dropDownPayments)));
-				for(int i=0;i<testInputGPMS.paymentsTypesToAdd.length;i++) {	
-					commonMethods.selectFromList(driver, employeeDetailsEPAPageObjects.dropDownPayments, testInputGPMS.paymentsTypesToAdd[i][0]);
-					commonMethods.addPayDedsDetails(driver, testInputGPMS.paymentsTypesToAdd[i][1], testInputGPMS.paymentsTypesToAdd[i][2], testInputGPMS.paymentsTypesToAdd[i][3]);
-					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
-						System.out.println("Passed: Saving PayDeds '"+ testInputGPMS.paymentsTypesToAdd[i][0] +"'");
-						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-					}else {
-						System.out.println("Failed: Saving PayDeds '"+ testInputGPMS.paymentsTypesToAdd[0][0] +"'");
-						System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
-						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-					}
+			}else {	
+				for(int x=0; x<testInputGPMS.payDedsToAdd.length; x++) {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.visibleText(testInputGPMS.payDedsToAdd[x]))).click();
+					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.dropDownPayments)));
+					if(testInputGPMS.payDedsToAdd[x].contentEquals("Payments")) {
+						for(int i=0;i<testInputGPMS.paymentsTypesToAdd.length;i++) {	
+							commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownPayments, testInputGPMS.paymentsTypesToAdd[i][0]);
+							commonMethods.addPayDedsDetails(driver, testInputGPMS.paymentsTypesToAdd[i][1], testInputGPMS.paymentsTypesToAdd[i][2], testInputGPMS.paymentsTypesToAdd[i][3]);
+							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
+								System.out.println("Passed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[i][0] +"'");
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}else {
+								System.out.println("Failed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[0][0] +"'");
+								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}
+						}	
+					}else if(testInputGPMS.payDedsToAdd[x].contentEquals("Deductions")) {
+						for(int i=0;i<testInputGPMS.deductionsTypesToAdd.length;i++) {	
+							commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownDeductions, testInputGPMS.deductionsTypesToAdd[i][0]);
+							commonMethods.addPayDedsDetails(driver, testInputGPMS.deductionsTypesToAdd[i][1], testInputGPMS.deductionsTypesToAdd[i][2], testInputGPMS.deductionsTypesToAdd[i][3]);
+							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
+								System.out.println("Passed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[i][0] +"'");
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}else {
+								System.out.println("Failed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[0][0] +"'");
+								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}
+						}
+					}else {System.out.println("No PayDeds to add");}
+					
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
 				}
+				
 			}
 		}
+		
 	}	
+
+	
+	public void addPayDedsRandom() throws IOException, AWTException, InterruptedException {
+		
+		driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
+		menuBarLinks.goToJumpToEmployeeNumber(driver);
+		int warning = driver.findElements(By.xpath(menuPageObjects.warning)).size();
+		
+		if(warning==1) {
+			System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+			commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont exists");
+			Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+		}else {
+			if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()==0) {
+				System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+				commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont have any Current Actice Payroll Assignments");
+				Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+			}else {	
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();
+				commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.dropDownPayments);
+				
+				for(int x=0; x<testInputGPMS.payDedsToAdd.length; x++) {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.visibleText(testInputGPMS.payDedsToAdd[x]))).click();
+					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.dropDownPayments)));
+					if(testInputGPMS.payDedsToAdd[x].contentEquals("Payments")) {
+						for(int i=0;i<testInputGPMS.paymentsTypesToAdd.length;i++) {	
+							commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownPayments, testInputGPMS.paymentsTypesToAdd[i][0]);
+							commonMethods.addPayDedsDetails(driver, testInputGPMS.paymentsTypesToAdd[i][1], testInputGPMS.paymentsTypesToAdd[i][2], testInputGPMS.paymentsTypesToAdd[i][3]);
+							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
+								System.out.println("Passed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[i][0] +"'");
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}else {
+								System.out.println("Failed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[0][0] +"'");
+								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}
+						}	
+					}else if(testInputGPMS.payDedsToAdd[x].contentEquals("Deductions")) {
+						for(int i=0;i<testInputGPMS.deductionsTypesToAdd.length;i++) {	
+							commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownDeductions, testInputGPMS.deductionsTypesToAdd[i][0]);
+							commonMethods.addPayDedsDetails(driver, testInputGPMS.deductionsTypesToAdd[i][1], testInputGPMS.deductionsTypesToAdd[i][2], testInputGPMS.deductionsTypesToAdd[i][3]);
+							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
+								System.out.println("Passed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[i][0] +"'");
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}else {
+								System.out.println("Failed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[0][0] +"'");
+								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
+								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+							}
+						}
+					}else {System.out.println("No PayDeds to add");}
+					
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+				}
+				
+			}
+		}
+		
+	}	
+
 
 }

@@ -18,7 +18,7 @@ public class testInputGPMS {
 	
 	//TST3, Client ID, Login credentials
 		public static final String urlTST3redirector 	="https://tst3-redirector.iipaysp.com";
-		public static final String clientID				="PRO2";
+		public static final String clientID				="AUTO";
 		public static final String userName				="srisainaveen";
 		public static final String password				="Test@2019";
 		public static final String versionNo			="04.08.10";	//v020200-tc2_#16 / 04.08.00
@@ -53,8 +53,7 @@ public class testInputGPMS {
 	
 	//Create new Org Unit
 		public static final String newOrgUnit		="TestOrg";
-		public static final String[] newNames		= {"Org3", "Org4"};
-		public static final String[] newReferences	= {"OrgRef3", "OrgRef4"};
+		public static final String[][] newNamesReferences		= {{"Org1", "Ref1"}, {"Org2", "Ref2"}};
 	
 	//Create new Element Type
 		public static final String newElementTypeName			="TestEType";
@@ -67,18 +66,18 @@ public class testInputGPMS {
 		
 		
 	//Create new Payroll
-		public static final String rulesetCountry	="United Kingdom";
-		public static final String rulesetCurrency	="GBP";
+		public static final String rulesetCountry	="Germany";
+		public static final String rulesetCurrency	="EUR";
 		public static final String payrollName		="Test Payroll Apr10";	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
 		public static final String companyName		=null;					//leave this null if you want to add newCompanyName created above to this payroll
 		public static final String payFrequency		="Monthly";				//full name of pay frequency
 		//Payroll periods to generate
-			public static final String payrollYearPeriod="2019";
-			public static final Boolean payDaybutton	=true;		//to select payOffset, given payDay=false
-			public static final String payDayToSelect	="Monday";
-			public static final String payOffsetToGive	="2";
-			public static final Boolean payDayFirst		=false;		//to select Last, give payDayFirst=false
-			public static final Boolean payOffsetAfter	=true;		//to select payOffsetBefore, give payOffsetAfter=false
+			public static final String payrollYearPeriod	="2019";
+			public static final Boolean payDaybutton		=true;		//to select payOffset, given payDay=false
+			public static final String payDayToSelect		="Monday";
+			public static final String payOffsetToGive		="2";
+			public static final Boolean payDayFirst			=false;		//to select Last, give payDayFirst=false
+			public static final Boolean payOffsetAfter		=true;		//to select payOffsetBefore, give payOffsetAfter=false
 			public static final String bankTransferOffset	="2";
 	
 	
@@ -86,8 +85,8 @@ public class testInputGPMS {
 	//EPA details to add
 		public static final String[] payDedsToAdd= {"Payments", "Deductions"};
 		
-		public static final String[][] paymentsTypesToAdd= {{"Salary (Net)", "4 2018", "4 2018", "10"},{"13th salary", "4 2018", "4 2018", "20"}};			//{Payment EType, Effective From, Effective To, Amount}
-		public static final String[][] deductionsTypesToAdd= {{"Benefit in Kind", "4 2018", "4 2018", "10"},{"Care of child", "4 2018", "4 2018", "20"}};	//{Payment EType, Effective From, Effective To, Amount}
+		public static final String[][] paymentsTypesToAdd= {{"Salary (Net)", "P4 2018", "P4 2018", "10"},{"13th salary", "P4 2018", "P4 2018", "20"}};			//{Payment EType, Effective From, Effective To, Amount}
+		public static final String[][] deductionsTypesToAdd= {{"Benefit in Kind", "P4 2018", "P4 2018", "10"},{"Care of child", "P4 2018", "P4 2018", "20"}};	//{Payment EType, Effective From, Effective To, Amount}
 		
 		
 		public static final String[][] unitPaysTypesToAdd= {};

@@ -29,12 +29,12 @@ public class userDefinedOrgUnitAdminPageObjects {
 		int i=driver.findElements(By.xpath(userDefinedOrgsTable+"/tbody/tr")).size();
 		Actions action = new Actions(driver);
 		WebElement mainMenu = driver.findElement(By.xpath(userDefinedOrgsTable+"/tbody/tr["+i+"]"));
-		action.moveToElement(mainMenu).click().sendKeys(newOrgUnitName).perform();
+		action.moveToElement(mainMenu).doubleClick().sendKeys(newOrgUnitName).perform();
 		driver.findElement(By.xpath(save)).click();
 		
 		if(driver.findElement(By.xpath(sucessful)).getAttribute("innerText").contains("successfully")) {
 			commonMethods.takeScreenShot(driver, "Passed Saving New Org unit");
-			System.out.println("Passed: New Org unit saved successfully");
+			System.out.println("Passed: New Org unit '"+newOrgUnitName+"' saved successfully");
 		}else {
 			if(driver.findElement(By.xpath(error)).getAttribute("innerText").contains("ERROR")) {
 				System.out.println(driver.findElement(By.xpath(error)).getAttribute("innerText"));}
@@ -46,36 +46,37 @@ public class userDefinedOrgUnitAdminPageObjects {
 		
 	}
 	
-	public static void newUserOrgUnitConfiguration(WebDriver driver, String orgUnitName , String[] names, String[] references) throws InterruptedException, IOException, AWTException {
+	public static void newUserOrgUnitConfiguration(WebDriver driver, String orgUnitName , String[][] namesreferences) throws InterruptedException, IOException, AWTException {
 		
 		menuBarLinks.goToUserDefinedOrgUnits(driver);
 		int i=driver.findElements(By.xpath("//*[@id='customTypes']/tbody/tr")).size();
-        for(int j=1; j<=i; j++) {
-        	String s= driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[1]/input")).getAttribute("defaultValue");
-        	if(orgUnitName.equals(s)==true) {
-        		driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[2]/input")).click();
-        		for(int x=0; x<names.length; x++) {
-        			driver.findElement(By.xpath(newName)).sendKeys(names[x]);
-        			driver.findElement(By.xpath(newReference)).sendKeys(references[x]);
-        			driver.findElement(By.xpath(save)).click();
-        			Thread.sleep(1000);
-        			}
-        		if(driver.findElement(By.xpath(sucessful)).getAttribute("innerText").contains("successfully")) {
-    				commonMethods.takeScreenShot(driver, "Passed Saving New Org unit details");
-    				System.out.println("Passed: New Org unit details saved successfully");
-    			}else {
-    				if(driver.findElement(By.xpath(error)).getAttribute("innerText").contains("ERROR")) {
-    					System.out.println(driver.findElement(By.xpath(error)).getAttribute("innerText"));}
-    				if(driver.findElement(By.xpath(warning)).getAttribute("innerText").contains("Warning")) {
-    					System.out.println(driver.findElement(By.xpath(warning)).getAttribute("innerText"));}
-    				commonMethods.takeScreenShot(driver, "Failed Saving New Org unit details");
-    				Assert.fail("Failed: Saving New Org unit details");	
-    			}
+        	for(int j=1; j<=i; j++) {
+        		String s= driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[1]/input")).getAttribute("defaultValue");
+        		Thread.sleep(500);
+        		if(orgUnitName.contentEquals(s)) {
+        			driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[2]/input")).click();
+	        		for(int x=0; x<namesreferences.length; x++) {	
+	        			driver.findElement(By.xpath(newName)).clear();;	
+	        			driver.findElement(By.xpath(newName)).sendKeys(namesreferences[x][0]);
+	        			driver.findElement(By.xpath(newReference)).clear();
+	        			driver.findElement(By.xpath(newReference)).sendKeys(namesreferences[x][1]);
+	            		driver.findElement(By.xpath(save)).click();
+	            		Thread.sleep(1000);
+	        		}
+	        		if(driver.findElement(By.xpath(sucessful)).getAttribute("innerText").contains("successfully")) {
+	    				commonMethods.takeScreenShot(driver, "Passed Saving New Org unit details");
+	    				System.out.println("Passed: New Org unit details saved successfully");
+	    			}else {
+	    				if(driver.findElement(By.xpath(error)).getAttribute("innerText").contains("ERROR")) {
+	    					System.out.println(driver.findElement(By.xpath(error)).getAttribute("innerText"));}
+	    				if(driver.findElement(By.xpath(warning)).getAttribute("innerText").contains("Warning")) {
+	    					System.out.println(driver.findElement(By.xpath(warning)).getAttribute("innerText"));}
+	    					commonMethods.takeScreenShot(driver, "Failed Saving New Org unit details");
+	    					Assert.fail("Failed: Saving New Org unit details");	
+	    			}
         		driver.findElement(By.xpath(backButton)).click();	
         	}
         }
 		
-		
 	}
-	
-}
+}	
