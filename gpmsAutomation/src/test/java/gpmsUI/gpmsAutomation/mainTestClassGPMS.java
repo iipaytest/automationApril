@@ -43,55 +43,9 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
 		
-		menuBarLinks.goToForPayroll(driver);
-		driver.findElement(By.xpath(payrollSearchPageObjects.payrollName)).sendKeys("Test Payroll Apr10");
-		driver.findElement(By.xpath(payrollSearchPageObjects.search)).click();
-		Thread.sleep(500);
-		if(driver.findElements(By.xpath(payrollSearchPageObjects.payrollToBeSelected("Test Payroll Apr10"))).size()==0) {
-			System.out.println("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
-			Assert.fail("Failed: As  Payoll Name '\"+ testInputGPMS.payrollName +\"' don't exists");
-		}else {
-			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected("Test Payroll Apr10"))).click();
-			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollDetails)).getText());
-			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
+		
 			
-			List<WebElement> columns=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr"));
-			List<WebElement> rows=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr[1]/td"));
-			System.out.println(columns.size());
-			System.out.println(rows.size());
-			
-			List<String> tableData = new ArrayList<String>();
-			String[][] table = new String[columns.size()][rows.size()];
-			WebElement[][] element = new WebElement[columns.size()][rows.size()];
-			for (int i=1; i < columns.size(); i++) {
-				for (int j=1; j < rows.size(); j++) {
-					table[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]")).getAttribute("innerText");
-					element[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]"));
-				}
-			}	
-			for(int i=columns.size()-1; i >= 1; i--) {
-				if(table[i][4]!=null) {
-					String period=table[i][1];
-						System.out.println("Current pay period is: "+period);
-						System.out.println("Employees in Awaiting Process stage are: "+table[i][4]);
-						System.out.println("Employees in Locked stage are: "+table[i][5]);
-						System.out.println("Employees in Porcessed stage are: "+table[i][6]);
-						System.out.println("Employees in Confirmed stage are: "+table[i][7]);
-						System.out.println("No of Startes: "+table[i][8]);
-						System.out.println("No of Leavers: "+table[i][9]);
-						System.out.println("No of After Leavers: "+table[i][10]);
-						System.out.println("No of Historic Leavers: "+table[i][11]);
-						element[i][0].click();
-						driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
-						driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
-						commonMethods.reportsInboxRefreshUntillComplete(driver);
-						commonMethods.reportsInboxReportDownload(driver);
-						
-					break;
-				}
-			}
-			
-		}
+
 	
 		
 		

@@ -21,7 +21,7 @@ public class downloadReports extends basicDetails{
 
 	
 	@Test
-	//This is verify Lock Function from Employee level
+	//This is to download Employee Data Upload Template Function from Employee level
 	public void downloadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
 		

@@ -42,15 +42,15 @@ public static void downloadChangesExportReport(WebDriver driver, String payrollN
 		
 		driver.findElement(By.xpath(reportsPageObjects.submit)).click();
 		Thread.sleep(1000);
-		while(driver.findElement(By.xpath(reportsPageObjects.completed)).getAttribute("innerText").contains("Processing")) {Thread.sleep(1000);	driver.findElement(By.xpath(reportsPageObjects.refresh)).click();	}
+		while(driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText").contains("Processing")) {Thread.sleep(1000);	driver.findElement(By.xpath(reportsPageObjects.refresh)).click();	}
 		
 		driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
-		System.out.println("Requested details of report are as below \n"+driver.findElement(By.xpath(reportsPageObjects.requestDetailsDetails)).getAttribute("innerText"));
+		System.out.println("Requested details of report are as below \n"+driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)).getAttribute("innerText"));
 		
-		if(driver.findElements(By.xpath(reportsPageObjects.downloadReportToLocalFile)).size()==0) {	
+		if(driver.findElements(By.xpath(reportsPageObjects.outPutReportToLocalFile)).size()==0) {	
 			System.out.println("Failed: Details to Changes Export Report not generated");
 			Assert.assertEquals(1, 0);
 		}
-		driver.findElement(By.xpath(reportsPageObjects.downloadReportToLocalFile)).click();
+		driver.findElement(By.xpath(reportsPageObjects.outPutReportToLocalFile)).click();
 	}
 }

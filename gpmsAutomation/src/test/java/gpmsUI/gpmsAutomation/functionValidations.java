@@ -142,9 +142,41 @@ public class functionValidations extends basicDetails {
 	}
 
 	
+	@Test
+	//This is verify Lock period Function from payroll level
+	public void lockPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
 	
+	@Test
+	//This is verify Process period Function from payroll level
+	public void processPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
 	
+	@Test
+	//This is verify Confirm period Function from payroll level
+	public void confirmPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
 	
+	@Test
+	//This is verify Unconfirm period Function from payroll level
+	public void unconfirmPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
 	
+	@Test
+	//This is verify Reset period Function from payroll level
+	public void resetPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
+	
+	@Test
+	//This is verify View Employees Function from payroll level
+	public void viewEmployeeFromPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+	}
+
 	
 }

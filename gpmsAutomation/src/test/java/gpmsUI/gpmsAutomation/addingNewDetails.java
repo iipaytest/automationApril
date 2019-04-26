@@ -689,12 +689,6 @@ public class addingNewDetails extends basicDetails {
 				}
 			}	
 		}
-	
-
-
-
-
-
 
 }
 

@@ -17,30 +17,38 @@
       		<exclude name="addNewCompany"/>
       		<exclude name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
       		<exclude name="addNewElementType"/>
-      		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
-      		<include name="editPayrollPeriods"/>
-      		<include name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      		<exclude name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
+      		<exclude name="editPayrollPeriods"/>
+      		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
       		<exclude name="addPayDeds"/>
-      		<include name="addPaymentsRandom"/>
-      		<include name="addDeductionsRandom"/>
-      		<include name="addUnitPayRandom"/>
-      		<include name="addEntitlementsTempRandom"/>
-      		<include name="addEntitlementsPermRandom"/>
-      		<include name="addEntitlementsUnitPayRandom"/>
+      		<exclude name="addPaymentsRandom"/>
+      		<exclude name="addDeductionsRandom"/>
+      		<exclude name="addUnitPayRandom"/>
+      		<exclude name="addEntitlementsTempRandom"/>
+      		<exclude name="addEntitlementsPermRandom"/>
+      		<exclude name="addEntitlementsUnitPayRandom"/>
       	</methods>
       </class> 
     
     <class name="gpmsUI.gpmsAutomation.functionValidations">
       	<methods>
-      		<include name="lockEmployeeLevel"/>					
-      		<include name="resetEmployeeLevel"/>
-      		<include name="unconfirmEmployeeLevel"/>						
+      		<exclude name="lockEmployeeLevel"/>					
+      		<exclude name="resetEmployeeLevel"/>
+      		<exclude name="unconfirmEmployeeLevel"/>
+      		
+      		<exclude name="lockPeriodPayrollLevel"/>					
+      		<exclude name="processPeriodPayrollLevel"/>
+      		<exclude name="confirmPeriodPayrollLevel"/>
+      		<exclude name="unconfirmPeriodPayrollLevel"/>					
+      		<exclude name="resetPeriodPayrollLevel"/>
+      		<exclude name="viewEmployeeFromPayrollLevel"/>						
+      	
       	</methods>
       </class>
     
     <class name="gpmsUI.gpmsAutomation.downloadReports">
       	<methods>
-      		<include name="downloadEmployeeDataUploadTemplate"/>											
+      		<exclude name="downloadEmployeeDataUploadTemplate"/>											
       	</methods>
       </class>
     
