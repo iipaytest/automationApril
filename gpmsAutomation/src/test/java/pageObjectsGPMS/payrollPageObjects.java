@@ -8,6 +8,9 @@ public class payrollPageObjects {
 	
 	public static final String payrollPageHeader="//*[@id='iipHeader_title']";
 	
+	public static final String payrollDetails="//*[@id='tblDetails']";
+	public static final String payrollPeriodDetails="//*[@id='dgPeriodData']";
+	
 	public static final String payrollActions="//a[@id='btnActions_button']";
 	public static final String payrollActionsList="//table[@id='payrollActionsDialog_contentTable']//a";
 		public static final String deletePayroll="//table[@id='payrollActionsDialog_contentTable']//*[contains(text(),'Delete')]";

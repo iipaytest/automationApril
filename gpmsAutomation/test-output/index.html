@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-Regression_Suite">
-              <span class="suite-name border-failed">Regression Suite</span>
+              <span class="suite-name border-passed">Regression Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Regression_Suite" class="hide-methods failed suite-Regression_Suite"> (hide)</a> <!-- hide-methods failed suite-Regression_Suite -->
-                      <a href="#" panel-name="suite-Regression_Suite" class="show-methods failed suite-Regression_Suite"> (show)</a> <!-- show-methods failed suite-Regression_Suite -->
-                    </span>
-                    <div class="method-list-content failed suite-Regression_Suite">
-                      <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.addingNewDetails" hash-for-method="addPayroll">addPayroll</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Regression_Suite -->
+                    <span class="method-stats">6 methods,   6 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -116,12 +102,32 @@
                     <div class="method-list-content passed suite-Regression_Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.downloadReports" hash-for-method="downloadEmployeeDataUploadTemplate">downloadEmployeeDataUploadTemplate</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.basicDetails" hash-for-method="homePage">homePage</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.functionValidations" hash-for-method="lockEmployeeLevel">lockEmployeeLevel</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.basicDetails" hash-for-method="loginTST3">loginTST3</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.functionValidations" hash-for-method="resetEmployeeLevel">resetEmployeeLevel</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.functionValidations" hash-for-method="unconfirmEmployeeLevel">unconfirmEmployeeLevel</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Regression_Suite -->
@@ -136,47 +142,35 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Regression_Suite" class="panel Regression_Suite">
-          <div class="suite-Regression_Suite-class-failed">
+          <div class="suite-Regression_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">gpmsUI.gpmsAutomation.addingNewDetails</span>
+              <img src="passed.png"/>
+              <span class="class-name">gpmsUI.gpmsAutomation.functionValidations</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="addPayroll">
-                  </a> <!-- addPayroll -->
-                  <span class="method-name">addPayroll</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//input[@id=&apos;PayDetCtl_txtPayrollName&apos;]&quot;}
-  (Session info: chrome=73.0.3683.103)
-  (Driver info: chromedriver=2.46.628402 (536cd7adbad73a3783fdc2cab92ab2ba7ec361e1),platform=Windows NT 10.0.17763 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:48&apos;
-System info: host: &apos;DTWD24&apos;, ip: &apos;10.0.1.27&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_201&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.46.628402 (536cd7adbad73a..., userDataDir: C:\Users\sribur19\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:64292}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 73.0.3683.103, webStorageEnabled: true}
-Session ID: 449669faf5bc126549211bbcfb2d7189
-*** Element info: {Using=xpath, value=//input[@id=&apos;PayDetCtl_txtPayrollName&apos;]}
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:186)
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
+                  <a name="lockEmployeeLevel">
+                  </a> <!-- lockEmployeeLevel -->
+                  <span class="method-name">lockEmployeeLevel</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="resetEmployeeLevel">
+                  </a> <!-- resetEmployeeLevel -->
+                  <span class="method-name">resetEmployeeLevel</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="unconfirmEmployeeLevel">
+                  </a> <!-- unconfirmEmployeeLevel -->
+                  <span class="method-name">unconfirmEmployeeLevel</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Regression_Suite-class-failed -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
           <div class="suite-Regression_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -199,6 +193,21 @@ Session ID: 449669faf5bc126549211bbcfb2d7189
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Regression_Suite-class-passed -->
+          <div class="suite-Regression_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">gpmsUI.gpmsAutomation.downloadReports</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="downloadEmployeeDataUploadTemplate">
+                  </a> <!-- downloadEmployeeDataUploadTemplate -->
+                  <span class="method-name">downloadEmployeeDataUploadTemplate</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Regression_Suite-class-passed -->
         </div> <!-- panel Regression_Suite -->
         <div panel-name="test-xml-Regression_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -217,18 +226,18 @@ Session ID: 449669faf5bc126549211bbcfb2d7189
           &lt;include name=&quot;loginTST3&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.basicDetails --&gt;
-      &lt;class name=&quot;gpmsUI.gpmsAutomation.addingNewDetails&quot;&gt;
+      &lt;class name=&quot;gpmsUI.gpmsAutomation.functionValidations&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;addPayroll&quot;/&gt;
-          &lt;exclude name=&quot;addEmployee&quot;/&gt;
-          &lt;exclude name=&quot;addNewCompany&quot;/&gt;
-          &lt;exclude name=&quot;addNewOrgUnit&quot;/&gt;
-          &lt;exclude name=&quot;addNewElementType&quot;/&gt;
-          &lt;exclude name=&quot;editPayrollPeriods&quot;/&gt;
-          &lt;exclude name=&quot;createPayrollAssignment&quot;/&gt;
-          &lt;exclude name=&quot;addPayDeds&quot;/&gt;
+          &lt;include name=&quot;lockEmployeeLevel&quot;/&gt;
+          &lt;include name=&quot;resetEmployeeLevel&quot;/&gt;
+          &lt;include name=&quot;unconfirmEmployeeLevel&quot;/&gt;
         &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.addingNewDetails --&gt;
+      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.functionValidations --&gt;
+      &lt;class name=&quot;gpmsUI.gpmsAutomation.downloadReports&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;downloadEmployeeDataUploadTemplate&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.downloadReports --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Regression Suite --&gt;
@@ -242,7 +251,7 @@ Session ID: 449669faf5bc126549211bbcfb2d7189
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (2 classes)</span>
+                <span class="test-name">Test (3 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -268,24 +277,36 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(6);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'homePage')
-data.setCell(0, 2, 'gpmsUI.gpmsAutomation.basicDetails')
-data.setCell(0, 3, 5231);
+data.setCell(0, 1, 'downloadEmployeeDataUploadTemplate')
+data.setCell(0, 2, 'gpmsUI.gpmsAutomation.downloadReports')
+data.setCell(0, 3, 8749);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'addPayroll')
-data.setCell(1, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
-data.setCell(1, 3, 3056);
+data.setCell(1, 1, 'homePage')
+data.setCell(1, 2, 'gpmsUI.gpmsAutomation.basicDetails')
+data.setCell(1, 3, 5267);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'loginTST3')
-data.setCell(2, 2, 'gpmsUI.gpmsAutomation.basicDetails')
-data.setCell(2, 3, 2203);
+data.setCell(2, 1, 'lockEmployeeLevel')
+data.setCell(2, 2, 'gpmsUI.gpmsAutomation.functionValidations')
+data.setCell(2, 3, 2796);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'resetEmployeeLevel')
+data.setCell(3, 2, 'gpmsUI.gpmsAutomation.functionValidations')
+data.setCell(3, 3, 2709);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'unconfirmEmployeeLevel')
+data.setCell(4, 2, 'gpmsUI.gpmsAutomation.functionValidations')
+data.setCell(4, 3, 2681);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'loginTST3')
+data.setCell(5, 2, 'gpmsUI.gpmsAutomation.basicDetails')
+data.setCell(5, 3, 2176);
 window.suiteTableData['Regression_Suite']= { tableData: data, tableDiv: 'times-div-Regression_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 seconds</span>
+              <span class="suite-total-time">Total running time: 24 seconds</span>
               <div id="times-div-Regression_Suite">
               </div> <!-- times-div-Regression_Suite -->
             </div> <!-- times-div -->
@@ -300,29 +321,24 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Regression_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">9 ignored methods</span>
+            <span class="header-content">4 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">gpmsUI.gpmsAutomation.addingNewDetails</span>
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.functionValidations</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">homePage</span>
                 <br/>
                 <span class="ignored-method-name">loginTST3</span>
                 <br/>
-                <span class="ignored-method-name">addNewCompany</span>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.downloadReports</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">homePage</span>
                 <br/>
-                <span class="ignored-method-name">addNewElementType</span>
-                <br/>
-                <span class="ignored-method-name">addEmployee</span>
-                <br/>
-                <span class="ignored-method-name">createPayrollAssignment</span>
-                <br/>
-                <span class="ignored-method-name">addPayDeds</span>
-                <br/>
-                <span class="ignored-method-name">addNewOrgUnit</span>
-                <br/>
-                <span class="ignored-method-name">editPayrollPeriods</span>
+                <span class="ignored-method-name">loginTST3</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -341,16 +357,29 @@ return data;
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">loginTST3</span>
-                <span class="method-start">5231 ms</span>
+                <span class="method-start">5269 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
-              <div class="chronological-class-name">gpmsUI.gpmsAutomation.addingNewDetails</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">gpmsUI.gpmsAutomation.functionValidations</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">addPayroll</span>
-                <span class="method-start">7438 ms</span>
+                <span class="method-name">lockEmployeeLevel</span>
+                <span class="method-start">7447 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">resetEmployeeLevel</span>
+                <span class="method-start">10244 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">unconfirmEmployeeLevel</span>
+                <span class="method-start">12954 ms</span>
+              </div> <!-- test-method -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">gpmsUI.gpmsAutomation.downloadReports</div> <!-- chronological-class-name -->
+              <div class="test-method">
+                <span class="method-name">downloadEmployeeDataUploadTemplate</span>
+                <span class="method-start">15636 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

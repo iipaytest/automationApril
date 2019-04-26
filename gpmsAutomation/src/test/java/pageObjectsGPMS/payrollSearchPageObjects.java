@@ -8,9 +8,9 @@ public class payrollSearchPageObjects {
 	public static final String search="//input[@id='btnSearch']";
 	
 	
-	public static final String payrollClick(String payrollName) {	
-		String payrollClick="//*[@id='dgResults_table']//div[contains(text(), '"+payrollName+"')]";
-		return payrollClick;
+	public static final String payrollToBeSelected(String payrollName) {	
+		String payrollToBeSelected="//*[@id='dgResults_table']//div[contains(text(), '"+payrollName+"')]";
+		return payrollToBeSelected;
 	}
 	
 	public static final String employeeNo="//input[@id='txtEmployeeNumber']";

@@ -4,7 +4,7 @@ package pageObjectsGPMS;
 
 public class employeeDetailsEPAPageObjects {
 	public static final String actionButton="//*[@id='pnlCurrentPayrolls']//input[contains(@onclick, 'return loadEpaActions')]";
-	
+	public static final String actionButtonClose="//*[@id='actionsDialog_close']";
 	
 	public static final String lock="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Lock')]";
 	public static final String reset="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Reset')]";
@@ -27,37 +27,62 @@ public class employeeDetailsEPAPageObjects {
 		public static final String dropDownLeaveAbsence="//div[@id='ddNavigateToSet_Panel']/select";	
 	
 	public static final String payments="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Payments')]";
-		public static final String dropDownPayments="//div[@id='ddNavigateToSet_Panel']/select";	
-		public static final String paymentEffectiveFrom="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl01_ctl00_Panel']/select";
-		public static final String paymentEffectiveTo="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl02_ctl00_Panel']/select";
-		public static final String paymentAmount="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl03_param']";
-		
 	public static final String deductions="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Deductions')]";
-		public static final String dropDownDeductions="//div[@id='ddNavigateToSet_Panel']/select";
+		
+		public static final String payDedsDropDown="//div[@id='ddNavigateToSet_Panel']/select";	
+		public static final String payDedsEffectiveFrom="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl01_ctl00_Panel']/select";
+		public static final String payDedsEffectiveTo="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl02_ctl00_Panel']/select";
+		public static final String payDedsAmount="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl03_param']";
+		
+	
+	
 	
 	public static final String unitPay="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Unit Pay')]";
-		public static final String dropDownUnitPay="//div[@id='ddNavigateToSet_Panel']/select";
-	
-	public static final String notionalAmounts="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Notional Amounts')]";
-		public static final String dropDownNotionalAmount="//div[@id='ddNavigateToSet_Panel']/select";
+		public static final String unitPayDropDown="//div[@id='ddNavigateToSet_Panel']/select";
+		public static final String unitPayUnitTypes="//*[contains(text(), 'Unit Types Only')]/preceding-sibling::input";
+		public static final String unitPayAllStandardTypes="//*[contains(text(), 'All Standard Types')]/preceding-sibling::input";
+		public static final String unitPayAllTypes="//*[contains(text(), 'All Types Including')]/preceding-sibling::input";
+		
+		public static final String unitPayEffectiveFrom="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl01_ctl00_Panel']/select";
+		public static final String unitPayUnits="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl02_param']";
+		public static final String unitPayDateWorked="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl03_param_txtDate']";
+		public static final String unitPayRateOverride="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl04_param']";
+		public static final String unitPayFinalAmountOverride="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl05_param']";
+		
 	
 	public static final String entitlementsTemp="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Entitlements (Temp)')]";
-		public static final String dropDownEntitlementsTemp="//div[@id='ddNavigateToSet_Panel']/select";
-	
 	public static final String entitlementsPerm="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Entitlements (Perm)')]";
-		public static final String dropDownEntitlementsPerm="//div[@id='ddNavigateToSet_Panel']/select";
-	
 	public static final String entitlementsUnitPay="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Entitlements (Unit Pay)')]";
-		public static final String dropDownEntitlementsUnitPay="//div[@id='ddNavigateToSet_Panel']/select";
+		
+		public static final String entitlementsDropDown="//div[@id='ddNavigateToSet_Panel']/select";
+		public static final String entitlementsEffectiveFrom="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl01_ctl00_Panel']/select";
+		public static final String entitlementsEffectiveTo="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl02_ctl00_Panel']/select";
+		
+		public static final String entitlementsTempAmount="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl02_param']";
+		public static final String entitlementsPermAmount="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl03_param']";
+			
+		public static final String entitlementsUnitPayUnitTypes="//*[contains(text(), 'Unit Types Only')]/preceding-sibling::input";
+		public static final String entitlementsUnitPayAllStandardTypes="//*[contains(text(), 'All Standard Types')]/preceding-sibling::input";
+		public static final String entitlementsUnitPayAllTypes="//*[contains(text(), 'All Types Including')]/preceding-sibling::input";
+		
+		public static final String entitlementsUnitPayEffectiveFrom="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl01_ctl00_Panel']/select";
+		public static final String entitlementsUnitPayUnits="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl02_param']";
+		public static final String entitlementsUnitPayDateWorked="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl03_param_txtDate']";
+		public static final String entitlementsUnitPayRateOverride="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl04_param']";
+		public static final String entitlementsUnitPayFinalAmountOverride="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl05_param']";
+		
+		
+	public static final String notionalAmounts="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Notional Amounts')]";
+		public static final String notionalAmountDropDown="//div[@id='ddNavigateToSet_Panel']/select";
 	
 	public static final String incumbentDetails="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Incumbent Details')]";
-		public static final String dropDownIncumbentDetails="//div[@id='ddNavigateToSet_Panel']/select";
+		public static final String incumbentDetailsDropDown="//div[@id='ddNavigateToSet_Panel']/select";
 	
 	public static final String tools="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Tools')]";
 		public static final String dropDownTools="//div[@id='ddAvailableGofors_Panel']/select";
 	
 	
-	public static final String backToButton="//*[@id='btnBack']//a[@id='btnBack_button']";
+	public static final String backToButton="//*[@id='btnBack_button']";
 	
 	
 	public static final String success="//span[@id='lblSuccess']";

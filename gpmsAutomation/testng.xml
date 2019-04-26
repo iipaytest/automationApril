@@ -18,11 +18,33 @@
       		<exclude name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
       		<exclude name="addNewElementType"/>
       		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
-      		<exclude name="editPayrollPeriods"/>
-      		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      		<include name="editPayrollPeriods"/>
+      		<include name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
       		<exclude name="addPayDeds"/>
+      		<include name="addPaymentsRandom"/>
+      		<include name="addDeductionsRandom"/>
+      		<include name="addUnitPayRandom"/>
+      		<include name="addEntitlementsTempRandom"/>
+      		<include name="addEntitlementsPermRandom"/>
+      		<include name="addEntitlementsUnitPayRandom"/>
       	</methods>
       </class> 
+    
+    <class name="gpmsUI.gpmsAutomation.functionValidations">
+      	<methods>
+      		<include name="lockEmployeeLevel"/>					
+      		<include name="resetEmployeeLevel"/>
+      		<include name="unconfirmEmployeeLevel"/>						
+      	</methods>
+      </class>
+    
+    <class name="gpmsUI.gpmsAutomation.downloadReports">
+      	<methods>
+      		<include name="downloadEmployeeDataUploadTemplate"/>											
+      	</methods>
+      </class>
+    
+    
     
     </classes>
   </test> <!-- Test -->

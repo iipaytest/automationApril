@@ -2,17 +2,21 @@ package gpmsUI.gpmsAutomation;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import pageObjectsGPMS.*;
-import reusableMethods.commonMethods;
+import reusableMethods.*;
 import testInputs.*;
 
 public class mainTestClassGPMS {
@@ -39,18 +43,56 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
 		
-		driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
-		menuBarLinks.goToJumpToEmployeeNumber(driver);
-		
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();
-		String paymentAdded=commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.dropDownPayments);
-		System.out.println("Element '"+paymentAdded+"' added as payment");
-		
-		commonMethods.selectFromListPartialText(driver, employeeDetailsEPAPageObjects.paymentEffectiveFrom, "P10 2019");
-		commonMethods.selectFromListPartialText(driver, employeeDetailsEPAPageObjects.paymentEffectiveTo, "inde");
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.paymentAmount)).sendKeys("1000");
-		
+		menuBarLinks.goToForPayroll(driver);
+		driver.findElement(By.xpath(payrollSearchPageObjects.payrollName)).sendKeys("Test Payroll Apr10");
+		driver.findElement(By.xpath(payrollSearchPageObjects.search)).click();
+		Thread.sleep(500);
+		if(driver.findElements(By.xpath(payrollSearchPageObjects.payrollToBeSelected("Test Payroll Apr10"))).size()==0) {
+			System.out.println("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
+			Assert.fail("Failed: As  Payoll Name '\"+ testInputGPMS.payrollName +\"' don't exists");
+		}else {
+			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected("Test Payroll Apr10"))).click();
+			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollDetails)).getText());
+			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
+			
+			List<WebElement> columns=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr"));
+			List<WebElement> rows=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr[1]/td"));
+			System.out.println(columns.size());
+			System.out.println(rows.size());
+			
+			List<String> tableData = new ArrayList<String>();
+			String[][] table = new String[columns.size()][rows.size()];
+			WebElement[][] element = new WebElement[columns.size()][rows.size()];
+			for (int i=1; i < columns.size(); i++) {
+				for (int j=1; j < rows.size(); j++) {
+					table[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]")).getAttribute("innerText");
+					element[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]"));
+				}
+			}	
+			for(int i=columns.size()-1; i >= 1; i--) {
+				if(table[i][4]!=null) {
+					String period=table[i][1];
+						System.out.println("Current pay period is: "+period);
+						System.out.println("Employees in Awaiting Process stage are: "+table[i][4]);
+						System.out.println("Employees in Locked stage are: "+table[i][5]);
+						System.out.println("Employees in Porcessed stage are: "+table[i][6]);
+						System.out.println("Employees in Confirmed stage are: "+table[i][7]);
+						System.out.println("No of Startes: "+table[i][8]);
+						System.out.println("No of Leavers: "+table[i][9]);
+						System.out.println("No of After Leavers: "+table[i][10]);
+						System.out.println("No of Historic Leavers: "+table[i][11]);
+						element[i][0].click();
+						driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
+						driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
+						commonMethods.reportsInboxRefreshUntillComplete(driver);
+						commonMethods.reportsInboxReportDownload(driver);
+						
+					break;
+				}
+			}
+			
+		}
+	
 		
 		
 		
@@ -136,8 +178,8 @@ public class mainTestClassGPMS {
       */  
         
 	}
-}
-	
+
+}	
 			
 		 
 		

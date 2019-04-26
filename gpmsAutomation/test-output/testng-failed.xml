@@ -3,11 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="gpmsUI.gpmsAutomation.addingNewDetails">
+      <class name="gpmsUI.gpmsAutomation.functionValidations">
         <methods>
-          <include name="addPayroll"/>
+          <include name="unconfirmEmployeeLevel"/>
         </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
+      </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
+      <class name="gpmsUI.gpmsAutomation.downloadReports">
+        <methods>
+          <include name="downloadEmployeeDataUploadTemplate"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->
