@@ -1,5 +1,7 @@
 package gpmsUI.gpmsAutomation;
 
+import static org.testng.Assert.assertThrows;
+
 import java.awt.AWTException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import pageObjectsGPMS.*;
 import reusableMethods.*;
@@ -23,6 +26,7 @@ public class mainTestClassGPMS {
 	
 	static WebDriver driver;
 	
+	@SuppressWarnings("null")
 	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
@@ -33,10 +37,20 @@ public class mainTestClassGPMS {
 		
 		
 		driver.get(testInputGPMS.urlTST3redirector);
+		if(driver.findElements(By.cssSelector("input#ClientId")).size()==0) {
+			System.out.println("Failed: Login Page Not working");
+			commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
+			Assert.fail("Failed: Login Page Not working");
+		}
 		driver.findElement(By.cssSelector("input#ClientId")).clear();
 		driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
 		driver.findElement(By.cssSelector("input[type='submit']")).click();
 		
+		if(driver.findElements(By.cssSelector("input#Username")).size()==0) {
+			System.out.println("Failed: Login Page Not working");
+			commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
+			Assert.fail("Failed: Login Page Not working");
+		}
 		
 		
 		driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
@@ -44,97 +58,258 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
 		
 		
-			
-
-	
+	}
+}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-/*		menuBarLinks.goToUserDefinedOrgUnits(driver);
-		int i=driver.findElements(By.xpath("//*[@id='customTypes']/tbody/tr")).size();
-		System.out.println(i);
-        for(int j=1; j<=i; j++) {
-        	String s= driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[1]/input")).getAttribute("defaultValue");
-        	System.out.println(s);
-        	if(testInputGPMS.newOrgUnit.contentEquals(s)) {
-        		System.out.println(s);
-        		driver.findElement(By.xpath("//*[@id='customTypes']/tbody/tr["+j+"]/td[2]/input")).click();
-        		for(int x=0; x<2; x++) {
-        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.newName)).sendKeys(testInputGPMS.newNamesReferences[x][x]);
-        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.newReference)).sendKeys(testInputGPMS.newNamesReferences[x][x+1]);
-        			driver.findElement(By.xpath(userDefinedOrgUnitAdminPageObjects.save)).click();
-        			Thread.sleep(1000);
-        			}
-        	}
-        }*/
-        
-     //   userDefinedOrgUnitAdminPageObjects.newUserOrgUnitConfiguration(driver, testInputGPMS.newOrgUnit, testInputGPMS.newNamesReferences);
-        
-	/*	driver.findElement(By.xpath(menuPageObjects.jumpToTextBox)).sendKeys(testInputGPMS.emplyeeNo);
-		menuBarLinks.goToJumpToEmployeeNumber(driver);
-		int warning = driver.findElements(By.xpath(menuPageObjects.warning)).size();
-		
-		if(warning==1) {
-			System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
-			commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont exists");
-			Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
-		}else {
-			if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()==0) {
-				System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
-				commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont have any Current Actice Payroll Assignments");
-				Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
-			}else {	
-				for(int x=0; x<testInputGPMS.payDedsToAdd.length; x++) {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.visibleText(testInputGPMS.payDedsToAdd[x]))).click();
-					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.dropDownPayments)));
-					if(testInputGPMS.payDedsToAdd[x].contentEquals("Payments")) {
-						for(int i=0;i<testInputGPMS.paymentsTypesToAdd.length;i++) {	
-							commonMethods.selectFromList(driver, employeeDetailsEPAPageObjects.dropDownPayments, testInputGPMS.paymentsTypesToAdd[i][0]);
-							commonMethods.addPayDedsDetails(driver, testInputGPMS.paymentsTypesToAdd[i][1], testInputGPMS.paymentsTypesToAdd[i][2], testInputGPMS.paymentsTypesToAdd[i][3]);
-							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
-								System.out.println("Passed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[i][0] +"'");
-								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-							}else {
-								System.out.println("Failed: Adding Payments '"+ testInputGPMS.paymentsTypesToAdd[0][0] +"'");
-								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
-								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-							}
-						}	
-					}else if(testInputGPMS.payDedsToAdd[x].contentEquals("Deductions")) {
-						for(int i=0;i<testInputGPMS.deductionsTypesToAdd.length;i++) {	
-							commonMethods.selectFromList(driver, employeeDetailsEPAPageObjects.dropDownDeductions, testInputGPMS.deductionsTypesToAdd[i][0]);
-							commonMethods.addPayDedsDetails(driver, testInputGPMS.deductionsTypesToAdd[i][1], testInputGPMS.deductionsTypesToAdd[i][2], testInputGPMS.deductionsTypesToAdd[i][3]);
-							if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
-								System.out.println("Passed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[i][0] +"'");
-								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-							}else {
-								System.out.println("Failed: Adding Deductions '"+ testInputGPMS.deductionsTypesToAdd[0][0] +"'");
-								System.out.println(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.error)).getAttribute("innerText"));
-								driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-							}
-						}
-					}else {System.out.println("No PayDeds to add");}
-					
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
+/*		if(stateOfPayroll[0]!=0) {
+			awaitingProcess.click();
+			driver.findElement(By.xpath(payrollPageObjects.lockPeriod)).click();
+			String status=payrollQueuePageObjects.reportsInboxRefreshUntillComplete(driver);
+			if(status.equalsIgnoreCase("Complete")) {	
+				System.out.println("Passed: Lock Period function from Payroll level is successful for '"+payrollName+"' payroll for period "+periodName);
 				}
-				
+				else { 
+					System.out.println("Failed: Lock Period function from Payroll level for '"+payrollName+"' payroll for period "+periodName);	
+					driver.findElement(By.xpath(payrollQueuePageObjects.runtimeDetailsSummary)).click();
+					commonMethods.takeScreenShotOfElement(driver, "Payroll_pay period lock function failed", driver.findElement(By.xpath(payrollQueuePageObjects.summaryWindowFrame)));
+					driver.findElement(By.xpath(payrollQueuePageObjects.summaryWindowClose)).click();
+				}
+			driver.findElement(By.xpath(payrollQueuePageObjects.backToPayroll)).click();
+		}else {
+			System.out.println("Info: Cant verify Lock Period function from Payroll level as there are no Awaiting employees exists in '"+payrollName+"' payroll for period "+periodName);
+		}
+		
+		
+		System.out.println("State of Employees in payroll: \n	Awaiting: "+stateOfPayroll[0]+"\n	Locked: "+stateOfPayroll[1]+"\n	Processed: "+stateOfPayroll[2]+"\n	Confirmed: "+stateOfPayroll[3]);
+	*/
+	/*	
+		String payrollName=null;
+		String payPeriodTaxyear=null;
+		String payPeriodNo=null;
+		String[][] table=null;
+		WebElement[][] element=null;
+		Object[][] rowData0Webelements1=null;
+		String[][] currentPayrollStatus=null;
+		ArrayList<String> headerRow=new ArrayList<String>();
+		ArrayList<String> dataInRow=new ArrayList<String>();
+		ArrayList<WebElement> webElementsInRow=new ArrayList<WebElement>();
+		int rowNumOfPayPeriod=0;
+		
+	//Getting Payroll Name = required or active payroll
+		if(testInputGPMS.requiredPayrollName!=null) {	payrollName=testInputGPMS.requiredPayrollName;	}
+			else {	payrollName=testInputGPMS.payrollName; }
+	
+	//Opening that Payroll
+		if(payrollSearchPageObjects.isPayrollExists(driver, payrollName)==true) {
+			payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+			table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+			rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName);
+			payPeriodTaxyear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][2];
+			payPeriodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][3];
+		}else {
+			System.out.println("Failed: Payroll: '"+payrollName+"' don't exists");
+			commonMethods.takeScreenShot(driver, "Failed Payroll '"+payrollName+"' don't exists");
+			Assert.fail("Failed: Payroll: '"+payrollName+"' don't exists");
+		}
+		
+	//Navigate to required Pay period (required or active payroll) page, and getting Row Number in that page
+		if(testInputGPMS.requiredPayPeriodTaxYear!=null) {	payPeriodTaxyear=testInputGPMS.requiredPayPeriodTaxYear;	}
+		if(testInputGPMS.requiredPayPeriodNo!=null) {	payPeriodNo=testInputGPMS.requiredPayPeriodNo;	}	
+		
+		if(payrollPageObjects.getRequiredPeriodPayrollPageRowNumber(driver, payrollName, payPeriodTaxyear, payPeriodNo)!=0) {
+			rowNumOfPayPeriod=payrollPageObjects.getRequiredPeriodPayrollPageRowNumber(driver, payrollName, payPeriodTaxyear, payPeriodNo);
+		}else {
+			System.out.println("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
+			commonMethods.takeScreenShot(driver, "Failed Pay Period looking for, Tax Year '"+payPeriodTaxyear+"' and Period Num '"+payPeriodNo+"' in Payroll '"+payrollName+"' don't exists");
+			Assert.fail("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
+		}
+	
+	//At this point, 	rowNumOfPayPeriod = required period row num, table=all data in that payroll page where required pay period is present
+		System.out.println("Active/Required period: "+rowNumOfPayPeriod);
+		table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+		element=payrollPageObjects.captureAllPayrollWebelementsIntoTable(driver);
+		
+		for(int j=0; j<table[0].length; j++) {
+			headerRow.add(table[0][j]);
+			dataInRow.add(table[rowNumOfPayPeriod][j]);
+			webElementsInRow.add(element[rowNumOfPayPeriod][j]);
+			}
+		webElementsInRow.get(0).click();
+	*/	
+		
+		
+		
+	/*	
+		if(testInputGPMS.requiredPayrollName!=null) {
+			payrollName=testInputGPMS.requiredPayrollName;
+			payPeriodTaxyear=testInputGPMS.requiredPayPeriodTaxYear;
+			payPeriodNo=testInputGPMS.requiredPayPeriodNo;
+			if(payrollSearchPageObjects.isPayrollExists(driver, payrollName)==true) {
+				payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				rowNumOfPayPeriod=payrollPageObjects.getRequiredPeriodPayrollPageRowNumber(driver, payrollName, payPeriodTaxyear, payPeriodNo);
+			}else {
+				System.out.println("Failed: Payroll: '"+payrollName+"' don't exists");
+				commonMethods.takeScreenShot(driver, "Failed Payroll '"+payrollName+"' don't exists");
+				Assert.fail("Failed: Payroll: '"+payrollName+"' don't exists");
+			}
+		
+		}else {
+			payrollName=testInputGPMS.payrollName;
+			if(payrollSearchPageObjects.isPayrollExists(driver, payrollName)==true) {
+				payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName);
+			}else {
+				System.out.println("Failed: Payroll: '"+payrollName+"' don't exists");
+				commonMethods.takeScreenShot(driver, "Failed Payroll '"+payrollName+"' don't exists");
+				Assert.fail("Failed: Payroll: '"+payrollName+"' don't exists");
 			}
 		}
 		
-      */  
-        
-	}
-
-}	
+		if(rowNumOfPayPeriod!=0) {
+				
+			System.out.println(rowNumOfPayPeriod);
 			
+		}else {
+				System.out.println("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
+				commonMethods.takeScreenShot(driver, "Failed Pay Period looking for, Tax Year '"+payPeriodTaxyear+"' and Period Num '"+payPeriodNo+"' in Payroll '"+payrollName+"' don't exists");
+				Assert.fail("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
+			}
+			
+	*/	
+		
+	
+		
+	//---------------	
+		
+		
+		
+/*			if(payrollPageObjects.isRequiredPeriodPresentOnPayrollPage(driver, payrollName, taxYear, periodNo)!=0) {	rowNoOfRequiredPeriod=payrollPageObjects.isRequiredPeriodPresentOnPayrollPage(driver, payrollName, taxYear, periodNo);	System.out.println(rowNoOfRequiredPeriod);}
+			else {	
+				
+				payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				table = payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+				for(int i=1; i<table.length; i++) {
+						System.out.println("hi");
+						periods[i-1]=Integer.parseInt(table[i][3]);
+						taxYears[i-1]=Integer.parseInt(table[i][3]);
+					
+				}
+				System.out.println(periods);
+				System.out.println(taxYears);
+				
+				if(periods[0]<=Integer.parseInt(taxYear)) {
+					System.out.println("hi1");
+					if(commonMethods.isClickable(driver, driver.findElement(By.xpath(payrollPageObjects.nextButton)))==true){
+						System.out.println("hi1");
+						driver.findElement(By.xpath(payrollPageObjects.nextButton)).click();
+						if(payrollPageObjects.isRequiredPeriodPresentOnPayrollPage(driver, payrollName, taxYear, periodNo)!=0) {	rowNoOfRequiredPeriod=payrollPageObjects.isRequiredPeriodPresentOnPayrollPage(driver, payrollName, taxYear, periodNo);	}
+						else	{
+							System.out.println("Failed: Tax Year '"+taxYear +"' and Period No '"+periodNo+"' dont exists in '"+ payrollName +"'s payroll don't exists");
+							commonMethods.takeScreenShot(driver, "Pay Period looking for don't Exists");
+							Assert.fail("Failed: Tax Year '"+taxYear +"' and Period No '"+periodNo+"' dont exists in '"+ payrollName +"'s payroll don't exists");
+						}
+					}else	{
+						System.out.println("Failed: Tax Year '"+taxYear +"' and Period No '"+periodNo+"' dont exists in '"+ payrollName +"'s payroll don't exists");
+						commonMethods.takeScreenShot(driver, "Pay Period looking for don't Exists");
+						Assert.fail("Failed: Tax Year '"+taxYear +"' and Period No '"+periodNo+"' dont exists in '"+ payrollName +"'s payroll don't exists");
+					}
+					
+				}
+				
+			}
+	*/		
+			
+		
+	//	payrollSearchPageObjects.goToRequiredPayrollPage(driver, testInputGPMS.payrollName);
+		
+/*		String payrollName=testInputGPMS.payrollName;
+		String taxYear="2019"; 
+		String periodNo="11";
+		String lookingPeriodNo=null;
+		int aa = 0;
+		String[][] table = null;
+		WebElement[][] element=null;
+		String[] rowData;
+		ArrayList<String> mylist = new ArrayList<String>();
+		
+		
+		if(payrollSearchPageObjects.isPayrollExists(driver, payrollName)) {
+			
+			payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+			
+			table = payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+			element=payrollPageObjects.captureAllPayrollWebelementsIntoTable(driver);
+			
+			System.out.println(table[3][3]);
+			System.out.println(table[0].length);
+			
+			for (int i=1; i < table.length-1; i++) {
+				if(element[i][3].getText().contains(periodNo) && element[i][4].getText()!=null) {
+					if(element[i][2].getText().contains(taxYear)) {
+						for (int j=1; j < table[0].length; j++)
+							mylist.add(table[i][j]);
+					}
+				}
+			}
+			if(mylist.isEmpty()) {
+				if(driver.findElement(By.xpath(payrollPageObjects.previousButton)).isEnabled()==true) {
+					do {
+						driver.findElement(By.xpath(payrollPageObjects.previousButton)).click();
+						
+						table = payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+						element=payrollPageObjects.captureAllPayrollWebelementsIntoTable(driver);
+						
+						for (int i=1; i < table.length-1; i++) {
+							if(element[i][3].getText().contains(periodNo) && element[i][4].getText()!=null) {
+								if(element[i][2].getText().contains(taxYear)) {
+									for (int j=1; j < table[0].length; j++)
+										mylist.add(table[i][j]);
+									
+								}
+							}
+						}break;
+						
+					}while(driver.findElement(By.xpath(payrollPageObjects.previousButton)).isEnabled());
+				
+				}else {System.out.println("period not found1");}
+				
+			}else {System.out.println("period not found2");}
+			
+			System.out.println(mylist);
+			
+			
+			//while(driver.findElement(By.xpath(payrollPageObjects.previousButton)).isEnabled()) { driver.findElement(By.xpath(payrollPageObjects.previousButton)).click();	}
+			
+		
+	}else System.out.println("Payroll dont exists");
+		
+		
+		
+		//This is to navigate of payroll page to required period and get webElements for that period row
+		
+		
+	*/	
+		
+		
+		/*
+		 functionValidations class:	 
+		 	lockPeriodPayrollLevel(), 
+		 	processPeriodPayrollLevel(),	
+		 	confirmPeriodPayrollLevel(), 
+		 	unconfirmPeriodPayrollLevel(), 
+		 	resetPeriodPayrollLevel(), 
+		 	viewEmployeeFromPayrollLevel()
+		 */
+		
+		/*
+		 downloadReports class:	 
+		 	downloadEmployeeDataUploadTemplateel(), 
+		 	other all downloadable reports
+		 */
+		
+ 
+        
+
 		 
 		
 		

@@ -5,14 +5,44 @@
     <classes>
       <class name="gpmsUI.gpmsAutomation.functionValidations">
         <methods>
-          <include name="unconfirmEmployeeLevel"/>
+          <include name="loginTST3"/>
+          <include name="startReport"/>
+          <include name="endReport"/>
+          <include name="getResult"/>
         </methods>
       </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
+      <class name="gpmsUI.gpmsAutomation.addingNewDetails">
+        <methods>
+          <include name="loginTST3"/>
+          <include name="startReport"/>
+          <include name="endReport"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
       <class name="gpmsUI.gpmsAutomation.downloadReports">
         <methods>
-          <include name="downloadEmployeeDataUploadTemplate"/>
+          <include name="loginTST3"/>
+          <include name="startReport"/>
+          <include name="endReport"/>
+          <include name="getResult"/>
         </methods>
       </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
+        <methods>
+          <include name="loginTST3"/>
+          <include name="startReport"/>
+          <include name="endReport"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom -->
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined">
+        <methods>
+          <include name="loginTST3"/>
+          <include name="startReport"/>
+          <include name="endReport"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->

@@ -1,5 +1,15 @@
 package pageObjectsGPMS;
 
+import java.awt.AWTException;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import reusableMethods.commonMethods;
+import testInputs.testInputGPMS;
+
 public class employeeDetailsPageObjects {
 	
 	public static final String backToSearchResults="//input[@id='btnBack_image']";
@@ -76,6 +86,20 @@ public class employeeDetailsPageObjects {
 	public static final String previousPayrollAssginment_1="//div[@id='pnlPreviousPayrolls']//tr[2]//a";
 	public static final String previousPayrollAssginment_2="//div[@id='pnlPreviousPayrolls']//tr[3]//a";
 	public static final String previousPayrollAssginment_3="//div[@id='pnlPreviousPayrolls']//tr[4]//a";
+	
+	public static Boolean isCurrentAssignmentExists(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+		Boolean passed=false;
+		
+		if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()!=0) {
+			passed=true;
+		}else {
+			System.out.println("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+			commonMethods.takeScreenShot(driver, "Failed verifying Reset Function from Employee level_Emp No dont have any Current Actice Payroll Assignments");
+			Assert.fail("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+		}
+		
+		return passed;	
+	}
 	
 	
 }

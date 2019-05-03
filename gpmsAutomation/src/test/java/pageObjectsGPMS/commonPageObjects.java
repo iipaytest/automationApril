@@ -8,5 +8,6 @@ public class commonPageObjects {
 	public static final String warning="//*[@id='lblWarning']";
 	
 	public static final String submitButton="//*[@id='btnSubmit']";
+	public static final String search="//*[@id='btnSearch']";
 	
 }

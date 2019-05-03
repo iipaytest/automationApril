@@ -1,6 +1,13 @@
 package pageObjectsGPMS;
 
+import java.awt.AWTException;
+import java.io.IOException;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+import reusableMethods.commonMethods;
 
 public class reportsPageObjects {
 	
@@ -26,5 +33,45 @@ public class reportsPageObjects {
 	
 	
 	public static final String summaryWindowClose="//*[@id='processingMessages_close']";
-	public static final String summaryWindowFrame="//*[@id='processingMessages_close']";
+	public static final String summaryWindowFrame="//*[@id='processingMessages_iframe']";
+	
+	
+	public static void reportsInboxRefreshUntillComplete(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+		
+		Thread.sleep(1000);
+		int i=20; //no of seconds to wait before breaking while loop for clicking refresh button
+		while(driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText").contains("Processing") && i>=0) {Thread.sleep(1000);	driver.findElement(By.xpath(reportsPageObjects.refresh)).click();	i--; }
+		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
+		String reportName=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
+		System.out.println(reportName+"'s Status: "+status);
+	}
+
+	public static void reportsInboxReportDownload(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+		
+		Thread.sleep(1000);
+		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
+		String reportName=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
+		
+		if(!(status.contains("Complete"))) {	
+			System.out.println("Failed: "+reportName+" not generated, Status message: "+status);
+			if(driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsToLocalFile)).isDisplayed()) {
+				driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();	
+			}
+			driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
+			commonMethods.takeScreenShotOfElement(driver, reportName+" generation failed_Processing Summary", driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
+			driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
+			driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
+			commonMethods.takeScreenShotOfElement(driver, reportName+" generation failed_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
+			Assert.fail("Failed: "+reportName+" not generated, Status message: "+status);
+		}else {
+			driver.findElement(By.xpath(reportsPageObjects.outPutReportToLocalFile)).click();
+			System.out.println("Passed: "+reportName+" generated successfully, Status message: "+status);
+			driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
+			commonMethods.takeScreenShotOfElement(driver, reportName+" generation successfully_Processing Summary", driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
+			driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
+			driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
+			commonMethods.takeScreenShotOfElement(driver, reportName+" generated successfully_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
+		}
+	}
+	
 }

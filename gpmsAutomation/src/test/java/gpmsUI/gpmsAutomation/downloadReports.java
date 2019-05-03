@@ -14,6 +14,7 @@ import pageObjectsGPMS.commonPageObjects;
 import pageObjectsGPMS.menuBarLinks;
 import pageObjectsGPMS.payrollPageObjects;
 import pageObjectsGPMS.payrollSearchPageObjects;
+import pageObjectsGPMS.reportsPageObjects;
 import reusableMethods.commonMethods;
 import testInputs.testInputGPMS;
 
@@ -24,18 +25,15 @@ public class downloadReports extends basicDetails{
 	//This is to download Employee Data Upload Template Function from Employee level
 	public void downloadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
-		
-		menuBarLinks.goToForPayroll(driver);
-		driver.findElement(By.xpath(payrollSearchPageObjects.payrollName)).sendKeys(testInputGPMS.payrollName);
-		driver.findElement(By.xpath(payrollSearchPageObjects.search)).click();
-		Thread.sleep(500);
-		if(driver.findElements(By.xpath(payrollSearchPageObjects.payrollToBeSelected(testInputGPMS.payrollName))).size()==0) {
+		if(payrollSearchPageObjects.isPayrollExists(driver, testInputGPMS.payrollName)==false) {
 			System.out.println("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
-			Assert.fail("Failed: As  Payoll Name '\"+ testInputGPMS.payrollName +\"' don't exists");
+			commonMethods.takeScreenShot(driver, "Payroll Details dont Exists");
+			Assert.fail("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
+		
 		}else {
 			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected(testInputGPMS.payrollName))).click();
 			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollDetails)).getText());
-			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
+			System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
 			
 			List<WebElement> columns=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr"));
 			List<WebElement> rows=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr[1]/td"));
@@ -64,8 +62,8 @@ public class downloadReports extends basicDetails{
 				*/		element[i][0].click();
 						driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
 						driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
-						commonMethods.reportsInboxRefreshUntillComplete(driver);
-						commonMethods.reportsInboxReportDownload(driver);
+						reportsPageObjects.reportsInboxRefreshUntillComplete(driver);
+						reportsPageObjects.reportsInboxReportDownload(driver);
 						
 					break;
 				}

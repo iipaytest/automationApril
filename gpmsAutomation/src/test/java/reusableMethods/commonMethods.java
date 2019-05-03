@@ -21,6 +21,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import pageObjectsGPMS.*;
 import testInputs.testInputGPMS;
@@ -65,58 +66,19 @@ public class commonMethods {
 		
 	}
 	
-	public static void editPeriods(WebDriver driver, String payrollName, String payrollYear) throws IOException, InterruptedException, AWTException {
-		
-		List <WebElement> payrollYears=driver.findElements(By.xpath(editPeriodsPageObjects.payrollYear+"/option"));
-		for(WebElement option :payrollYears) {
-			if (option.getText().contains(payrollYear)) {
-	        option.click();
-	        break;
-			}
+	public static boolean isClickable(WebDriver driver, WebElement name)      {
+		try
+		{
+		   WebDriverWait wait = new WebDriverWait(driver, 5);
+		   wait.until(ExpectedConditions.elementToBeClickable(name));
+		   return true;
 		}
-		Thread.sleep(500);
-		if(driver.findElements(By.xpath(editPeriodsPageObjects.save)).size()==1) {
-			System.out.println("Failed: Payroll periods of given Payroll Year already exits");
-			Assert.fail("Failed: Payroll periods of given Payroll Year already exits");
-			}
-		else if(driver.findElements(By.xpath(editPeriodsPageObjects.generate)).size()==0){
-			System.out.println("Failed: Given Payroll Year dont exits in drop down list");
-			Assert.fail("Failed: Given Payroll Year dont exits in drop down list");
-			}
-		else {
-			if(testInputGPMS.payDaybutton==true) {
-				driver.findElement(By.xpath(editPeriodsPageObjects.payDay)).click();		
-				List <WebElement> payDays=driver.findElements(By.xpath(editPeriodsPageObjects.payDayDropDown+"/option"));
-				for(WebElement option :payDays) {	if (option.getText().contains(testInputGPMS.payDayToSelect)) {	option.click();		break;	}	}
-				if(testInputGPMS.payDayFirst==true) driver.findElement(By.xpath(editPeriodsPageObjects.payDayFirst)).click();
-				else driver.findElement(By.xpath(editPeriodsPageObjects.payDayLast)).click();		
-			}
-			else {
-				driver.findElement(By.xpath(editPeriodsPageObjects.payOffset)).click();
-				driver.findElement(By.xpath(editPeriodsPageObjects.payOffset)).sendKeys(testInputGPMS.payOffsetToGive);
-				if(testInputGPMS.payOffsetAfter==true) driver.findElement(By.xpath(editPeriodsPageObjects.payOffsetAfter)).click();
-				else driver.findElement(By.xpath(editPeriodsPageObjects.payOffsetBefore)).click();
-			}
+		catch (Exception e)
+		{
+		  return false;
 		}
-		driver.findElement(By.xpath(editPeriodsPageObjects.bankTransferOffset)).sendKeys(testInputGPMS.bankTransferOffset);
-		driver.findElement(By.xpath(editPeriodsPageObjects.generate)).click();
-		if(driver.findElements(By.xpath(editPeriodsPageObjects.save)).size()==0) {
-			System.out.println("Failed: Pay Period not generted for Payroll-Error Message: "+driver.findElement(By.xpath(editPeriodsPageObjects.errorMessage)).getAttribute("innerText"));
-			Assert.fail("Failed: Pay Period not generted for Payroll-Error Message: "+driver.findElement(By.xpath(editPeriodsPageObjects.errorMessage)).getAttribute("innerText"));
-		}else {
-			commonMethods.takeScreenShot(driver, "Generated Periods");
-			driver.findElement(By.xpath(editPeriodsPageObjects.save)).click();
-			if(!driver.findElement(By.xpath(payrollPageObjects.payrollPageHeader)).getAttribute("innerText").contentEquals("Payroll Page")) {
-				System.out.println("Failed: Generated Periods was not saved-Error Message"+driver.findElement(By.xpath(editPeriodsPageObjects.errorMessage)).getAttribute("innerText"));
-				commonMethods.takeScreenShot(driver, "Failed Generated Periods was not saved-Error Message"+driver.findElement(By.xpath(editPeriodsPageObjects.errorMessage)).getAttribute("innerText"));
-				Assert.fail("Failed: Generated Periods was not saved-Error Message"+driver.findElement(By.xpath(editPeriodsPageObjects.errorMessage)).getAttribute("innerText"));
-			}else {
-				System.out.println("Passed: Generated Periods for year "+payrollYear+" in "+payrollName+" payroll");
-				commonMethods.takeScreenShot(driver, "Passed Generated Periods for year "+payrollYear+" in "+payrollName+" payroll");	
-			}
-		}
-		Thread.sleep(1500);
 	}
+	
 	
 	public static void successErrorMesssage(WebDriver driver) throws InterruptedException {
 		Thread.sleep(1000);
@@ -169,51 +131,66 @@ public class commonMethods {
 		
 	}
 
-
-	public static void searchPayroll(WebDriver driver, String payrollName) throws InterruptedException, AWTException {		
-		menuBarLinks.goToForPayroll(driver);
-		
-	}
 	
-	public static void reportsInboxRefreshUntillComplete(WebDriver driver) throws InterruptedException, AWTException, IOException {		
-		
-		Thread.sleep(1000);
-		int i=20; //no of seconds to wait before breaking while loop for clicking refresh button
-		while(driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText").contains("Processing") && i>=0) {Thread.sleep(1000);	driver.findElement(By.xpath(reportsPageObjects.refresh)).click();	i--; }
-		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
-		String reportName=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
-		System.out.println(reportName+"'s Status: "+status);
-	}
+	
 
-	public static void reportsInboxReportDownload(WebDriver driver) throws InterruptedException, AWTException, IOException {		
-		
-		Thread.sleep(1000);
-		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
-		String reportName=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
-		
-		if(!(status.contains("Complete"))) {	
-			System.out.println("Failed: "+reportName+" not generated, Status message: "+status);
-			if(driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsToLocalFile)).isDisplayed()) {
-				driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();	
+	
+	
+	public void verifyStatusOfPayrollPeriod(WebDriver driver, String payrollName, String periodName) throws AWTException, InterruptedException, IOException {
+		//This is to verify Status of payroll period to get count of employees in Awaiting Process, Locked, Processed, Confirmed
+			
+			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected(payrollName))).click();
+			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollDetails)).getText());
+			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
+			
+			List<WebElement> columns=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr"));
+			List<WebElement> rows=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr[1]/td"));
+			//System.out.println(columns.size());	//Number of periods displayed
+			
+			String[][] table = payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+			
+			
+			
+			WebElement[][] element = new WebElement[columns.size()][rows.size()];
+			for (int i=1; i < columns.size(); i++) {
+				for (int j=1; j < rows.size(); j++) {
+					table[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]")).getAttribute("innerText");
+					element[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]"));
+				}
+			}	
+			
+			for(int i=columns.size()-1; i >= 1; i--) {
+				if(table[i][4]!=null) {
+					String period=table[i][1];
+						System.out.println("Current pay period is: "+period);
+				/*		System.out.println("Employees in Awaiting Process stage are: "+table[i][4]);
+						System.out.println("Employees in Locked stage are: "+table[i][5]);
+						System.out.println("Employees in Processed stage are: "+table[i][6]);
+						System.out.println("Employees in Confirmed stage are: "+table[i][7]);
+						System.out.println("No of Starters: "+table[i][8]);
+						System.out.println("No of Leavers: "+table[i][9]);
+						System.out.println("No of After Leavers: "+table[i][10]);
+						System.out.println("No of Historic Leavers: "+table[i][11]);
+				*/		element[i][0].click();
+						driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
+						driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
+						//commonMethods.reportsInboxRefreshUntillComplete(driver);
+						//commonMethods.reportsInboxReportDownload(driver);
+						
+					break;
+				}
 			}
-			driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
-			commonMethods.takeScreenShotOfElement(driver, reportName+" generation failed_Processing Summary", driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
-			driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
-			driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
-			commonMethods.takeScreenShotOfElement(driver, reportName+" generation failed_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
-			Assert.fail("Failed: "+reportName+" not generated, Status message: "+status);
-		}else {
-			driver.findElement(By.xpath(reportsPageObjects.outPutReportToLocalFile)).click();
-			System.out.println("Passed: "+reportName+" generated successfully, Status message: "+status);
-			driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
-			commonMethods.takeScreenShotOfElement(driver, reportName+" generation successfully_Processing Summary", driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
-			driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
-			driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
-			commonMethods.takeScreenShotOfElement(driver, reportName+" generated successfully_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
-		}
 	}
 
+			
 
+		
+		
+	public void verifyStarterLeaverInPayrollPeriod(WebDriver driver, String payrollName, String periodName) throws AWTException, InterruptedException, IOException {
+		//This is to get count of employees in Staters, Leavers, After Leavers, Historic Leavers
+			
+			
+	}
 
 
 }

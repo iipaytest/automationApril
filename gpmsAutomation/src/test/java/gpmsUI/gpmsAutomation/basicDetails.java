@@ -38,6 +38,11 @@ public class basicDetails {
 			driver.manage().window().maximize();
 			
 			driver.get(testInputGPMS.urlTST3redirector);
+			if(driver.findElements(By.cssSelector("input#ClientId")).size()==0) {
+				System.out.println("Failed: Login Page Not working");
+				commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
+				Assert.fail("Failed: Login Page Not working");
+			}
 			driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
 			driver.findElement(By.cssSelector("input[type='submit']")).click();
 			

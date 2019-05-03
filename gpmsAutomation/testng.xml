@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Regression Suite" preserve-order= "true">
+<suite name="Regression Suite">
+  
+  
+  
   <test thread-count="5" name="Test">
     <classes>
       
-      <class name="gpmsUI.gpmsAutomation.basicDetails">
+    <class name="gpmsUI.gpmsAutomation.basicDetails">
       	<methods>
       		<include name="homePage"/>					<!-- This will open Login page foe given client and checks for given GPMS version -->
       		<include name="loginTST3"/>					<!--This will Login TST3 GPMS and verify of the login is successful for given -->	
       	</methods>
       </class>
       
-      <class name="gpmsUI.gpmsAutomation.addingNewDetails">
+    <class name="gpmsUI.gpmsAutomation.addingNewDetails">
       	<methods>
       		<exclude name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
       		<exclude name="addNewCompany"/>
@@ -20,7 +23,11 @@
       		<exclude name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
       		<exclude name="editPayrollPeriods"/>
       		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
-      		<exclude name="addPayDeds"/>
+      	</methods>
+      </class> 
+    
+    <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
+      	<methods>
       		<exclude name="addPaymentsRandom"/>
       		<exclude name="addDeductionsRandom"/>
       		<exclude name="addUnitPayRandom"/>
@@ -35,14 +42,20 @@
       		<exclude name="lockEmployeeLevel"/>					
       		<exclude name="resetEmployeeLevel"/>
       		<exclude name="unconfirmEmployeeLevel"/>
-      		
-      		<exclude name="lockPeriodPayrollLevel"/>					
+      		<exclude name="allPeriodProcessingsFromPayrollLevel"/>
+      							
       		<exclude name="processPeriodPayrollLevel"/>
       		<exclude name="confirmPeriodPayrollLevel"/>
       		<exclude name="unconfirmPeriodPayrollLevel"/>					
       		<exclude name="resetPeriodPayrollLevel"/>
       		<exclude name="viewEmployeeFromPayrollLevel"/>						
       	
+      	</methods>
+      </class>
+     
+    <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined">
+      	<methods>
+      		<exclude name="addPayDeds"/>											
       	</methods>
       </class>
     

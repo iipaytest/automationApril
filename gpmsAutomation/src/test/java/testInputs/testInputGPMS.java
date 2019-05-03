@@ -81,6 +81,12 @@ public class testInputGPMS {
 			public static final String bankTransferOffset	="2";
 	
 	
+			
+	//Required Pay period in a payroll to details of specific previous or future pay periods
+			public static final String requiredPayrollName		=null;	//"Germany";		//leave it null for active, else give specific payroll Name>	"Test Payroll Apr10";
+			public static final String requiredPayPeriodTaxYear	=null;	//"2017";			//leave it null for active, else give specific Tax year>		"2019";
+			public static final String requiredPayPeriodNo		=null;	//"6";				//leave it null for active, else give specific Period No>		"2";	(1-12 numbers)
+			
 	
 	//EPA details to add
 		public static final String[] payDedsToAdd= {"Payments", "Deductions"};

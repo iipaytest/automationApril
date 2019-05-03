@@ -1,41 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="4" total="10" passed="6">
+<testng-results skipped="0" failed="0" ignored="25" total="37" passed="12">
   <reporter-output>
   </reporter-output>
-  <suite name="Regression Suite" duration-ms="24414" started-at="2019-04-26T14:10:03Z" finished-at="2019-04-26T14:10:27Z">
+  <suite name="Regression Suite" duration-ms="40032" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:54Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="24414" started-at="2019-04-26T14:10:03Z" finished-at="2019-04-26T14:10:27Z">
+    <test name="Test" duration-ms="40032" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:54Z">
       <class name="gpmsUI.gpmsAutomation.basicDetails">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@1e88b3c]" name="homePage" duration-ms="5267" started-at="2019-04-26T14:10:03Z" finished-at="2019-04-26T14:10:08Z">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@5622fdf]" name="homePage" duration-ms="5347" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@1e88b3c]" name="loginTST3" duration-ms="2176" started-at="2019-04-26T14:10:08Z" finished-at="2019-04-26T14:10:10Z">
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@5622fdf]" name="loginTST3" duration-ms="2122" started-at="2019-05-03T13:24:19Z" finished-at="2019-05-03T13:24:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTST3 -->
       </class> <!-- gpmsUI.gpmsAutomation.basicDetails -->
-      <class name="gpmsUI.gpmsAutomation.downloadReports">
-        <test-method status="PASS" signature="downloadEmployeeDataUploadTemplate()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@3bfdc050]" name="downloadEmployeeDataUploadTemplate" duration-ms="8749" started-at="2019-04-26T14:10:18Z" finished-at="2019-04-26T14:10:27Z">
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@7d9d1a19]" name="homePage" duration-ms="4478" started-at="2019-05-03T13:24:28Z" finished-at="2019-05-03T13:24:32Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- downloadEmployeeDataUploadTemplate -->
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@7d9d1a19]" name="loginTST3" duration-ms="2030" started-at="2019-05-03T13:24:32Z" finished-at="2019-05-03T13:24:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTST3 -->
+      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom -->
+      <class name="gpmsUI.gpmsAutomation.addingNewDetails">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@4883b407]" name="homePage" duration-ms="4491" started-at="2019-05-03T13:24:21Z" finished-at="2019-05-03T13:24:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@4883b407]" name="loginTST3" duration-ms="2054" started-at="2019-05-03T13:24:26Z" finished-at="2019-05-03T13:24:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTST3 -->
+      </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
+      <class name="gpmsUI.gpmsAutomation.downloadReports">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@42e26948]" name="homePage" duration-ms="4488" started-at="2019-05-03T13:24:47Z" finished-at="2019-05-03T13:24:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@42e26948]" name="loginTST3" duration-ms="2022" started-at="2019-05-03T13:24:52Z" finished-at="2019-05-03T13:24:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTST3 -->
       </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
       <class name="gpmsUI.gpmsAutomation.functionValidations">
-        <test-method status="PASS" signature="lockEmployeeLevel()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@42d80b78]" name="lockEmployeeLevel" duration-ms="2796" started-at="2019-04-26T14:10:10Z" finished-at="2019-04-26T14:10:13Z">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@39c0f4a]" name="homePage" duration-ms="4508" started-at="2019-05-03T13:24:34Z" finished-at="2019-05-03T13:24:39Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- lockEmployeeLevel -->
-        <test-method status="PASS" signature="resetEmployeeLevel()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@42d80b78]" name="resetEmployeeLevel" duration-ms="2709" started-at="2019-04-26T14:10:13Z" finished-at="2019-04-26T14:10:16Z">
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@39c0f4a]" name="loginTST3" duration-ms="2050" started-at="2019-05-03T13:24:39Z" finished-at="2019-05-03T13:24:41Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- resetEmployeeLevel -->
-        <test-method status="PASS" signature="unconfirmEmployeeLevel()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@42d80b78]" name="unconfirmEmployeeLevel" duration-ms="2681" started-at="2019-04-26T14:10:16Z" finished-at="2019-04-26T14:10:18Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- unconfirmEmployeeLevel -->
+        </test-method> <!-- loginTST3 -->
       </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined@1794d431]" name="homePage" duration-ms="4358" started-at="2019-05-03T13:24:41Z" finished-at="2019-05-03T13:24:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePage -->
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined@1794d431]" name="loginTST3" duration-ms="2039" started-at="2019-05-03T13:24:45Z" finished-at="2019-05-03T13:24:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTST3 -->
+      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined -->
     </test> <!-- Test -->
   </suite> <!-- Regression Suite -->
 </testng-results>
