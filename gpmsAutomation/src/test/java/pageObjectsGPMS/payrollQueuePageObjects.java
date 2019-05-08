@@ -52,7 +52,7 @@ public class payrollQueuePageObjects {
 		
 		if(label.contains("[WARNING]")==true) {label="Warning";}
 		if(label.contains("[ERROR]")==true) {label="Error";}
-		message="Completed with "+label+": "+message;
+		message="	Completed with "+label+": "+message;
 		driver.switchTo().defaultContent();
 		driver.findElement(By.xpath(payrollQueuePageObjects.summaryWindowClose)).click();
 		System.out.println(message);

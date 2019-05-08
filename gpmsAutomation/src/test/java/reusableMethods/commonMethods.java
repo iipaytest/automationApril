@@ -80,13 +80,27 @@ public class commonMethods {
 	}
 	
 	
-	public static void successErrorMesssage(WebDriver driver) throws InterruptedException {
+	public static String successErrorMesssage(WebDriver driver) throws InterruptedException {
 		Thread.sleep(1000);
-		if(driver.findElements(By.xpath(commonPageObjects.successful)).size()==1 && driver.findElement(By.xpath(commonPageObjects.successful)).getText().contains("success")) System.out.println("	Message: "+driver.findElement(By.xpath(commonPageObjects.successful)).getAttribute("innerText"));
-		if(driver.findElements(By.xpath(commonPageObjects.error)).size()==1 && driver.findElement(By.xpath(commonPageObjects.error)).getText().contains("ERROR")) System.out.println("	Error Message: "+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText"));
-		if(driver.findElements(By.xpath(commonPageObjects.warning)).size()==1 && driver.findElement(By.xpath(commonPageObjects.warning)).getText().contains("Warning")) System.out.println("	Warning Message: "+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText"));
-		if(driver.findElements(By.xpath(commonPageObjects.errorSummary)).size()==1 && driver.findElement(By.xpath(commonPageObjects.errorSummary)).isDisplayed()) System.out.println("	Error Summary: "+driver.findElement(By.xpath(commonPageObjects.errorSummary)).getAttribute("innerText"));
-		
+		String message="";
+		if(driver.findElements(By.xpath(commonPageObjects.successful)).size()==1 && driver.findElement(By.xpath(commonPageObjects.successful)).getText().contains("success")) {
+			message=message+driver.findElement(By.xpath(commonPageObjects.successful)).getAttribute("innerText");
+			System.out.println("	Message: "+driver.findElement(By.xpath(commonPageObjects.successful)).getAttribute("innerText"));
+		}
+		if(driver.findElements(By.xpath(commonPageObjects.error)).size()==1 && driver.findElement(By.xpath(commonPageObjects.error)).getText().contains("ERROR")) {
+			message=message+"Error"+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText");
+			System.out.println("	Error Message: "+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText"));
+		}
+		if(driver.findElements(By.xpath(commonPageObjects.warning)).size()==1 && driver.findElement(By.xpath(commonPageObjects.warning)).getText().contains("Warning")) {
+			message=message+"Warning"+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText");
+			System.out.println("	Warning Message: "+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText"));
+		}
+		if(driver.findElements(By.xpath(commonPageObjects.errorSummary)).size()==1 && driver.findElement(By.xpath(commonPageObjects.errorSummary)).isDisplayed()) {
+			message=message+"Error"+driver.findElement(By.xpath(commonPageObjects.errorSummary)).getAttribute("innerText");
+			System.out.println("	Error Summary: "+driver.findElement(By.xpath(commonPageObjects.errorSummary)).getAttribute("innerText"));
+		}
+		if(message.contains("Error")) {	Assert.fail(message);}
+		return message;
 	}
 	
 	public static void addPayDedsDetails(WebDriver driver, String effectiveFrom, String effectiveTo, String Amount) throws InterruptedException {
@@ -124,7 +138,6 @@ public class commonMethods {
 		int sizeOfOptions=randomOption.size();
 		int randomNo=ThreadLocalRandom.current().nextInt(2, sizeOfOptions);
 		String itemSelected=randomOption.get(randomNo).getText();
-		System.out.println("	"+itemSelected);
 		randomOption.get(randomNo).click();
 		Thread.sleep(500);
 		return itemSelected;

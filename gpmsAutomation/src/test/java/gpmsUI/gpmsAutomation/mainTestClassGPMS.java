@@ -4,7 +4,11 @@ import static org.testng.Assert.assertThrows;
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -56,6 +60,172 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
+		
+		String elementType="Address To Send Payslip";
+		String input="2DD";
+		String startDate=null;
+		String endDate=null;
+
+		//Navigates to employee details page > edit payroll details page
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
+		employeeSearchPageObjects.goToRequiredEmployeePage(driver, testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.employeePayrollDetails)).click();
+		
+		//selects required element type from edit payroll details drop down
+		commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownEmployeePayrollDetails, elementType);
+		
+		//checks if we are on element type page, or there is a step between for selecting element type (exp: Entitlement (Unit Pay Perm)), navigate to required page by selecting random element type
+		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.save)).size()==0) {
+			commonMethods.selectRandomFromList(driver, "//*[contains(@class, 'crimsonBorder')]");
+			Thread.sleep(1000);
+		}
+		
+		//Captures the payrollConstraints for concurrent/continuous details
+		String payrollConstraints=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payrollDetailsConstraints)).getText();
+		System.out.println(payrollConstraints);
+		//Checks for details button, if exists will click on it
+		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).size()!=0) {
+			driver.findElement(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).click();
+		}
+		
+		//Will get the Start and End dates based on payrollConstraints and already details of existing element type 
+		if(payrollConstraints=="Non-Concurrent,  Continuous") {
+			if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
+				Select startDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[2]//select")));
+				
+				Select endDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
+				endDatePrevious.selectByIndex(2);
+				
+				Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
+				startDateCurrent1.selectByVisibleText(endDatePrevious.getFirstSelectedOption().getText());
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")).sendKeys(Keys.ARROW_DOWN);
+				
+				startDate=startDateCurrent1.getFirstSelectedOption().getText();
+				endDate="indefinite";
+			}else {
+
+				startDate=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select/option[1]")).getText();
+				endDate="indefinite";
+			}	
+		}
+		if(payrollConstraints.contains("Concurrent,  Continuous")) {
+			if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
+				Select startDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[2]//select")));
+				
+				Select endDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
+				endDatePrevious.selectByVisibleText(startDatePrevious.getFirstSelectedOption().getText());
+				
+				Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
+				startDateCurrent1.selectByVisibleText(startDatePrevious.getFirstSelectedOption().getText());
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")).sendKeys(Keys.ARROW_DOWN);
+				
+				startDate=startDateCurrent1.getFirstSelectedOption().getText();
+				endDate="indefinite";
+			}else {
+
+				startDate=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select/option[1]")).getText();
+				endDate="indefinite";
+			}	
+		}
+		
+		
+		
+		
+/*		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
+			
+			
+			if(payrollConstraints.contains("Non-Concurrent") && payrollConstraints.contains("Non-Continuous")) {
+				
+			}
+			
+			if(payrollConstraints.contains("Non-Concurrent") && payrollConstraints.contains("Continuous")) {
+				Select endDate=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
+				endDate.selectByIndex(1);
+				
+				List<WebElement> mandatoryFields=driver.findElements(By.xpath("//*[contains(@class, 'crimsonBorder')]"));
+				int i=mandatoryFields.size();
+				int j=0;
+				int x=1;
+				//Iterator<WebElement> itr=mandatoryFields.iterator();
+				for(WebElement we:mandatoryFields) {
+					
+					if(we.getTagName().contains("input")) {	
+						if(we.getAttribute("id").contains("txtDate"))	{
+							we.clear();
+							DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+							Date date=new Date();
+							String todaysDate=dateFormat.format(date);
+							we.sendKeys(todaysDate); 
+						}else if(we.getAttribute("onkeypress").contains("EnsureDecimalNumeric(event, true)")) {
+							we.clear();
+							String number=String.valueOf(ThreadLocalRandom.current().nextInt(1, 10));
+							we.sendKeys(number); 
+						}else {
+							we.clear();
+							String randon="test";
+							we.sendKeys(randon); 
+						}
+					}
+					if(we.getTagName().contains("select")) {	
+						Select period1=new Select(we);
+						if (x==1) 	period1.selectByIndex(2);
+						else 	period1.selectByIndex(1);		
+						x++;						}
+					j++; if(j>=i) {break;}
+					}	
+			}
+			
+			if(payrollConstraints.contains("Concurrent") && payrollConstraints.contains("Non-Continuous")) {
+				
+			}
+			
+			if(payrollConstraints.contains("Concurrent") && payrollConstraints.contains("Continuous")) {
+				
+			}
+		}else {
+		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).size()!=0) {
+			driver.findElement(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).click();
+		}
+		
+*/		List<WebElement> mandatoryFields=driver.findElements(By.xpath("//*[contains(@class, 'crimsonBorder')]"));
+		int i=mandatoryFields.size();
+		int j=0;
+		Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
+		startDateCurrent1.selectByVisibleText(startDate);
+		
+		Select endDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[3]//select")));
+		endDateCurrent1.selectByVisibleText(endDate);
+		
+		for(WebElement we:mandatoryFields) {
+			if(j<=1) {}
+			else {	if(we.getTagName().contains("input")) {	
+					if(we.getAttribute("id").contains("txtDate"))	{
+						we.clear();
+						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+						Date date=new Date();
+						String todaysDate=dateFormat.format(date);
+						we.sendKeys(todaysDate); 
+					}else if(we.getAttribute("onkeypress").contains("EnsureDecimalNumeric(event, true)")) {
+						we.clear();
+						String number=String.valueOf(ThreadLocalRandom.current().nextInt(1, 10));
+						we.sendKeys(number); 
+					}else {
+						we.clear();
+						String randon="test";
+						we.sendKeys(randon); 
+					}
+				}
+				if(we.getTagName().contains("select")) {	
+					Select period=new Select(we); 
+					period.selectByIndex(1);
+					}
+			}
+			
+			j++; if(j>=i) {break;}
+			}
+
+		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();
 		
 		
 	}

@@ -52,9 +52,9 @@ public class basicDetails {
 				System.out.println("Passed: GPMS current version: "+version);
 				commonMethods.takeScreenShot(driver, "GPMS Version Verified");
 			}else {
-				System.out.println("Failed: Test was run on "+version+" |Expected version and TC are "+testInputGPMS.versionNo+" and "+testInputGPMS.versionTC);
+				System.out.println("Failed: Test was run on "+version+" |Expected TC and version are "+testInputGPMS.versionTC+" and "+testInputGPMS.versionNo);
 				commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
-				Assert.fail("Failed: Test was run on "+version+" |Expected version and TC are "+testInputGPMS.versionNo+" and "+testInputGPMS.versionTC);
+				Assert.fail("Failed: Test was run on "+version+" |Expected TC and version are "+testInputGPMS.versionTC+" and "+testInputGPMS.versionNo);
 			}
 			
 		}

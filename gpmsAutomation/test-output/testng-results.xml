@@ -1,71 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="25" total="37" passed="12">
+<testng-results skipped="0" failed="4" ignored="11" total="17" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Regression Suite" duration-ms="40032" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:54Z">
+  <suite name="Regression Suite" duration-ms="20339" started-at="2019-05-08T11:34:49Z" finished-at="2019-05-08T11:35:09Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="40032" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:54Z">
+    <test name="Test" duration-ms="20339" started-at="2019-05-08T11:34:49Z" finished-at="2019-05-08T11:35:09Z">
       <class name="gpmsUI.gpmsAutomation.basicDetails">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@5622fdf]" name="homePage" duration-ms="5347" started-at="2019-05-03T13:24:14Z" finished-at="2019-05-03T13:24:19Z">
+        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@3fee9989]" name="homePage" duration-ms="5305" started-at="2019-05-08T11:34:49Z" finished-at="2019-05-08T11:34:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@5622fdf]" name="loginTST3" duration-ms="2122" started-at="2019-05-03T13:24:19Z" finished-at="2019-05-03T13:24:21Z">
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.basicDetails@3fee9989]" name="loginTST3" duration-ms="1260" started-at="2019-05-08T11:34:54Z" finished-at="2019-05-08T11:34:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTST3 -->
       </class> <!-- gpmsUI.gpmsAutomation.basicDetails -->
-      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@7d9d1a19]" name="homePage" duration-ms="4478" started-at="2019-05-03T13:24:28Z" finished-at="2019-05-03T13:24:32Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@7d9d1a19]" name="loginTST3" duration-ms="2030" started-at="2019-05-03T13:24:32Z" finished-at="2019-05-03T13:24:34Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTST3 -->
-      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom -->
       <class name="gpmsUI.gpmsAutomation.addingNewDetails">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@4883b407]" name="homePage" duration-ms="4491" started-at="2019-05-03T13:24:21Z" finished-at="2019-05-03T13:24:26Z">
+        <test-method status="FAIL" signature="addEmployee()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@73ad2d6]" name="addEmployee" duration-ms="1868" started-at="2019-05-08T11:34:56Z" finished-at="2019-05-08T11:34:57Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed: Add Employee step, as Employee Number'Test02' already exists]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed: Add Employee step, as Employee Number'Test02' already exists
+at org.testng.Assert.fail(Assert.java:96)
+at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:38)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@4883b407]" name="loginTST3" duration-ms="2054" started-at="2019-05-03T13:24:26Z" finished-at="2019-05-03T13:24:28Z">
+        </test-method> <!-- addEmployee -->
+        <test-method status="FAIL" signature="addPayroll()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@73ad2d6]" name="addPayroll" duration-ms="1754" started-at="2019-05-08T11:34:57Z" finished-at="2019-05-08T11:34:59Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed: Adding new payroll, as Payroll Name'Test Payroll May08' already exists]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed: Adding new payroll, as Payroll Name'Test Payroll May08' already exists
+at org.testng.Assert.fail(Assert.java:96)
+at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:167)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginTST3 -->
+        </test-method> <!-- addPayroll -->
+        <test-method status="FAIL" signature="editPayrollPeriods()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@73ad2d6]" name="editPayrollPeriods" duration-ms="3397" started-at="2019-05-08T11:34:59Z" finished-at="2019-05-08T11:35:03Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed: Payroll periods of given Payroll Year already exits]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed: Payroll periods of given Payroll Year already exits
+at org.testng.Assert.fail(Assert.java:96)
+at pageObjectsGPMS.payrollPageObjects.editPeriods(payrollPageObjects.java:292)
+at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:235)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editPayrollPeriods -->
+        <test-method status="FAIL" signature="createPayrollAssignment()[pri:0, instance:gpmsUI.gpmsAutomation.addingNewDetails@73ad2d6]" name="createPayrollAssignment" duration-ms="6721" started-at="2019-05-08T11:35:03Z" finished-at="2019-05-08T11:35:09Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed: Create Payroll Assignement step]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed: Create Payroll Assignement step
+at org.testng.Assert.fail(Assert.java:96)
+at gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment(addingNewDetails.java:303)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPayrollAssignment -->
       </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
-      <class name="gpmsUI.gpmsAutomation.downloadReports">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@42e26948]" name="homePage" duration-ms="4488" started-at="2019-05-03T13:24:47Z" finished-at="2019-05-03T13:24:52Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@42e26948]" name="loginTST3" duration-ms="2022" started-at="2019-05-03T13:24:52Z" finished-at="2019-05-03T13:24:54Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTST3 -->
-      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
-      <class name="gpmsUI.gpmsAutomation.functionValidations">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@39c0f4a]" name="homePage" duration-ms="4508" started-at="2019-05-03T13:24:34Z" finished-at="2019-05-03T13:24:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.functionValidations@39c0f4a]" name="loginTST3" duration-ms="2050" started-at="2019-05-03T13:24:39Z" finished-at="2019-05-03T13:24:41Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTST3 -->
-      </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
-      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined@1794d431]" name="homePage" duration-ms="4358" started-at="2019-05-03T13:24:41Z" finished-at="2019-05-03T13:24:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined@1794d431]" name="loginTST3" duration-ms="2039" started-at="2019-05-03T13:24:45Z" finished-at="2019-05-03T13:24:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- loginTST3 -->
-      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined -->
     </test> <!-- Test -->
   </suite> <!-- Regression Suite -->
 </testng-results>

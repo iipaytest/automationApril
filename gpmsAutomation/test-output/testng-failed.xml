@@ -1,48 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]">
+  <listeners>
+    <listener class-name="reusableMethods.extentReports"/>
+  </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="gpmsUI.gpmsAutomation.functionValidations">
-        <methods>
-          <include name="loginTST3"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="getResult"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
       <class name="gpmsUI.gpmsAutomation.addingNewDetails">
         <methods>
-          <include name="loginTST3"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="getResult"/>
+          <include name="addEmployee"/>
+          <include name="createPayrollAssignment"/>
+          <include name="addPayroll"/>
+          <include name="editPayrollPeriods"/>
         </methods>
       </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
-      <class name="gpmsUI.gpmsAutomation.downloadReports">
-        <methods>
-          <include name="loginTST3"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="getResult"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
-      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
-        <methods>
-          <include name="loginTST3"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="getResult"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom -->
-      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined">
-        <methods>
-          <include name="loginTST3"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="getResult"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->

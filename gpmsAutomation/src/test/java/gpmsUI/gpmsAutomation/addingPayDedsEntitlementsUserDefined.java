@@ -19,17 +19,17 @@ public class addingPayDedsEntitlementsUserDefined extends basicDetails {
 	//To add PayDeds and Entitlements
 	public void addPayDeds() throws IOException, AWTException, InterruptedException {
 		
-		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo)==false) {
-			System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
+			System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
 			commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont exists");
-			Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+			Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
 		
 		}else{
-			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.emplyeeNo))).click();
+			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
 			if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()==0) {
-				System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+				System.out.println("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
 				commonMethods.takeScreenShot(driver, "Failed add PayDeds and Entitlements_Emp No dont have any Current Actice Payroll Assignments");
-				Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+				Assert.fail("Failed: Cant add PayDeds and Entitlements, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
 			}else {	
 				for(int x=0; x<testInputGPMS.payDedsToAdd.length; x++) {
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();

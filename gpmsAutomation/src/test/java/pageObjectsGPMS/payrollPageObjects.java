@@ -288,10 +288,12 @@ public class payrollPageObjects {
 		Thread.sleep(500);
 		if(driver.findElements(By.xpath(editPeriodsPageObjects.save)).size()==1) {
 			System.out.println("Failed: Payroll periods of given Payroll Year already exits");
+			commonMethods.takeScreenShot(driver, "Failed Payroll periods of given Payroll Year already exits");
 			Assert.fail("Failed: Payroll periods of given Payroll Year already exits");
 			}
 		else if(driver.findElements(By.xpath(editPeriodsPageObjects.generate)).size()==0){
 			System.out.println("Failed: Given Payroll Year dont exits in drop down list");
+			commonMethods.takeScreenShot(driver, "Failed Given Payroll Year dont exits in drop down list");
 			Assert.fail("Failed: Given Payroll Year dont exits in drop down list");
 			}
 		else {

@@ -12,7 +12,7 @@ public class testInputGPMS {
 		static SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); 	//Date format string is passed as an argument to the Date format object
 	
 	//Locations to external files
-		public static final String gpmsFileLocation 	="C:\\Users\\sribur19\\Desktop\\Test Results\\GPMS_Test Results\\";	//location to save all GPMS Test outputs
+		public static final String gpmsFileLocation 	="C:\\Users\\sribur19\\Box\\SriTestFolder\\Automation\\TestApril15\\";	//location to save all GPMS Test outputs
 		public static final String gpmsTestInputsLocation 	=System.getProperty("user.dir")+"\\testInputs\\";
 		public static final String gpmsTestOutputsLocation 	=System.getProperty("user.dir")+"\\testOutputs\\";
 	
@@ -21,7 +21,7 @@ public class testInputGPMS {
 		public static final String clientID				="AUTO";
 		public static final String userName				="srisainaveen";
 		public static final String password				="Test@2019";
-		public static final String versionNo			="04.08.10";	//v020200-tc2_#16 / 04.08.00
+		public static final String versionNo			="04.08.20";	//v020200-tc2_#16 / 04.08.00
 		public static final String versionTC			="tc3_#19";		//v020200-tc2_#16 / 04.08.00
 	
 	
@@ -29,7 +29,7 @@ public class testInputGPMS {
 		public static final String title 		="Mr";
 		public static final String forename		="Fore1";
 		public static final String surname		="Sur1";
-		public static final String emplyeeNo	="Test01";
+		public static final String employeeNo	="Test02";
 		public static final String startDate 	="04/04/2019";		//will be given for Payroll Start Date, Actual Start Date
 		public static final String dOB			="03/03/1990";
 		public static final String gender		="Male";
@@ -68,7 +68,7 @@ public class testInputGPMS {
 	//Create new Payroll
 		public static final String rulesetCountry	="Germany";
 		public static final String rulesetCurrency	="EUR";
-		public static final String payrollName		="Test Payroll Apr10";	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
+		public static final String payrollName		="Test Payroll May08";	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
 		public static final String companyName		=null;					//leave this null if you want to add newCompanyName created above to this payroll
 		public static final String payFrequency		="Monthly";				//full name of pay frequency
 		//Payroll periods to generate

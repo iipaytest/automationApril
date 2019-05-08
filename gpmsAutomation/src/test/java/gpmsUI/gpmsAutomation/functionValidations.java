@@ -20,8 +20,8 @@ public class functionValidations extends basicDetails {
 	//This is verify Lock Function from Employee level
 	public void lockEmployeeLevel() throws AWTException, InterruptedException, IOException {
 	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo);
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.emplyeeNo))).click();
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
 		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
 				
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
@@ -50,8 +50,8 @@ public class functionValidations extends basicDetails {
 	//This is verify Reset Function from Employee level
 	public void resetEmployeeLevel() throws AWTException, InterruptedException, IOException {
 	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo);
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.emplyeeNo))).click();
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
 		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);		
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
 				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {
@@ -79,8 +79,8 @@ public class functionValidations extends basicDetails {
 	//This is verify Unconfirm Function from Employee level
 	public void unconfirmEmployeeLevel() throws AWTException, InterruptedException, IOException {
 	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo);	
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.emplyeeNo))).click();
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);	
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
 		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
 		
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
@@ -197,7 +197,7 @@ public class functionValidations extends basicDetails {
 			}
 		
 		//This try-catch loop will lock payroll and validates Lock period function, return isLockPeriodFunctionValidated=true
-		if(stateOfPayroll[0]>0)	{
+		
 			try{
 				payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 4).click();
 				driver.findElement(By.xpath(payrollPageObjects.lockPeriod)).click();
@@ -211,7 +211,7 @@ public class functionValidations extends basicDetails {
 				System.out.println("Failed: Lock function is not working as expected");
 				commonMethods.takeScreenShot(driver, "Validaing Lock function");
 			}
-		}
+		
 		if(isLockPeriodFunctionValidated==true)	{
 			System.out.println("Passed: Validated Lock Period function from payroll level");
 		}else {
@@ -220,7 +220,7 @@ public class functionValidations extends basicDetails {
 			
 			
 		//This if block will only works if reset function is validated in above case , return isResetPeriodFunctionValidated=true
-		if(isResetPeriodFunctionValidated!=true && stateOfPayroll[1]>0) {
+		if(isResetPeriodFunctionValidated!=true) {
 				try{
 					payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 5).click();
 					driver.findElement(By.xpath(payrollPageObjects.resetPeriod)).click();
@@ -242,7 +242,6 @@ public class functionValidations extends basicDetails {
 		if(isResetPeriodFunctionValidated==true)	{	System.out.println("Passed: validated Reset Period function from payroll level");	}
 		
 		//This try-catch loop will process payroll and validates Process period function, return isProcessPeriodFunctionValidated=true
-		if(stateOfPayroll[1]>0)	{
 			try{
 		
 				payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 5).click();
@@ -257,7 +256,6 @@ public class functionValidations extends basicDetails {
 				System.out.println("Failed: Process function is not working as expected");
 				commonMethods.takeScreenShot(driver, "Validaing Process function");
 			}
-		}
 		if(isProcessPeriodFunctionValidated==true)		{
 			System.out.println("Passed: Validated Process Period function from payroll level");
 		}else {
@@ -265,7 +263,6 @@ public class functionValidations extends basicDetails {
 		}
 		
 		//This try-catch loop will Confirm payroll and validates Confirm period function, return isConfirmPeriodFunctionValidated=true
-		if(stateOfPayroll[1]>0)	{
 			try{
 				payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 6).click();
 				driver.findElement(By.xpath(payrollPageObjects.confirmPeriod)).click();
@@ -279,7 +276,6 @@ public class functionValidations extends basicDetails {
 				System.out.println("Failed: Confirm function is not working as expected");
 				commonMethods.takeScreenShot(driver, "Validaing Confirm function");
 			}
-		}
 		if(isConfirmPeriodFunctionValidated==true)		{
 			System.out.println("Passed: Validated Confirm Period function from payroll level");
 		}else {
@@ -287,7 +283,6 @@ public class functionValidations extends basicDetails {
 		}
 	
 		//This try-catch loop will Unconfirm payroll and validates UnConfirm period function, return isUnconfirmPeriodFunctionValidated=true
-		if(stateOfPayroll[1]>0) {
 			try{
 				payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 7).click();
 				driver.findElement(By.xpath(payrollPageObjects.unconfirmPeriod)).click();
@@ -302,7 +297,6 @@ public class functionValidations extends basicDetails {
 				System.out.println("Failed: Unconfirm function is not working as expected");
 				commonMethods.takeScreenShot(driver, "Validaing Unconfirm function");
 			}
-		}
 		if(isUnconfirmPeriodFunctionValidated==true)	{
 			System.out.println("Passed: Validated Unconfirm Period function from payroll level");
 		}else {

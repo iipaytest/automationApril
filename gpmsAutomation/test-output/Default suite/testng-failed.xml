@@ -3,15 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="gpmsUI.gpmsAutomation.basicDetails">
+      <class name="gpmsUI.gpmsAutomation.downloadReports">
         <methods>
-          <include name="failTest"/>
-          <include name="startReport"/>
-          <include name="endReport"/>
-          <include name="skipTest"/>
-          <include name="getResult"/>
+          <include name="downloadEmployeeDataUploadTemplate"/>
         </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.basicDetails -->
+      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

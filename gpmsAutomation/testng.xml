@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Suite">
-  
+ 
+  <listeners>
+  	<listener class-name="reusableMethods.extentReports"/>
+  </listeners>
   
   
   <test thread-count="5" name="Test">
@@ -16,33 +19,35 @@
       
     <class name="gpmsUI.gpmsAutomation.addingNewDetails">
       	<methods>
-      		<exclude name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
+      		<include name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
       		<exclude name="addNewCompany"/>
       		<exclude name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
       		<exclude name="addNewElementType"/>
-      		<exclude name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
-      		<exclude name="editPayrollPeriods"/>
-      		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
+      		<include name="editPayrollPeriods"/>
+      		<include name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
       	</methods>
       </class> 
     
     <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
       	<methods>
-      		<exclude name="addPaymentsRandom"/>
-      		<exclude name="addDeductionsRandom"/>
-      		<exclude name="addUnitPayRandom"/>
-      		<exclude name="addEntitlementsTempRandom"/>
-      		<exclude name="addEntitlementsPermRandom"/>
-      		<exclude name="addEntitlementsUnitPayRandom"/>
+      		<include name="addPaymentsRandom"/>
+      		<include name="addDeductionsRandom"/>
+      		<include name="addUnitPayRandom"/>
+      		<include name="addEntitlementsTempRandom"/>
+      		<include name="addEntitlementsPermRandom"/>
+      		<include name="addEntitlementsUnitPayRandom"/>
+      		<include name="addNotionalAmountsPermRandom"/>
+      		<include name="addNotionalAmountsTempRandom"/>
       	</methods>
       </class> 
     
     <class name="gpmsUI.gpmsAutomation.functionValidations">
       	<methods>
-      		<exclude name="lockEmployeeLevel"/>					
-      		<exclude name="resetEmployeeLevel"/>
-      		<exclude name="unconfirmEmployeeLevel"/>
-      		<exclude name="allPeriodProcessingsFromPayrollLevel"/>
+      		<include name="lockEmployeeLevel"/>					
+      		<include name="resetEmployeeLevel"/>
+      		<include name="unconfirmEmployeeLevel"/>
+      		<include name="allPeriodProcessingsFromPayrollLevel"/>
       							
       		<exclude name="processPeriodPayrollLevel"/>
       		<exclude name="confirmPeriodPayrollLevel"/>

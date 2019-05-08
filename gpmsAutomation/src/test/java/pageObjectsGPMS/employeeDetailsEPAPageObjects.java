@@ -22,6 +22,10 @@ public class employeeDetailsEPAPageObjects {
 	
 	public static final String employeePayrollDetails="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Employee Payroll Details')]";
 		public static final String dropDownEmployeePayrollDetails="//div[@id='ddNew_Panel']/select";
+		public static final String detailsButton="//*[contains(@id, 'imgDetails')]";
+		public static final String jobDetailsRowsCount="//*[contains(@class, 'JdJobDetailsPanel')]/div";
+		public static final String payrollDetailsConstraints="//*[text()='Payroll Detail Constraints:']/following-sibling::td[1]";
+		
 	
 	public static final String leaveAbsence="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Leave / Absence')]";
 		public static final String dropDownLeaveAbsence="//div[@id='ddNavigateToSet_Panel']/select";	
@@ -33,8 +37,7 @@ public class employeeDetailsEPAPageObjects {
 		public static final String payDedsEffectiveFrom="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl01_ctl00_Panel']/select";
 		public static final String payDedsEffectiveTo="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl02_ctl00_Panel']/select";
 		public static final String payDedsAmount="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl03_param']";
-		
-	
+		public static final String payDedsRecentSavedEffectiveTo="//table[contains(@id, 'paymentSet_current')]//td[3]";
 	
 	
 	public static final String unitPay="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Unit Pay')]";
@@ -71,9 +74,18 @@ public class employeeDetailsEPAPageObjects {
 		public static final String entitlementsUnitPayRateOverride="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl04_param']";
 		public static final String entitlementsUnitPayFinalAmountOverride="//*[@id='entitlementSet_new0']//*[@id='entitlementSet_new0_ctl05_param']";
 		
+		public static final String entitlementsPermRecentSavedEffectiveTo="//table[contains(@id, 'entitlementSet_current')]//td[3]";
 		
 	public static final String notionalAmounts="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Notional Amounts')]";
 		public static final String notionalAmountDropDown="//div[@id='ddNavigateToSet_Panel']/select";
+		public static final String notionalAmountTempButton="//*[@value='Temporary']";
+		public static final String notionalAmountPermButton="//*[@value='Permanent']";
+		public static final String notionalAmountStartPeriod="//*[@id='notionalSet_new0']//*[@id='notionalSet_new0_ctl01_ctl00_Panel']/select";
+		public static final String notionalAmountEndPeriod="//*[@id='notionalSet_new0']//*[@id='notionalSet_new0_ctl02_ctl00_Panel']/select";
+		public static final String notionalAmountDetailsButton="//*[@id='notionalSet_new0']//*[@id='notionalSet_new0_imgDetails']";
+		public static final String notionalAmountAmount="//*[text()='Amount:']/following-sibling::td[1]/input";
+		
+		public static final String notionalAmountRecentSavedEffectiveTo="//table[contains(@id, 'notionalSet_current')]//td[3]";
 	
 	public static final String incumbentDetails="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Incumbent Details')]";
 		public static final String incumbentDetailsDropDown="//div[@id='ddNavigateToSet_Panel']/select";

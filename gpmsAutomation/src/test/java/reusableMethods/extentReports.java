@@ -17,12 +17,14 @@ import org.testng.xml.XmlSuite;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+import testInputs.testInputGPMS;
  
 public class extentReports implements IReporter {
     private ExtentReports extent;
  
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        extent = new ExtentReports(outputDirectory + File.separator + "ExtentReportsTestNG.html", true);
+        extent = new ExtentReports(testInputGPMS.gpmsFileLocation+"extendReports.html", true);
  
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> result = suite.getResults();

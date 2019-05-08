@@ -28,18 +28,20 @@ public class addingNewDetails extends basicDetails {
 	//Adding New employee to TST3 for given details in testInputGPMS class
 	public void addEmployee() throws AWTException, InterruptedException, IOException {
 		
-		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo)==true) {
-			System.out.println("Failed: Add Employee step, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' already exists");
-			commonMethods.takeScreenShot(driver, "Employee Details Exists");
-			Assert.fail("Failed: Add Employee step, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' already exists");
-		
-		}else {
-			
+		menuBarLinks.goToForEmployee(driver);
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeNumber)).sendKeys(testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.search)).click();
+		Thread.sleep(500);
+		if(driver.findElements(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).size()!=0){
+			System.out.println("Failed: Add Employee step, as Employee Number'"+ testInputGPMS.employeeNo +"' already exists");
+			commonMethods.takeScreenShot(driver, "Failed Adding new Employee_Employee Details Exists");
+			Assert.fail("Failed: Add Employee step, as Employee Number'"+ testInputGPMS.employeeNo +"' already exists");
+		}
 			menuBarLinks.goToAddEmployee(driver);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.title)).sendKeys(testInputGPMS.title);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.forename)).sendKeys(testInputGPMS.forename);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.surname)).sendKeys(testInputGPMS.surname);
-			driver.findElement(By.xpath(addNewEmployeePageObjects.employeeNo)).sendKeys(testInputGPMS.emplyeeNo);
+			driver.findElement(By.xpath(addNewEmployeePageObjects.employeeNo)).sendKeys(testInputGPMS.employeeNo);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.startDate)).sendKeys(testInputGPMS.startDate);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.dOB)).sendKeys(testInputGPMS.dOB);
 			driver.findElement(By.xpath(addNewEmployeePageObjects.gender)).sendKeys(testInputGPMS.gender);
@@ -64,7 +66,7 @@ public class addingNewDetails extends basicDetails {
 				commonMethods.takeScreenShot(driver, "New Employee record creation failed");
 				Assert.fail("Failed: Creating New Employee Record -- "+driver.findElement(By.xpath(addNewEmployeePageObjects.errorMessage)).getText());
 			}
-		}	
+			
 	}
 	
 	@Test
@@ -155,15 +157,15 @@ public class addingNewDetails extends basicDetails {
 	@Test
 	//Adding new Payroll
 	public void addPayroll() throws AWTException, InterruptedException, IOException {
-		
-		
-		if(payrollSearchPageObjects.isPayrollExists(driver, testInputGPMS.payrollName)==true) {
-			System.out.println("Failed: Add Payroll step, as  Payroll Name'"+ testInputGPMS.payrollName +"' already exists");
-			commonMethods.takeScreenShot(driver, "Payroll Name Exists");
-			Assert.fail("Failed: Add Payroll step, as  Payroll Name'"+ testInputGPMS.payrollName +"' already exists");
-		
-		}else {
-			
+		menuBarLinks.goToForPayroll(driver);
+		driver.findElement(By.xpath(payrollSearchPageObjects.payrollName)).sendKeys(testInputGPMS.payrollName);
+		driver.findElement(By.xpath(payrollSearchPageObjects.search)).click();
+		Thread.sleep(500);
+		if(driver.findElements(By.xpath(payrollSearchPageObjects.payrollToBeSelected(testInputGPMS.payrollName))).size()!=0){
+			System.out.println("Failed: Adding new payroll, as Payroll Name'"+ testInputGPMS.payrollName +"' already exists");
+			commonMethods.takeScreenShot(driver, "Failed adding new Payroll_Payroll Name Exists");
+			Assert.fail("Failed: Adding new payroll, as Payroll Name'"+ testInputGPMS.payrollName +"' already exists");
+		}
 			menuBarLinks.goToAddPayroll(driver);
 			
 			//Ruleset selection
@@ -214,14 +216,11 @@ public class addingNewDetails extends basicDetails {
 				commonMethods.takeScreenShot(driver, "Failed Payroll '"+ testInputGPMS.payrollName+"' creation");
 				Assert.fail("Failed: Adding '"+ testInputGPMS.payrollName+"' Payroll");
 			}
-		}
-		
 	}
 
 	@Test
 	//Editing/Adding pay periods for payroll
 	public void editPayrollPeriods() throws AWTException, InterruptedException, IOException {
-		
 		
 		if(payrollSearchPageObjects.isPayrollExists(driver, testInputGPMS.payrollName)==false) {
 			System.out.println("Failed: Can not Edit Payoll Periods, as  Payoll Name '"+ testInputGPMS.payrollName +"' do not exists");
@@ -241,14 +240,14 @@ public class addingNewDetails extends basicDetails {
 	//To Create Payroll Assignment for existing employee
 	public void createPayrollAssignment() throws IOException, AWTException, InterruptedException {
 		
-		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.emplyeeNo)==false) {
-			System.out.println("Failed: Cant create Payroll Assignement, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
+			System.out.println("Failed: Cant create Payroll Assignement, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
 			commonMethods.takeScreenShot(driver, "Failed creating Payroll Assignment_Emp No dont exists");
-			Assert.fail("Failed: Cant create Payroll Assignement, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't exists");
+			Assert.fail("Failed: Cant create Payroll Assignement, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
 		
 		}else{
 			
-			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.emplyeeNo))).click();
+			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
 			driver.findElement(By.xpath(employeeDetailsPageObjects.createPayrollAssignment)).click();
 			
 			List <WebElement> payrolls=driver.findElements(By.xpath(createPayrollAssignmentPageObjects.payroll+"/option"));

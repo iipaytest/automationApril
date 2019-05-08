@@ -93,9 +93,9 @@ public class employeeDetailsPageObjects {
 		if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()!=0) {
 			passed=true;
 		}else {
-			System.out.println("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+			System.out.println("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
 			commonMethods.takeScreenShot(driver, "Failed verifying Reset Function from Employee level_Emp No dont have any Current Actice Payroll Assignments");
-			Assert.fail("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.emplyeeNo +"' don't have any Current Actice Payroll Assignments");
+			Assert.fail("Failed: Cant verify Reset Function from Employee level, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
 		}
 		
 		return passed;	

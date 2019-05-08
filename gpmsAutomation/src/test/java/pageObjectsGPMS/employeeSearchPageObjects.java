@@ -30,8 +30,8 @@ public class employeeSearchPageObjects {
 	
 	public static Boolean isEmployeeExists(WebDriver driver, String employeeNo) throws InterruptedException, AWTException, IOException {		
 		menuBarLinks.goToForEmployee(driver);
-		driver.findElement(By.xpath(employeeNumber)).sendKeys(employeeNo);
-		driver.findElement(By.xpath(search)).click();
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeNumber)).sendKeys(employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.search)).click();
 		Thread.sleep(500);
 		Boolean passed=null;
 			
@@ -39,9 +39,9 @@ public class employeeSearchPageObjects {
 			passed=true;
 		}else {
 			passed=false;
-			System.out.println("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
-			commonMethods.takeScreenShot(driver, "Payroll Details dont Exists");
-			Assert.fail("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
+			System.out.println("Failed: Employee Number'"+ testInputGPMS.employeeNo +"' dont exists");
+			commonMethods.takeScreenShot(driver, "Employee Details dont Exists");
+			Assert.fail("Failed: Employee Number'"+ testInputGPMS.employeeNo +"' dont exists");
 		}	
 		
 		return passed;	

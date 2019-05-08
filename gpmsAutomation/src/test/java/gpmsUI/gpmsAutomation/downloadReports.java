@@ -25,49 +25,49 @@ public class downloadReports extends basicDetails{
 	//This is to download Employee Data Upload Template Function from Employee level
 	public void downloadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
-		if(payrollSearchPageObjects.isPayrollExists(driver, testInputGPMS.payrollName)==false) {
-			System.out.println("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
-			commonMethods.takeScreenShot(driver, "Payroll Details dont Exists");
-			Assert.fail("Failed: As  Payoll Name '"+ testInputGPMS.payrollName +"' don't exists");
+		String payrollName=null;
+		String payPeriodTaxyear=null;
+		String payPeriodNo=null;
+		String[][] table=null;
+		WebElement[][] element=null;
+		int rowNumOfPayPeriod=0;
 		
-		}else {
-			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected(testInputGPMS.payrollName))).click();
-			//System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollDetails)).getText());
-			System.out.println("Payroll Details are: "+driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails)).getText());
+		//Getting Payroll Name = required or active payroll
+			if(testInputGPMS.requiredPayrollName!=null) {	payrollName=testInputGPMS.requiredPayrollName;	}
+				else {	payrollName=testInputGPMS.payrollName; }
 			
-			List<WebElement> columns=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr"));
-			List<WebElement> rows=driver.findElements(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr[1]/td"));
-			//System.out.println(columns.size());	//Number of periods displayed
+		//Opening that Payroll
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+			payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+				rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName);
+				payPeriodTaxyear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][2];
+				payPeriodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][3];
 			
-			String[][] table = new String[columns.size()][rows.size()];
-			WebElement[][] element = new WebElement[columns.size()][rows.size()];
-			for (int i=1; i < columns.size(); i++) {
-				for (int j=1; j < rows.size(); j++) {
-					table[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]")).getAttribute("innerText");
-					element[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]"));
-				}
-			}	
-			for(int i=columns.size()-1; i >= 1; i--) {
-				if(table[i][4]!=null) {
-					String period=table[i][1];
-						System.out.println("Current pay period is: "+period);
-				/*		System.out.println("Employees in Awaiting Process stage are: "+table[i][4]);
-						System.out.println("Employees in Locked stage are: "+table[i][5]);
-						System.out.println("Employees in Processed stage are: "+table[i][6]);
-						System.out.println("Employees in Confirmed stage are: "+table[i][7]);
-						System.out.println("No of Starters: "+table[i][8]);
-						System.out.println("No of Leavers: "+table[i][9]);
-						System.out.println("No of After Leavers: "+table[i][10]);
-						System.out.println("No of Historic Leavers: "+table[i][11]);
-				*/		element[i][0].click();
-						driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
-						driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
-						reportsPageObjects.reportsInboxRefreshUntillComplete(driver);
-						reportsPageObjects.reportsInboxReportDownload(driver);
-						
-					break;
-				}
+				
+		//Navigate to required Pay period (required or active payroll) page, and getting Row Number in that page
+			if(testInputGPMS.requiredPayPeriodTaxYear!=null) {	payPeriodTaxyear=testInputGPMS.requiredPayPeriodTaxYear;	}
+			if(testInputGPMS.requiredPayPeriodNo!=null) {	payPeriodNo=testInputGPMS.requiredPayPeriodNo;	}	
+			
+			if(payrollPageObjects.getRequiredPeriodPayrollPageRowNumber(driver, payrollName, payPeriodTaxyear, payPeriodNo)!=0) {
+				rowNumOfPayPeriod=payrollPageObjects.getRequiredPeriodPayrollPageRowNumber(driver, payrollName, payPeriodTaxyear, payPeriodNo);
+			}else {
+				System.out.println("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
+				commonMethods.takeScreenShot(driver, "Failed Pay Period looking for, Tax Year '"+payPeriodTaxyear+"' and Period Num '"+payPeriodNo+"' in Payroll '"+payrollName+"' don't exists");
+				Assert.fail("Failed: Pay Period looking for, Tax Year: '"+payPeriodTaxyear+"' and Period Num: '"+payPeriodNo+"' in Payroll: '"+payrollName+"' don't exists");
 			}
-		}
+		
+		//At this point, 	rowNumOfPayPeriod = required period row num, table=all data in that payroll page where required pay period is present, payroll page is navigated to view required period
+			System.out.println("Active/Required period: "+rowNumOfPayPeriod);
+			table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+			element=payrollPageObjects.captureAllPayrollWebelementsIntoTable(driver);
+		
+		
+		element[rowNumOfPayPeriod][0].click();
+		driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
+		driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
+		reportsPageObjects.reportsInboxRefreshUntillComplete(driver);
+		reportsPageObjects.reportsInboxReportDownload(driver);
+			
 	}
 }
