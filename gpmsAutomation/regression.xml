@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    
+    <groups>
+         <run>
+            <include name = "regression" />
+         </run>
+      </groups>
+    
+    
+    <classes>
+      <class name="gpmsUI.gpmsAutomation.basicDetails"/>
+      <class name="gpmsUI.gpmsAutomation.addingNewDetails"/>
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom"/>
+      <class name="gpmsUI.gpmsAutomation.addingEPADetails"/>
+      <class name="gpmsUI.gpmsAutomation.functionValidations"/>
+      <class name="gpmsUI.gpmsAutomation.downloadReports"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

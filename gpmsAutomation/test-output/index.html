@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 4 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -59,7 +59,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="group-Regression_Suite">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods, 4 failed,   2 passed</span>
+                    <span class="method-stats">4 methods, 2 failed,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -107,17 +107,7 @@
                       <br/>
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.addingNewDetails" hash-for-method="addPayroll">addPayroll</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.addingNewDetails" hash-for-method="createPayrollAssignment">createPayrollAssignment</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.addingNewDetails" hash-for-method="editPayrollPeriods">editPayrollPeriods</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Regression_Suite" title="gpmsUI.gpmsAutomation.addingNewDetails" hash-for-method="addNewCompany">addNewCompany</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Regression_Suite -->
@@ -162,7 +152,7 @@
                   <a name="addEmployee">
                   </a> <!-- addEmployee -->
                   <span class="method-name">addEmployee</span>
-                  <div class="stack-trace">java.lang.AssertionError: Failed: Add Employee step, as Employee Number&apos;Test02&apos; already exists
+                  <div class="stack-trace">java.lang.AssertionError: Failed: Add Employee step, as Employee Number&apos;Test01&apos; already exists
 	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:38)
 ... Removed 26 stack frames
 </div> <!-- stack-trace -->
@@ -170,34 +160,11 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="addPayroll">
-                  </a> <!-- addPayroll -->
-                  <span class="method-name">addPayroll</span>
-                  <div class="stack-trace">java.lang.AssertionError: Failed: Adding new payroll, as Payroll Name&apos;Test Payroll May08&apos; already exists
-	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:167)
-... Removed 26 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="createPayrollAssignment">
-                  </a> <!-- createPayrollAssignment -->
-                  <span class="method-name">createPayrollAssignment</span>
-                  <div class="stack-trace">java.lang.AssertionError: Failed: Create Payroll Assignement step
-	at gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment(addingNewDetails.java:303)
-... Removed 26 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="editPayrollPeriods">
-                  </a> <!-- editPayrollPeriods -->
-                  <span class="method-name">editPayrollPeriods</span>
-                  <div class="stack-trace">java.lang.AssertionError: Failed: Payroll periods of given Payroll Year already exits
-	at pageObjectsGPMS.payrollPageObjects.editPeriods(payrollPageObjects.java:292)
-	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:235)
+                  <a name="addNewCompany">
+                  </a> <!-- addNewCompany -->
+                  <span class="method-name">addNewCompany</span>
+                  <div class="stack-trace">java.lang.AssertionError: Failed adding new Company Details
+	at gpmsUI.gpmsAutomation.addingNewDetails.addNewCompany(addingNewDetails.java:100)
 ... Removed 26 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -250,14 +217,45 @@
       &lt;class name=&quot;gpmsUI.gpmsAutomation.addingNewDetails&quot;&gt;
         &lt;methods&gt;
           &lt;include name=&quot;addEmployee&quot;/&gt;
-          &lt;include name=&quot;addPayroll&quot;/&gt;
-          &lt;include name=&quot;editPayrollPeriods&quot;/&gt;
-          &lt;include name=&quot;createPayrollAssignment&quot;/&gt;
-          &lt;exclude name=&quot;addNewCompany&quot;/&gt;
+          &lt;include name=&quot;addNewCompany&quot;/&gt;
           &lt;exclude name=&quot;addNewOrgUnit&quot;/&gt;
           &lt;exclude name=&quot;addNewElementType&quot;/&gt;
+          &lt;exclude name=&quot;addPayroll&quot;/&gt;
+          &lt;exclude name=&quot;editPayrollPeriods&quot;/&gt;
+          &lt;exclude name=&quot;createPayrollAssignment&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.addingNewDetails --&gt;
+      &lt;class name=&quot;gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom&quot;&gt;
+        &lt;methods&gt;
+          &lt;exclude name=&quot;addPaymentsRandom&quot;/&gt;
+          &lt;exclude name=&quot;addDeductionsRandom&quot;/&gt;
+          &lt;exclude name=&quot;addUnitPayRandom&quot;/&gt;
+          &lt;exclude name=&quot;addEntitlementsTempRandom&quot;/&gt;
+          &lt;exclude name=&quot;addEntitlementsPermRandom&quot;/&gt;
+          &lt;exclude name=&quot;addEntitlementsUnitPayRandom&quot;/&gt;
+          &lt;exclude name=&quot;addNotionalAmountsPermRandom&quot;/&gt;
+          &lt;exclude name=&quot;addNotionalAmountsTempRandom&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom --&gt;
+      &lt;class name=&quot;gpmsUI.gpmsAutomation.functionValidations&quot;&gt;
+        &lt;methods&gt;
+          &lt;exclude name=&quot;lockEmployeeLevel&quot;/&gt;
+          &lt;exclude name=&quot;resetEmployeeLevel&quot;/&gt;
+          &lt;exclude name=&quot;unconfirmEmployeeLevel&quot;/&gt;
+          &lt;exclude name=&quot;allPeriodProcessingsFromPayrollLevel&quot;/&gt;
+          &lt;exclude name=&quot;processPeriodPayrollLevel&quot;/&gt;
+          &lt;exclude name=&quot;confirmPeriodPayrollLevel&quot;/&gt;
+          &lt;exclude name=&quot;unconfirmPeriodPayrollLevel&quot;/&gt;
+          &lt;exclude name=&quot;resetPeriodPayrollLevel&quot;/&gt;
+          &lt;exclude name=&quot;viewEmployeeFromPayrollLevel&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.functionValidations --&gt;
+      &lt;class name=&quot;gpmsUI.gpmsAutomation.addingEPADetails&quot;&gt;
+        &lt;methods&gt;
+          &lt;exclude name=&quot;addEPARandom&quot;/&gt;
+          &lt;exclude name=&quot;addEPARequired&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- gpmsUI.gpmsAutomation.addingEPADetails --&gt;
       &lt;class name=&quot;gpmsUI.gpmsAutomation.addingPayDedsEntitlementsUserDefined&quot;&gt;
         &lt;methods&gt;
           &lt;exclude name=&quot;addPayDeds&quot;/&gt;
@@ -281,7 +279,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Test (4 classes)</span>
+                <span class="test-name">Test (7 classes)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -291,6 +289,22 @@
             <span class="header-content">Groups for Regression Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">regression</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">addEmployee</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">homePage</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">loginTST3</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Regression_Suite" class="panel">
@@ -307,36 +321,28 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(6);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'createPayrollAssignment')
-data.setCell(0, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
-data.setCell(0, 3, 6721);
+data.setCell(0, 1, 'homePage')
+data.setCell(0, 2, 'gpmsUI.gpmsAutomation.basicDetails')
+data.setCell(0, 3, 5278);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'homePage')
-data.setCell(1, 2, 'gpmsUI.gpmsAutomation.basicDetails')
-data.setCell(1, 3, 5305);
+data.setCell(1, 1, 'addNewCompany')
+data.setCell(1, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
+data.setCell(1, 3, 2495);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'editPayrollPeriods')
+data.setCell(2, 1, 'addEmployee')
 data.setCell(2, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
-data.setCell(2, 3, 3397);
+data.setCell(2, 3, 1954);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'addEmployee')
-data.setCell(3, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
-data.setCell(3, 3, 1868);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'addPayroll')
-data.setCell(4, 2, 'gpmsUI.gpmsAutomation.addingNewDetails')
-data.setCell(4, 3, 1754);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'loginTST3')
-data.setCell(5, 2, 'gpmsUI.gpmsAutomation.basicDetails')
-data.setCell(5, 3, 1260);
+data.setCell(3, 1, 'loginTST3')
+data.setCell(3, 2, 'gpmsUI.gpmsAutomation.basicDetails')
+data.setCell(3, 3, 1226);
 window.suiteTableData['Regression_Suite']= { tableData: data, tableDiv: 'times-div-Regression_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 20 seconds</span>
+              <span class="suite-total-time">Total running time: 10 seconds</span>
               <div id="times-div-Regression_Suite">
               </div> <!-- times-div-Regression_Suite -->
             </div> <!-- times-div -->
@@ -351,17 +357,35 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Regression_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">11 ignored methods</span>
+            <span class="header-content">39 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">gpmsUI.gpmsAutomation.downloadReports</span>
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.functionValidations</span>
               <div class="ignored-methods-div">
+                <span class="ignored-method-name">unconfirmPeriodPayrollLevel</span>
+                <br/>
                 <span class="ignored-method-name">homePage</span>
                 <br/>
                 <span class="ignored-method-name">loginTST3</span>
                 <br/>
-                <span class="ignored-method-name">downloadEmployeeDataUploadTemplate</span>
+                <span class="ignored-method-name">processPeriodPayrollLevel</span>
+                <br/>
+                <span class="ignored-method-name">confirmPeriodPayrollLevel</span>
+                <br/>
+                <span class="ignored-method-name">resetEmployeeLevel</span>
+                <br/>
+                <span class="ignored-method-name">unconfirmEmployeeLevel</span>
+                <br/>
+                <span class="ignored-method-name">lockEmployeeLevel</span>
+                <br/>
+                <span class="ignored-method-name">viewEmployeeFromPayrollLevel</span>
+                <br/>
+                <span class="ignored-method-name">lockPeriodPayrollLevel</span>
+                <br/>
+                <span class="ignored-method-name">resetPeriodPayrollLevel</span>
+                <br/>
+                <span class="ignored-method-name">allPeriodProcessingsFromPayrollLevel</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -377,17 +401,70 @@ return data;
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.downloadReports</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">homePage</span>
+                <br/>
+                <span class="ignored-method-name">loginTST3</span>
+                <br/>
+                <span class="ignored-method-name">downloadEmployeeDataUploadTemplate</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">addUnitPayRandom</span>
+                <br/>
+                <span class="ignored-method-name">homePage</span>
+                <br/>
+                <span class="ignored-method-name">loginTST3</span>
+                <br/>
+                <span class="ignored-method-name">addNotionalAmountsPermRandom</span>
+                <br/>
+                <span class="ignored-method-name">addNotionalAmountsTempRandom</span>
+                <br/>
+                <span class="ignored-method-name">addPaymentsRandom</span>
+                <br/>
+                <span class="ignored-method-name">addEntitlementsPermRandom</span>
+                <br/>
+                <span class="ignored-method-name">addEntitlementsTempRandom</span>
+                <br/>
+                <span class="ignored-method-name">addDeductionsRandom</span>
+                <br/>
+                <span class="ignored-method-name">addEntitlementsUnitPayRandom</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
               <span class="ignored-class-name">gpmsUI.gpmsAutomation.addingNewDetails</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">homePage</span>
                 <br/>
                 <span class="ignored-method-name">loginTST3</span>
                 <br/>
-                <span class="ignored-method-name">addNewCompany</span>
-                <br/>
                 <span class="ignored-method-name">addNewElementType</span>
                 <br/>
+                <span class="ignored-method-name">createPayrollAssignment</span>
+                <br/>
                 <span class="ignored-method-name">addNewOrgUnit</span>
+                <br/>
+                <span class="ignored-method-name">addPayroll</span>
+                <br/>
+                <span class="ignored-method-name">editPayrollPeriods</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">gpmsUI.gpmsAutomation.addingEPADetails</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">homePage</span>
+                <br/>
+                <span class="ignored-method-name">loginTST3</span>
+                <br/>
+                <span class="ignored-method-name">addEPARequired</span>
+                <br/>
+                <span class="ignored-method-name">addEPARandom</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -406,7 +483,7 @@ return data;
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">loginTST3</span>
-                <span class="method-start">5307 ms</span>
+                <span class="method-start">5280 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
@@ -415,25 +492,13 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">addEmployee</span>
-                <span class="method-start">6569 ms</span>
+                <span class="method-start">6508 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">addPayroll</span>
-                <span class="method-start">8440 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">editPayrollPeriods</span>
-                <span class="method-start">10195 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">createPayrollAssignment</span>
-                <span class="method-start">13594 ms</span>
+                <span class="method-name">addNewCompany</span>
+                <span class="method-start">8462 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

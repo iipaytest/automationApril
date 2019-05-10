@@ -24,7 +24,8 @@ public class employeeDetailsEPAPageObjects {
 		public static final String dropDownEmployeePayrollDetails="//div[@id='ddNew_Panel']/select";
 		public static final String detailsButton="//*[contains(@id, 'imgDetails')]";
 		public static final String jobDetailsRowsCount="//*[contains(@class, 'JdJobDetailsPanel')]/div";
-		public static final String payrollDetailsConstraints="//*[text()='Payroll Detail Constraints:']/following-sibling::td[1]";
+		public static final String payrollDetailConstraints="//*[text()='Payroll Detail Constraints:']/following-sibling::td[1]";
+		public static final String payrollDetailType="//*[text()='Payroll Detail Type:']/following-sibling::td[1]";
 		
 	
 	public static final String leaveAbsence="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Leave / Absence')]";

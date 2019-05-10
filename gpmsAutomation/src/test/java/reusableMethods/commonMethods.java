@@ -1,5 +1,7 @@
 package reusableMethods;
 
+import static org.testng.Assert.fail;
+
 import java.awt.AWTException;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -80,26 +82,36 @@ public class commonMethods {
 	}
 	
 	
-	public static String successErrorMesssage(WebDriver driver) throws InterruptedException {
+	public static String successErrorMesssage(WebDriver driver) throws Exception {
+		
 		Thread.sleep(1000);
 		String message="";
+		//Checks if message is Successful
 		if(driver.findElements(By.xpath(commonPageObjects.successful)).size()==1 && driver.findElement(By.xpath(commonPageObjects.successful)).getText().contains("success")) {
 			message=message+driver.findElement(By.xpath(commonPageObjects.successful)).getAttribute("innerText");
-			System.out.println("	Message: "+driver.findElement(By.xpath(commonPageObjects.successful)).getAttribute("innerText"));
 		}
+		//Checks if message is error
 		if(driver.findElements(By.xpath(commonPageObjects.error)).size()==1 && driver.findElement(By.xpath(commonPageObjects.error)).getText().contains("ERROR")) {
-			message=message+"Error"+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText");
-			System.out.println("	Error Message: "+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText"));
+			message=message+" "+driver.findElement(By.xpath(commonPageObjects.error)).getAttribute("innerText");
 		}
-		if(driver.findElements(By.xpath(commonPageObjects.warning)).size()==1 && driver.findElement(By.xpath(commonPageObjects.warning)).getText().contains("Warning")) {
-			message=message+"Warning"+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText");
-			System.out.println("	Warning Message: "+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText"));
+		//Checks if message is warning
+		if(driver.findElements(By.xpath(commonPageObjects.warning)).size()==1 && driver.findElement(By.xpath(commonPageObjects.warning)).getText().contains("WARNING")) {
+			message=message+" "+driver.findElement(By.xpath(commonPageObjects.warning)).getAttribute("innerText");
 		}
+		//Checks if message is error Summary
 		if(driver.findElements(By.xpath(commonPageObjects.errorSummary)).size()==1 && driver.findElement(By.xpath(commonPageObjects.errorSummary)).isDisplayed()) {
 			message=message+"Error"+driver.findElement(By.xpath(commonPageObjects.errorSummary)).getAttribute("innerText");
-			System.out.println("	Error Summary: "+driver.findElement(By.xpath(commonPageObjects.errorSummary)).getAttribute("innerText"));
 		}
-		if(message.contains("Error")) {	Assert.fail(message);}
+		
+		//Fails test case if message is not Success
+		try {	
+			driver.findElement(By.xpath(commonPageObjects.success)).getText();
+			message="	Saved: "+message;
+		}catch(Exception e) {
+			commonMethods.takeScreenShot(driver, "Failed saving details");
+			message="	Failed saving: "+message+"\n"+e;	
+		}
+		
 		return message;
 	}
 	
@@ -144,10 +156,6 @@ public class commonMethods {
 		
 	}
 
-	
-	
-
-	
 	
 	public void verifyStatusOfPayrollPeriod(WebDriver driver, String payrollName, String periodName) throws AWTException, InterruptedException, IOException {
 		//This is to verify Status of payroll period to get count of employees in Awaiting Process, Locked, Processed, Confirmed
@@ -194,10 +202,7 @@ public class commonMethods {
 				}
 			}
 	}
-
-			
-
-		
+	
 		
 	public void verifyStarterLeaverInPayrollPeriod(WebDriver driver, String payrollName, String periodName) throws AWTException, InterruptedException, IOException {
 		//This is to get count of employees in Staters, Leavers, After Leavers, Historic Leavers

@@ -3,8 +3,7 @@ package testInputs;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class testInputGPMS {
-
+public class testInputGPMS {	
 	
 	//Variable for local use: Note-don't change these details
 		static Date date = new Date(); 											// Current System Date and time is assigned to objDate
@@ -29,7 +28,7 @@ public class testInputGPMS {
 		public static final String title 		="Mr";
 		public static final String forename		="Fore1";
 		public static final String surname		="Sur1";
-		public static final String employeeNo	="Test02";
+		public static final String employeeNo	="Test01";			//+objSDF.format(date);
 		public static final String startDate 	="04/04/2019";		//will be given for Payroll Start Date, Actual Start Date
 		public static final String dOB			="03/03/1990";
 		public static final String gender		="Male";
@@ -41,6 +40,23 @@ public class testInputGPMS {
 		public static final String paymentType	="International";	//Payment Information (Configurable) info for creating payroll assignment
 		public static final String splitType	="Remainder";		//Payment Information (Configurable) info for creating payroll assignment
 	
+	//Create new Payroll
+		public static final String rulesetCountry	="Germany";
+		public static final String rulesetCurrency	="EUR";
+		public static final String payrollName		="Test Payroll Apr10"; 	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
+		public static final String companyName		=null;					//leave this null if you want to add newCompanyName created above to this payroll
+		public static final String payFrequency		="Monthly";				//full name of pay frequency
+		//Payroll periods to generate
+			public static final String payrollYearPeriod	="2019";
+			public static final Boolean payDaybutton		=true;		//to select payOffset, given payDay=false
+			public static final String payDayToSelect		="Monday";
+			public static final String payOffsetToGive		="2";
+			public static final Boolean payDayFirst			=false;		//to select Last, give payDayFirst=false
+			public static final Boolean payOffsetAfter		=true;		//to select payOffsetBefore, give payOffsetAfter=false
+			public static final String bankTransferOffset	="2";
+			
+					
+		
 	//Create new Company
 		public static final String newCompanyName	="Test Company";
 		public static final String companyAddressLine1="Festive House";
@@ -65,21 +81,6 @@ public class testInputGPMS {
 		public static final Boolean newElementTypeObsolete		=false;
 		
 		
-	//Create new Payroll
-		public static final String rulesetCountry	="Germany";
-		public static final String rulesetCurrency	="EUR";
-		public static final String payrollName		="Test Payroll May08";	//+objSDF.format(date);	//payroll name will be given with todays date, 'Test Payroll Apr04'
-		public static final String companyName		=null;					//leave this null if you want to add newCompanyName created above to this payroll
-		public static final String payFrequency		="Monthly";				//full name of pay frequency
-		//Payroll periods to generate
-			public static final String payrollYearPeriod	="2019";
-			public static final Boolean payDaybutton		=true;		//to select payOffset, given payDay=false
-			public static final String payDayToSelect		="Monday";
-			public static final String payOffsetToGive		="2";
-			public static final Boolean payDayFirst			=false;		//to select Last, give payDayFirst=false
-			public static final Boolean payOffsetAfter		=true;		//to select payOffsetBefore, give payOffsetAfter=false
-			public static final String bankTransferOffset	="2";
-	
 	
 			
 	//Required Pay period in a payroll to details of specific previous or future pay periods
@@ -105,9 +106,8 @@ public class testInputGPMS {
 		public static final String[] entitlementsPermToAdd= {};
 		public static final String[] entitlementsUnitPayToAdd= {};
 	
-	//public static final Object[][] paymentsToAdd= {{"Salary (Net)", "13th salary"},{"effectiveFrom", "effectiveTo", "amount"}};
-	
-	//public static String paymentsToAdd[1][0]="hi";
+	//EPA Details to Add
+		public static final String elementTypeEPA	="Salary (ICP)";
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 }

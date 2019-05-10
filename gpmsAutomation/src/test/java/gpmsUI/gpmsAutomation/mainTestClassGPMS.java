@@ -1,27 +1,36 @@
 package gpmsUI.gpmsAutomation;
 
 import static org.testng.Assert.assertThrows;
+import static org.testng.Assert.fail;
 
 import java.awt.AWTException;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import gpmsReports.reportsCommonMethods;
 import pageObjectsGPMS.*;
 import reusableMethods.*;
 import testInputs.*;
@@ -31,10 +40,19 @@ public class mainTestClassGPMS {
 	static WebDriver driver;
 	
 	@SuppressWarnings("null")
-	public static void main(String[] args) throws AWTException, InterruptedException, IOException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
-		WebDriver driver=new ChromeDriver();
+		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		chromePrefs.put("profile.default_content_settings.popups", 0);
+		chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\reportsDownloaded\\");
+		
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", chromePrefs);
+		
+		
+		driver=new ChromeDriver(options);
 		driver.manage().window().maximize();
 		//commonMethods.takeScreenShot(driver, "GPMS Version Verified");
 		//String url=testInputGPMS.urlTST3redirector;
@@ -60,174 +78,61 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
-		
-		String elementType="Address To Send Payslip";
-		String input="2DD";
-		String startDate=null;
-		String endDate=null;
 
-		//Navigates to employee details page > edit payroll details page
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
-		employeeSearchPageObjects.goToRequiredEmployeePage(driver, testInputGPMS.employeeNo);
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.employeePayrollDetails)).click();
 		
-		//selects required element type from edit payroll details drop down
-		commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.dropDownEmployeePayrollDetails, elementType);
+		String payrollName=testInputGPMS.payrollName;
+		String fileName=null;
 		
-		//checks if we are on element type page, or there is a step between for selecting element type (exp: Entitlement (Unit Pay Perm)), navigate to required page by selecting random element type
-		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.save)).size()==0) {
-			commonMethods.selectRandomFromList(driver, "//*[contains(@class, 'crimsonBorder')]");
-			Thread.sleep(1000);
-		}
 		
-		//Captures the payrollConstraints for concurrent/continuous details
-		String payrollConstraints=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payrollDetailsConstraints)).getText();
-		System.out.println(payrollConstraints);
-		//Checks for details button, if exists will click on it
-		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).size()!=0) {
-			driver.findElement(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).click();
-		}
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+		payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
 		
-		//Will get the Start and End dates based on payrollConstraints and already details of existing element type 
-		if(payrollConstraints=="Non-Concurrent,  Continuous") {
-			if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
-				Select startDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[2]//select")));
-				
-				Select endDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
-				endDatePrevious.selectByIndex(2);
-				
-				Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
-				startDateCurrent1.selectByVisibleText(endDatePrevious.getFirstSelectedOption().getText());
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")).sendKeys(Keys.ARROW_DOWN);
-				
-				startDate=startDateCurrent1.getFirstSelectedOption().getText();
-				endDate="indefinite";
-			}else {
-
-				startDate=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select/option[1]")).getText();
-				endDate="indefinite";
-			}	
-		}
-		if(payrollConstraints.contains("Concurrent,  Continuous")) {
-			if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
-				Select startDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[2]//select")));
-				
-				Select endDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
-				endDatePrevious.selectByVisibleText(startDatePrevious.getFirstSelectedOption().getText());
-				
-				Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
-				startDateCurrent1.selectByVisibleText(startDatePrevious.getFirstSelectedOption().getText());
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")).sendKeys(Keys.ARROW_DOWN);
-				
-				startDate=startDateCurrent1.getFirstSelectedOption().getText();
-				endDate="indefinite";
-			}else {
-
-				startDate=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select/option[1]")).getText();
-				endDate="indefinite";
-			}	
+		int activeRowNumber=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName);
+		WebElement element=payrollPageObjects.getRequiredWebElement(driver, activeRowNumber, 0);
+		element.click();
+		driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
+		driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
+		reportsPageObjects.reportsInboxRefreshUntillComplete(driver);
+		fileName=reportsPageObjects.downloadedReportName(driver);
+		
+		System.out.println(fileName);
+		Thread.sleep(5000);
+		File file=new File(System.getProperty("user.dir")+"\\reportsDownloaded\\"+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook excelFile = new XSSFWorkbook(inputStream);
+		int count=excelFile.getNumberOfSheets();
+		System.out.println(count);
+		String[] sheetName=new String[count];
+		for(int x=0; x<count; x++) {	
+			sheetName[x]=excelFile.getSheetAt(x).getSheetName();
+			System.out.println(sheetName[x]);
 		}
 		
 		
 		
+/*		String filePath="C://Users//sribur19//Desktop//";
+		String fileName="Automation Test Cases.xlsx";
+		String sheetName="GPMS Reggression";
 		
-/*		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
-			
-			
-			if(payrollConstraints.contains("Non-Concurrent") && payrollConstraints.contains("Non-Continuous")) {
-				
+		File file =    new File(filePath+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook excelFile = new XSSFWorkbook(inputStream);
+		
+		XSSFSheet sheet=excelFile.getSheet(sheetName);
+		int rowCount=sheet.getLastRowNum()-sheet.getFirstRowNum();
+		System.out.println(rowCount);
+		for(int i=3;i<=6; i++) {
+			Row row=sheet.getRow(i);
+			int rowLenght=row.getLastCellNum();
+			for(int j=0; j<=rowLenght; j++) {
+				System.out.println(row.getCell(j).getStringCellValue()+"|| ");
 			}
 			
-			if(payrollConstraints.contains("Non-Concurrent") && payrollConstraints.contains("Continuous")) {
-				Select endDate=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
-				endDate.selectByIndex(1);
-				
-				List<WebElement> mandatoryFields=driver.findElements(By.xpath("//*[contains(@class, 'crimsonBorder')]"));
-				int i=mandatoryFields.size();
-				int j=0;
-				int x=1;
-				//Iterator<WebElement> itr=mandatoryFields.iterator();
-				for(WebElement we:mandatoryFields) {
-					
-					if(we.getTagName().contains("input")) {	
-						if(we.getAttribute("id").contains("txtDate"))	{
-							we.clear();
-							DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-							Date date=new Date();
-							String todaysDate=dateFormat.format(date);
-							we.sendKeys(todaysDate); 
-						}else if(we.getAttribute("onkeypress").contains("EnsureDecimalNumeric(event, true)")) {
-							we.clear();
-							String number=String.valueOf(ThreadLocalRandom.current().nextInt(1, 10));
-							we.sendKeys(number); 
-						}else {
-							we.clear();
-							String randon="test";
-							we.sendKeys(randon); 
-						}
-					}
-					if(we.getTagName().contains("select")) {	
-						Select period1=new Select(we);
-						if (x==1) 	period1.selectByIndex(2);
-						else 	period1.selectByIndex(1);		
-						x++;						}
-					j++; if(j>=i) {break;}
-					}	
-			}
-			
-			if(payrollConstraints.contains("Concurrent") && payrollConstraints.contains("Non-Continuous")) {
-				
-			}
-			
-			if(payrollConstraints.contains("Concurrent") && payrollConstraints.contains("Continuous")) {
-				
-			}
-		}else {
-		if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).size()!=0) {
-			driver.findElement(By.xpath(employeeDetailsEPAPageObjects.detailsButton)).click();
-		}
+		}System.out.println("--");
 		
-*/		List<WebElement> mandatoryFields=driver.findElements(By.xpath("//*[contains(@class, 'crimsonBorder')]"));
-		int i=mandatoryFields.size();
-		int j=0;
-		Select startDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
-		startDateCurrent1.selectByVisibleText(startDate);
-		
-		Select endDateCurrent1=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[3]//select")));
-		endDateCurrent1.selectByVisibleText(endDate);
-		
-		for(WebElement we:mandatoryFields) {
-			if(j<=1) {}
-			else {	if(we.getTagName().contains("input")) {	
-					if(we.getAttribute("id").contains("txtDate"))	{
-						we.clear();
-						DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-						Date date=new Date();
-						String todaysDate=dateFormat.format(date);
-						we.sendKeys(todaysDate); 
-					}else if(we.getAttribute("onkeypress").contains("EnsureDecimalNumeric(event, true)")) {
-						we.clear();
-						String number=String.valueOf(ThreadLocalRandom.current().nextInt(1, 10));
-						we.sendKeys(number); 
-					}else {
-						we.clear();
-						String randon="test";
-						we.sendKeys(randon); 
-					}
-				}
-				if(we.getTagName().contains("select")) {	
-					Select period=new Select(we); 
-					period.selectByIndex(1);
-					}
-			}
-			
-			j++; if(j>=i) {break;}
-			}
-
-		driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();
-		
-		
+	*/	
 	}
 }
 		

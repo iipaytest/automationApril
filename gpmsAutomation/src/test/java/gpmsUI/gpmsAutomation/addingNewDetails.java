@@ -24,7 +24,7 @@ public class addingNewDetails extends basicDetails {
 
 			
 	
-	@Test
+	@Test (groups = { "regression" })
 	//Adding New employee to TST3 for given details in testInputGPMS class
 	public void addEmployee() throws AWTException, InterruptedException, IOException {
 		
@@ -71,7 +71,7 @@ public class addingNewDetails extends basicDetails {
 	
 	@Test
 	//Adding new company
-	public void addNewCompany() throws IOException, AWTException, InterruptedException {
+	public void addNewCompany() throws Exception {
 		
 		menuBarLinks.goToCompanyAdmin(driver);
 		
@@ -87,17 +87,16 @@ public class addingNewDetails extends basicDetails {
 			driver.findElement(By.xpath(companyAdminPageObjects.country)).sendKeys(testInputGPMS.companyCountry);
 			
 			driver.findElement(By.xpath(companyAdminPageObjects.save)).click();
-			if(driver.findElement(By.xpath(companyAdminPageObjects.success)).getAttribute("innerText").contains("Changes successfully saved")) {
+			String message=commonMethods.successErrorMesssage(driver);
+			
+			if(message.contains("success")) {
 				System.out.println("Passed adding new Company Details");
 				commonMethods.takeScreenShot(driver, "Passed adding new Company Details");
 				driver.findElement(By.xpath(companyAdminPageObjects.returnToCompanySelection)).click();
 			}else {
-				System.out.println("Failed adding new Company Details");
-				if(driver.findElement(By.xpath(companyAdminPageObjects.error)).getAttribute("innerText").contains("ERROR")) {
-				System.out.println(driver.findElement(By.xpath(companyAdminPageObjects.error)).getAttribute("innerText"));}
-				System.out.println(driver.findElement(By.xpath(companyAdminPageObjects.errorsummary)).getAttribute("innerText"));
+				System.out.println("Failed adding new Company Details"+message);
 				commonMethods.takeScreenShot(driver, "Failed adding new Company Details");
-				Assert.fail("Failed adding new Company Details");
+				Assert.fail("Failed adding new Company Details"+message);
 			}
 		}
 	}
@@ -117,7 +116,7 @@ public class addingNewDetails extends basicDetails {
 	
 	@Test
 	//Adding new Element Type
-	public void addNewElementType() throws IOException, AWTException, InterruptedException {
+	public void addNewElementType() throws Exception {
 		menuBarLinks.goToElementTypeAdmin(driver);
 		driver.findElement(By.xpath(elementTypeSelectionPageObjects.addNewElement)).click();
 		driver.findElement(By.xpath(elementTypeSelectionPageObjects.nameElementType)).sendKeys(testInputGPMS.newElementTypeName);
@@ -141,20 +140,19 @@ public class addingNewDetails extends basicDetails {
 		if(testInputGPMS.newElementTypeObsolete==true) {driver.findElement(By.xpath(elementTypeSelectionPageObjects.obsoleteCheckBox)).click();}
 		driver.findElement(By.xpath(elementTypeSelectionPageObjects.save)).click();
 		
-		if(driver.findElement(By.xpath(elementTypeSelectionPageObjects.sucessful)).getAttribute("innerText").contains("successfully")) {
-			commonMethods.takeScreenShot(driver, "Passed Saving New Element Type");
+		String message=commonMethods.successErrorMesssage(driver);
+		
+		if(message.contains("success")) {
 			System.out.println("Passed: New Element Type saved successfully");
+			commonMethods.takeScreenShot(driver, "Passed Saving New Element Type");
 		}else {
-			System.out.println("Failed: Adding new Element Type");
-			if(driver.findElement(By.xpath(elementTypeSelectionPageObjects.error)).getAttribute("innerText").contains(" ")){System.out.println("	Error Message: "+driver.findElement(By.xpath(elementTypeSelectionPageObjects.error)).getAttribute("innerText"));}
-			if(driver.findElement(By.xpath(elementTypeSelectionPageObjects.warning)).getAttribute("innerText").contains(" ")){System.out.println("	Warning Message: "+driver.findElement(By.xpath(elementTypeSelectionPageObjects.warning)).getAttribute("innerText"));}
-			if(driver.findElement(By.xpath(elementTypeSelectionPageObjects.errorSummary)).getAttribute("innerText").contains(" ")){System.out.println("	Error Summary: "+driver.findElement(By.xpath(elementTypeSelectionPageObjects.errorSummary)).getAttribute("innerText"));}
-			commonMethods.takeScreenShot(driver, "Failed Saving New Element Type");
-			Assert.fail("Failed: Saving New Element Type");
+			System.out.println("Failed Adding new Element Type"+message);
+			commonMethods.takeScreenShot(driver, "Failed Adding new Element Type");
+			Assert.fail("Failed Adding new Element Type"+message);
 		}
 	}
 
-	@Test
+	@Test (groups = { "regression" })
 	//Adding new Payroll
 	public void addPayroll() throws AWTException, InterruptedException, IOException {
 		menuBarLinks.goToForPayroll(driver);
@@ -218,7 +216,7 @@ public class addingNewDetails extends basicDetails {
 			}
 	}
 
-	@Test
+	@Test (groups = { "regression" })
 	//Editing/Adding pay periods for payroll
 	public void editPayrollPeriods() throws AWTException, InterruptedException, IOException {
 		
@@ -236,7 +234,7 @@ public class addingNewDetails extends basicDetails {
 		}
 	}
 	
-	@Test 
+	@Test (groups = { "regression" })
 	//To Create Payroll Assignment for existing employee
 	public void createPayrollAssignment() throws IOException, AWTException, InterruptedException {
 		

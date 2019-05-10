@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,12 +32,21 @@ public class basicDetails {
 		}
 		
 		
-		@Test 
+		@Test (groups = { "regression" })
 		//Open login page to given Client ID
 		public void homePage() throws IOException {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
-			driver=new ChromeDriver();
+			HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+			chromePrefs.put("profile.default_content_settings.popups", 0);
+			chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\reportsDownloaded\\");
+			
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", chromePrefs);
+			
+			
+			driver=new ChromeDriver(options);
 			driver.manage().window().maximize();
+			//variable(); //this to print console data into external txt file as defined in above variable() method
 			
 			driver.get(testInputGPMS.urlTST3redirector);
 			if(driver.findElements(By.cssSelector("input#ClientId")).size()==0) {
@@ -59,7 +70,7 @@ public class basicDetails {
 			
 		}
 		
-		@Test
+		@Test (groups = { "regression" })
 		//Login to TST3 for given Client ID and user credentials
 		public void loginTST3() throws IOException {
 			driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);

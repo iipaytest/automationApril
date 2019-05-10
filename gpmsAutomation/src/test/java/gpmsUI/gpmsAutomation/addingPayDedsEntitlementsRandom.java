@@ -21,7 +21,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 
 	
 	@Test
-	public void addPaymentsRandom() throws IOException, AWTException, InterruptedException {
+	public void addPaymentsRandom() throws Exception {
 		
 		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
 		employeeSearchPageObjects.goToRequiredEmployeePage(driver, testInputGPMS.employeeNo);
@@ -45,7 +45,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveFrom+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else if (i==2){
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();
@@ -54,7 +54,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To: Indefinite	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}else {
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();Thread.sleep(1000);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.payDedsEffectiveTo, effectiveFrom);
@@ -65,7 +65,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						String effectiveTo=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsRecentSavedEffectiveTo+"//option[text()='"+effectiveFrom+"']/following-sibling::option[2]")).getText();
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveTo+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -76,7 +76,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 	}	
 
 	@Test
-	public void addDeductionsRandom() throws IOException, AWTException, InterruptedException {
+	public void addDeductionsRandom() throws Exception {
 		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
 		employeeSearchPageObjects.goToRequiredEmployeePage(driver, testInputGPMS.employeeNo);
 			if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()==0) {
@@ -97,7 +97,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveFrom+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else if (i==2){
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();
@@ -106,7 +106,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To: Indefinite	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}else {
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();Thread.sleep(1000);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.payDedsEffectiveTo, effectiveFrom);
@@ -117,7 +117,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						String effectiveTo=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsRecentSavedEffectiveTo+"//option[text()='"+effectiveFrom+"']/following-sibling::option[2]")).getText();
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveTo+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -128,7 +128,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 	}
 	
 	@Test
-	public void addUnitPayRandom() throws IOException, AWTException, InterruptedException {
+	public void addUnitPayRandom() throws Exception {
 		
 		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
 			System.out.println("Failed: Cant add Unit Pay, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
@@ -157,7 +157,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unitPayRateOverride)).sendKeys(unitPayRateOverride);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Unit Pay Units:"+unitPayUnits+" Unit Pay Rate Override:"+unitPayRateOverride);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else {
 						String unitPayUnits=String.valueOf(ThreadLocalRandom.current().nextInt(2, 6));
@@ -166,7 +166,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unitPayFinalAmountOverride)).sendKeys(unitPayFinalAmountOverride);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Unit Pay Units:"+unitPayUnits+" Unit Pay Final Amount Override:"+unitPayFinalAmountOverride);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -180,7 +180,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 	
 	
 	@Test
-	public void addEntitlementsTempRandom() throws IOException, AWTException, InterruptedException {
+	public void addEntitlementsTempRandom() throws Exception {
 		
 		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
 			System.out.println("Failed: Cant add Entitlement Temp, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
@@ -206,14 +206,14 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsTempAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else {
 						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(200, 300));
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsTempAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -227,7 +227,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 	
 	
 	@Test
-	public void addEntitlementsPermRandom() throws IOException, AWTException, InterruptedException {
+	public void addEntitlementsPermRandom() throws Exception {
 		
 		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
 			System.out.println("Failed: Cant add Entitlement Perm, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
@@ -255,7 +255,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsPermAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveFrom+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else if (i==2){
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsEffectiveFrom+"/option")).getText();
@@ -264,7 +264,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsPermAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To: Indefinite	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}else {
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsEffectiveFrom+"/option")).getText();Thread.sleep(1000);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.entitlementsEffectiveTo, effectiveFrom);
@@ -275,7 +275,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						String effectiveTo=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsPermRecentSavedEffectiveTo+"//option[text()='"+effectiveFrom+"']/following-sibling::option[2]")).getText();
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveTo+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -287,7 +287,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 	}
 	
 	@Test
-	public void addEntitlementsUnitPayRandom() throws IOException, AWTException, InterruptedException {
+	public void addEntitlementsUnitPayRandom() throws Exception {
 		
 		if(employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo)==false) {
 			System.out.println("Failed: Cant add Entitlement Unit Pay, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't exists");
@@ -316,7 +316,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 							driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsUnitPayRateOverride)).sendKeys(entitlementsUnitPayRateOverride);
 							driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 							System.out.println("	"+itemSelected+" > Entitlement Unit Pay Units:"+entitlementsUnitPayUnits+" Entitlement Unit Pay Rate Override:"+entitlementsUnitPayRateOverride);
-							commonMethods.successErrorMesssage(driver);
+							System.out.println(commonMethods.successErrorMesssage(driver));
 						}
 						else {
 							String entitlementsUnitPayUnits=String.valueOf(ThreadLocalRandom.current().nextInt(2, 6));
@@ -325,7 +325,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 							driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsUnitPayFinalAmountOverride)).sendKeys(entitlementsUnitPayFinalAmountOverride);
 							driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 							System.out.println("	"+itemSelected+" > Entitlement Unit Pay Units:"+entitlementsUnitPayUnits+" Entitlement Unit Pay Final Amount Override:"+entitlementsUnitPayFinalAmountOverride);
-							commonMethods.successErrorMesssage(driver);
+							System.out.println(commonMethods.successErrorMesssage(driver));
 						}
 						
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -338,7 +338,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 
 	
 	@Test
-	public void addNotionalAmountsPermRandom() throws IOException, AWTException, InterruptedException {
+	public void addNotionalAmountsPermRandom() throws Exception {
 		
 		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
 			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
@@ -363,7 +363,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Start Period:"+startPeriod+"	Effective To:"+startPeriod+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else if (i==2){
 						String startPeriod=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountStartPeriod+"/option[2]")).getText();
@@ -374,7 +374,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+startPeriod+"	Effective To: Indefinite	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}else {
 						String startPeriod=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountStartPeriod+"/option[2]")).getText();Thread.sleep(1000);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.notionalAmountStartPeriod, startPeriod);
@@ -387,7 +387,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						String effectiveTo=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountRecentSavedEffectiveTo+"//option[text()='"+startPeriod+"']/following-sibling::option[2]")).getText();
 						System.out.println("	"+itemSelected+" > Effective From:"+startPeriod+"	Effective To:"+effectiveTo+"	Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
@@ -399,7 +399,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 
 	
 	@Test
-	public void addNotionalAmountsTempRandom() throws IOException, AWTException, InterruptedException {
+	public void addNotionalAmountsTempRandom() throws Exception {
 		
 		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
 			driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
@@ -423,7 +423,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Start Period:"+startPeriod+" Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					}
 					else {
 						String startPeriod=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountStartPeriod+"/option[3]")).getText();Thread.sleep(1000);
@@ -433,7 +433,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Start Period:"+startPeriod+" Amount:"+amount);
-						commonMethods.successErrorMesssage(driver);
+						System.out.println(commonMethods.successErrorMesssage(driver));
 					
 					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
 					commonMethods.takeScreenShot(driver, "Notional Amounts Temp Added");
