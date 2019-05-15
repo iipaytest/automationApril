@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>12/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu May 09 12:10:44 BST 2019</td>
+<td>Started on:</td><td>Mon May 13 08:34:17 BST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>10 seconds (10979 ms)</td>
+<tr><td>Total time:</td><td>102 seconds (102646 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,13 +75,13 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='gpmsUI.gpmsAutomation.addingNewDetails.addEmployee()'><b>addEmployee</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td><div><pre>java.lang.AssertionError: Failed: Add Employee step, as Employee Number&apos;Test01&apos; already exists
-	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:38)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1696263571", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1696263571'><pre>java.lang.AssertionError: Failed: Add Employee step, as Employee Number&apos;Test01&apos; already exists
+<td title='gpmsUI.gpmsAutomation.addingNewDetails.addPayroll()'><b>addPayroll</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
+<td><div><pre>java.lang.AssertionError: Failed: Adding new payroll, as Payroll Name&apos;Test Payroll Apr10&apos; already exists
+	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:165)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2073299099", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2073299099'><pre>java.lang.AssertionError: Failed: Adding new payroll, as Payroll Name&apos;Test Payroll Apr10&apos; already exists
 	at org.testng.Assert.fail(Assert.java:96)
-	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:38)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:165)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -111,13 +111,15 @@ function toggleAllBoxes() {
 <td>1</td>
 <td>gpmsUI.gpmsAutomation.addingNewDetails@5700d6b1</td></tr>
 <tr>
-<td title='gpmsUI.gpmsAutomation.addingNewDetails.addNewCompany()'><b>addNewCompany</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td><div><pre>java.lang.AssertionError: Failed adding new Company Details
-	at gpmsUI.gpmsAutomation.addingNewDetails.addNewCompany(addingNewDetails.java:100)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1644236636", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1644236636'><pre>java.lang.AssertionError: Failed adding new Company Details
+<td title='gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods()'><b>editPayrollPeriods</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
+<td><div><pre>java.lang.AssertionError: Failed: Payroll periods of given Payroll Year already exits
+	at pageObjectsGPMS.payrollPageObjects.editPeriods(payrollPageObjects.java:292)
+	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:233)
+... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace280615803", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace280615803'><pre>java.lang.AssertionError: Failed: Payroll periods of given Payroll Year already exits
 	at org.testng.Assert.fail(Assert.java:96)
-	at gpmsUI.gpmsAutomation.addingNewDetails.addNewCompany(addingNewDetails.java:100)
+	at pageObjectsGPMS.payrollPageObjects.editPeriods(payrollPageObjects.java:292)
+	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:233)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -144,7 +146,7 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>2</td>
+<td>3</td>
 <td>gpmsUI.gpmsAutomation.addingNewDetails@5700d6b1</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -155,6 +157,56 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom()'><b>addDeductionsRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>9</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingNewDetails.addEmployee()'><b>addEmployee</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
+<td></td>
+<td>4</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@5700d6b1</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsPermRandom()'><b>addEntitlementsPermRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>7</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsTempRandom()'><b>addEntitlementsTempRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>6</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsUnitPayRandom()'><b>addEntitlementsUnitPayRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>7</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsPermRandom()'><b>addNotionalAmountsPermRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>14</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsTempRandom()'><b>addNotionalAmountsTempRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>13</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addPaymentsRandom()'><b>addPaymentsRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>8</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addUnitPayRandom()'><b>addUnitPayRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td></td>
+<td>10</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@6fd02e5</td></tr>
+<tr>
+<td title='gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment()'><b>createPayrollAssignment</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
+<td></td>
+<td>7</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@5700d6b1</td></tr>
+<tr>
 <td title='gpmsUI.gpmsAutomation.basicDetails.homePage()'><b>homePage</b><br>Test class: gpmsUI.gpmsAutomation.basicDetails</td>
 <td></td>
 <td>5</td>
@@ -162,7 +214,7 @@ function toggleAllBoxes() {
 <tr>
 <td title='gpmsUI.gpmsAutomation.basicDetails.loginTST3()'><b>loginTST3</b><br>Test class: gpmsUI.gpmsAutomation.basicDetails</td>
 <td></td>
-<td>1</td>
+<td>2</td>
 <td>gpmsUI.gpmsAutomation.basicDetails@1ce92674</td></tr>
 </table><p>
 </body>

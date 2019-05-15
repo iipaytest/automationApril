@@ -8,8 +8,8 @@
     <classes>
       <class name="gpmsUI.gpmsAutomation.addingNewDetails">
         <methods>
-          <include name="addNewCompany"/>
-          <include name="addEmployee"/>
+          <include name="addPayroll"/>
+          <include name="editPayrollPeriods"/>
         </methods>
       </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
     </classes>

@@ -112,11 +112,6 @@ public class reportsPageObjects {
 			commonMethods.takeScreenShotOfElement(driver, reportNameType+" generation failed_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
 			Assert.fail("Failed: "+reportNameType+" not generated, Status message: "+status);
 		}else {
-			driver.findElement(By.xpath(reportsPageObjects.outPutReportToLocalFile)).click();
-			System.out.println("Passed: "+reportNameType+" generated successfully, Status message: "+status);
-			driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
-			commonMethods.takeScreenShotOfElement(driver, reportNameType+" generation successfully_Processing Summary", driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
-			driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
 			driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
 			commonMethods.takeScreenShotOfElement(driver, reportNameType+" generated successfully_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
 			reportLayout=driver.findElement(By.xpath(reportsPageObjects.layoutType)).getText();
@@ -126,7 +121,7 @@ public class reportsPageObjects {
 		String strDateFormat = "yyyyMMdd"; 									//Date format is Specified
 		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
 		String date1=objSDF.format(date);
-		reportName=reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+"."+reportRequestTime.replace(":", "-")+")";
+		reportName=reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+"."+reportRequestTime.replace(":", "-")+").xlsx";
 		return reportName;
 	}
 	

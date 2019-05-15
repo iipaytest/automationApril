@@ -24,22 +24,22 @@
       		<exclude name="addNewCompany"/>
       		<exclude name="addNewOrgUnit"/>				<!-- This is to create New Org Unit and add org unit details like name and references -->
       		<exclude name="addNewElementType"/>
-      		<exclude name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
-      		<exclude name="editPayrollPeriods"/>
-      		<exclude name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
+      		<include name="editPayrollPeriods"/>
+      		<include name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
       	</methods>
       </class> 
     
     <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
       	<methods>
-      		<exclude name="addPaymentsRandom"/>
-      		<exclude name="addDeductionsRandom"/>
-      		<exclude name="addUnitPayRandom"/>
-      		<exclude name="addEntitlementsTempRandom"/>
-      		<exclude name="addEntitlementsPermRandom"/>
-      		<exclude name="addEntitlementsUnitPayRandom"/>
-      		<exclude name="addNotionalAmountsPermRandom"/>
-      		<exclude name="addNotionalAmountsTempRandom"/>
+      		<include name="addPaymentsRandom"/>
+      		<include name="addDeductionsRandom"/>
+      		<include name="addUnitPayRandom"/>
+      		<include name="addEntitlementsTempRandom"/>
+      		<include name="addEntitlementsPermRandom"/>
+      		<include name="addEntitlementsUnitPayRandom"/>
+      		<include name="addNotionalAmountsPermRandom"/>
+      		<include name="addNotionalAmountsTempRandom"/>
       	</methods>
       </class> 
     

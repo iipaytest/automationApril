@@ -34,7 +34,7 @@ public class employeeDetailsEPAPageObjects {
 	public static final String payments="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Payments')]";
 	public static final String deductions="//*[@id='actionsDialog_contentTable']//a[contains(text(), 'Deductions')]";
 		
-		public static final String payDedsDropDown="//div[@id='ddNavigateToSet_Panel']/select";	
+		public static final String payDedsDropDown="//*[contains(text(), 'Add/Edit')]/following-sibling::div[1]/select";	
 		public static final String payDedsEffectiveFrom="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl01_ctl00_Panel']/select";
 		public static final String payDedsEffectiveTo="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl02_ctl00_Panel']/select";
 		public static final String payDedsAmount="//*[@id='paymentSet_new0']//*[@id='paymentSet_new0_ctl03_param']";
