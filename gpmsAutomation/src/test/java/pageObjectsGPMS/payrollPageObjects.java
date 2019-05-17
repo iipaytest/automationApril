@@ -114,8 +114,8 @@ public class payrollPageObjects {
 		
 		WebElement[][] element = new WebElement[columns.size()][rows.size()];
 		
-		for (int i=1; i < columns.size(); i++) {
-			for (int j=1; j < rows.size(); j++) {
+		for (int i=1; i <=columns.size(); i++) {
+			for (int j=1; j <= rows.size(); j++) {
 				element[i-1][j-1] = driver.findElement(By.xpath(payrollPageObjects.payrollPeriodDetails+"/tbody/tr["+i+"]/td["+j+"]"));
 			}
 		}	
@@ -218,7 +218,7 @@ public class payrollPageObjects {
 	}
 	
 	//This will capture current active pay period row number on the payroll landing page 
-	public static int getCurrentActivePayPeriodRowNumber(WebDriver driver, String payrollName) throws IOException, InterruptedException, AWTException {
+	public static int getCurrentActivePayPeriodRowNumber(WebDriver driver) throws IOException, InterruptedException, AWTException {
 		 
 		String[][] table = null;
 		int rowNumOfActivePayPeriod=0;

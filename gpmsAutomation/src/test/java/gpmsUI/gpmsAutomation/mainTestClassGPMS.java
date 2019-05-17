@@ -84,226 +84,50 @@ public class mainTestClassGPMS {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
 
-		
- 		List<String> payments=new ArrayList<String>();
-		List<String> deductions=new ArrayList<String>();
-		List<String> unitPay=new ArrayList<String>();
-		List<String> notionalAmountsPerm=new ArrayList<String>();
-		List<String> notionalAmountsTemp=new ArrayList<String>();
-		List<String> entitlementsPerm=new ArrayList<String>();
-		List<String> entitlementsTemp=new ArrayList<String>();
-		List<String> entitlementsUnitPay=new ArrayList<String>();
- 		
- 		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
-		employeeSearchPageObjects.goToRequiredEmployeePage(driver, testInputGPMS.employeeNo);
-			
-			if(driver.findElements(By.xpath(employeeDetailsPageObjects.currentPayrollAssginment_1)).size()==0) {
-				System.out.println("Failed: Cant add Payments, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
-				commonMethods.takeScreenShot(driver, "Failed adding Payments_Emp No dont have any Current Actice Payroll Assignments");
-				Assert.fail("Failed: Cant add Payments, as  Employee Number'"+ testInputGPMS.employeeNo +"' don't have any Current Actice Payroll Assignments");
-			}else {	
-				
-				
-			//Capture all payments into List<String>
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();
-				int noOfPayments=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.payDedsDropDown+"/option")).size();
-				for(int j=1; j<=noOfPayments; j++) {
-					payments.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all deductions into List<String>	
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.deductions)).click();
-				int noOfDeductions=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.payDedsDropDown+"/option")).size();
-				for(int j=1; j<=noOfDeductions; j++) {
-					deductions.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all Unit Pays into List<String>	
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unitPay)).click();
-				int noOfUnitPay=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.unitPayDropDown+"/option")).size();
-				for(int j=1; j<=noOfUnitPay; j++) {
-					unitPay.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unitPayDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all Notional Amounts Perm and Notional Amounts Temp into List<String>	
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmounts)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountPermButton)).click(); Thread.sleep(1000);
-				int noOfNotionalAmountsPerm=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.notionalAmountDropDown+"/option")).size();
-				for(int j=1; j<=noOfNotionalAmountsPerm; j++) {
-					notionalAmountsPerm.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountTempButton)).click();  Thread.sleep(1000);
-				int noOfNotionalAmountsTemp=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.notionalAmountDropDown+"/option")).size();
-				for(int j=1; j<=noOfNotionalAmountsTemp; j++) {
-					notionalAmountsTemp.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.notionalAmountDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all Entitlements Temp into List<String>		
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsTemp)).click();
-				int noOfEntitlementsTemp=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option")).size();
-				for(int j=1; j<=noOfEntitlementsTemp; j++) {
-					entitlementsTemp.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all Entitlements Perm into List<String>		
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsPerm)).click();
-				int noOfEntitlementsPerm=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option")).size();
-				for(int j=1; j<=noOfEntitlementsPerm; j++) {
-					entitlementsPerm.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-			//Capture all Entitlements Unit Pay into List<String>		
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsUnitPay)).click();
-				int noOfEntitlementsUnitPay=driver.findElements(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option")).size();
-				for(int j=1; j<=noOfEntitlementsUnitPay; j++) {
-					entitlementsUnitPay.add(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.entitlementsDropDown+"/option["+j+"]")).getText());
-				}
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
-				
-				System.out.println(payments.get(1));
-				System.out.println(deductions.get(1));
-				System.out.println(unitPay.get(1));
-				System.out.println(notionalAmountsTemp.get(1));
-				System.out.println(notionalAmountsPerm.get(1));
-				System.out.println(entitlementsTemp.get(1));
-				System.out.println(entitlementsPerm.get(1));
-				System.out.println(entitlementsUnitPay.get(1));
-				
-				System.out.println(payments.size());
-				System.out.println(deductions.size());
-				System.out.println(unitPay.size());
-				System.out.println(notionalAmountsTemp.size());
-				System.out.println(notionalAmountsPerm.size());
-				System.out.println(entitlementsTemp.size());
-				System.out.println(entitlementsPerm.size());
-				System.out.println(entitlementsUnitPay.size());
-
-		
-		//String fileName=testInputGPMS.clientID+"."+reportsPageObjects.downloadedReportName(driver);
-		String fileName="AUTO.Employee_Data_Upload_Template_Employee_Data_Upload_Template.(20190513.12-57-38).xlsx";
-		String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
-		
-		//Adding new employees
-		int noOfEmployeesToAdd=2;
-		ArrayList<ArrayList<String>> newEmpDetails=addingDetailsInEmployeeUploadTemplate.addingEmployeesDuplicateInMasterData(filePath, fileName, noOfEmployeesToAdd);
-		
-		addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, "Perm Entitlements", newEmpDetails, noOfEmployeesToAdd);
-		
-		String permEntitlementName="Perm Entitlements";
-		String payrollValidationName="Payroll Validation";
-		String uploadKeyValue="TestMay14";
-		
-		File file=new File(filePath+fileName);
+	 	String payrollName=testInputGPMS.payrollName;
+	 	String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
+	 	String fileName="AUTO.Employee_Data_Upload_Template_Employee_Data_Upload_Template.(20190516.14-47-38).xlsx";
+	 	
+	 	File file=new File(filePath+fileName);
 		FileInputStream inputStream = new FileInputStream(file);
 		
-		//read employee upload template and check for required sheet existence
 		XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
 		
-		Sheet payrollValidaion=employeeUploadTemplate.getSheet(payrollValidationName);
-		Row payrollValidationHeader=payrollValidaion.getRow(1);
-		Cell periodName=payrollValidationHeader.getCell(2);
-		String currentPeriod=periodName.getStringCellValue();
-		Cell uploadKey=payrollValidationHeader.getCell(3);
-		uploadKey.setCellValue(uploadKeyValue);
+		Date date = new Date(); 											
+		String strDateFormat = "MMMdd"; 									
+		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+		String upladKey=objSDF.format(date);
 		
-		Sheet permEntitlement=employeeUploadTemplate.getSheet(permEntitlementName);
-		Row header=permEntitlement.getRow(0);
-		Row secondRow=permEntitlement.getRow(1);
-		int headerLenght=header.getLastCellNum();
-		int rowCountpermEntitlement=permEntitlement.getLastRowNum();
+		Sheet payrollValidaion=employeeUploadTemplate.getSheet("Payroll Validation");
+		Row payrollValidationDetailsRow=payrollValidaion.getRow(1);
+		Cell uploadKey=payrollValidationDetailsRow.getCell(3);
+		uploadKey.setCellValue(upladKey);
 		
-		//String entitlement1="Inconvenient Hours 500";
-		String entitlement1=entitlementsPerm.get(ThreadLocalRandom.current().nextInt(2, 50));
-   	 	//String entitlement2=entitlementsPerm.get(ThreadLocalRandom.current().nextInt(2, 50));
-   	 	Object[] entitlement1Details= {entitlement1, "", ThreadLocalRandom.current().nextInt(100, 300)};
-   	 	//Object[] entitlement2Details= {entitlement2, currentPeriod, ThreadLocalRandom.current().nextInt(100, 300)};
-		
-		List<String> headers=new ArrayList<String>();
-   	 	for(int x=0; x<headerLenght; x++) {		headers.add(header.getCell(x).getStringCellValue()); 	}
-
-   	 	int y=0;
-   	 	int entitlement1ColumnNum=0;
-   	 	for(String required: headers) {
-   	 		y++;
-   	 		if(required.contains(entitlement1)) {
-   	 		entitlement1ColumnNum=y;
-   	 			break;
-   	 		}
-   	 	}
-   	 	
-   	 	if(y==0) {
-	   	 	for(int x=0; x<rowCountpermEntitlement; x++) {
-				Row row=permEntitlement.getRow(x);
-				Cell cell=row.getCell(entitlement1ColumnNum);
-				if(cell==null || cell.getCellType()==CellType.BLANK) { 	rowCountpermEntitlement=x+1; break;}
-			}
-	   	 	
-	   	 	Row required=permEntitlement.getRow(rowCountpermEntitlement);
-	   	 	Cell x1=required.createCell(entitlement1ColumnNum-1);
-	   	 	x1.setCellValue(String.valueOf(entitlement1Details[0]));
-	   	 	
-	   	 	Cell x2=required.createCell(entitlement1ColumnNum);
-	   	 	x2.setCellValue(String.valueOf(entitlement1Details[1]));
-	   	 	
-	   	 	Cell x3=required.createCell(entitlement1ColumnNum+1);
-	   	 	x3.setCellValue((Integer) entitlement1Details[2]);
-			
-	   	 	
-   	 	}else {
-	   	 	Cell x1=header.createCell(headerLenght);
-	   	 	x1.setCellValue(entitlement1+" 0");
-	   	 	
-	   	 	Cell x2=header.createCell(headerLenght+1);
-	   	 	x2.setCellValue(entitlement1+" 0");
-	   	 	
-	   	 	Cell x3=header.createCell(headerLenght+2);
-	   	 	x3.setCellValue(entitlement1+" 0");
-	   	 	
-	   	 	Cell y1=secondRow.createCell(headerLenght);
-	   	 	y1.setCellValue("ENP!Element Type");
-	   	 	
-	   	 	Cell y2=secondRow.createCell(headerLenght+1);
-	   	 	y2.setCellValue("ENP!Effective To");
-	   	 	
-	   	 	Cell y3=secondRow.createCell(headerLenght+2);
-	   	 	y3.setCellValue("ENP!Amount");
-	   	 	
-	   	 	for(int x=0; x<rowCountpermEntitlement; x++) {
-				Row row=permEntitlement.getRow(x);
-				Cell cell=row.getCell(headerLenght);
-				if(cell==null || cell.getCellType()==CellType.BLANK) { 	rowCountpermEntitlement=x+1; break;}
-			}
-	   	 	
-	   	 	Row required=permEntitlement.getRow(rowCountpermEntitlement);
-	   	 	Cell z1=required.createCell(headerLenght);
-	   	 	z1.setCellValue(String.valueOf(entitlement1Details[0]));
-	   	 	
-	   	 	Cell z2=required.createCell(headerLenght+1);
-	   	 	z2.setCellValue(String.valueOf(entitlement1Details[1]));
-	   	 	
-	   	 	Cell z3=required.createCell(headerLenght+2);
-	   	 	z3.setCellValue((Integer) entitlement1Details[2]);
-	   	 	
-   	 	}
-   	 	
-   	 	inputStream.close();
+		inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		outputStream.close();	
-   	 	
+		outputStream.close();
+	 	
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+		payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+		int activePeriodRowNumber=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver);
+		System.out.println(activePeriodRowNumber);
+		List<WebElement> activeRowElements=payrollPageObjects.getWebElementsOfRequiredPayrollPeriodRow(driver, activePeriodRowNumber);
+		activeRowElements.get(0).click();
+		driver.findElement(By.xpath(payrollPageObjects.uploadsEmployeeUpload)).click();
+		driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileBrowseTextInput)).sendKeys(filePath+fileName);
+		
+		Thread.sleep(1000);
+		driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileUploadFromLocalFile)).click();
+   	 	String status=reportsPageObjects.reportsInboxRefreshUntillComplete(driver);	
+   	 	Boolean isStatusComplete=reportsPageObjects.isReportStatusComplete(driver);
+   	 	if(isStatusComplete==false) {
+   	 		String errorMessage=reportsPageObjects.reportsInboxErrorMessages(driver);
+   	 		System.out.println("Upload Failed, status message: "+status+", Message Summary: "+errorMessage);	
+   	 	}else {
+   	 		System.out.println("Upload successful, status message: "+status);
+   	 	}
+  	 	
 		
 /*	//Download employee upload template and capture file name, 				
 		String payrollName=null;
@@ -478,7 +302,7 @@ public class mainTestClassGPMS {
 	*/	
 		}
 	}
-}
+
 		
 /*		if(stateOfPayroll[0]!=0) {
 			awaitingProcess.click();

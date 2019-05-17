@@ -132,9 +132,9 @@ public class functionValidations extends basicDetails {
 		
 		//Capture details of payroll landing page into a table and get rowNumber, taxYear and periodNo of active payroll
 		table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
-		rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName);
-		taxYear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][2];
-		periodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver, payrollName)][3];
+		rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver);
+		taxYear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][2];
+		periodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][3];
 		ArrayList<String> rowData=payrollPageObjects.getDisplayedDetailsOfRequiredPayrollPeriodRow(driver, rowNumOfPayPeriod);
 		periodName=rowData.get(1);
 		

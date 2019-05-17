@@ -1,23 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
+<suite name="Regression Suite" preserve-order="true">
+ 
+  <listeners>
+  	<listener class-name="reusableMethods.extentReports"/>
+  </listeners>
+  
+  
   <test thread-count="5" name="Test">
-    
-    <groups>
-         <run>
-            <include name = "regression" />
-         </run>
-      </groups>
-    
-    
+ 
     <classes>
-      <class name="gpmsUI.gpmsAutomation.basicDetails"/>
-      <class name="gpmsUI.gpmsAutomation.addingNewDetails"/>
-      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom"/>
-      <class name="gpmsUI.gpmsAutomation.addingEPADetails"/>
-      <class name="gpmsUI.gpmsAutomation.functionValidations"/>
-      <class name="gpmsUI.gpmsAutomation.downloadReports"/>
       
+    <class name="gpmsUI.gpmsAutomation.basicDetails">
+      	<methods>
+      		<include name="homePage"/>					<!-- This will open Login page foe given client and checks for given GPMS version -->
+      		<include name="loginTST3"/>					<!--This will Login TST3 GPMS and verify of the login is successful for given -->	
+      	</methods>
+      </class>
+      
+    <class name="gpmsUI.gpmsAutomation.addingNewDetails">
+      	<methods>
+      		<include name="addEmployee"/>				<!-- This will add New Employee based on the details given in testInputGPMS file-->
+      		<include name="addPayroll"/>				<!-- This will add New Payroll based on the details given in testInputGPMS file-->
+      		<include name="editPayrollPeriods"/>
+      		<include name="createPayrollAssignment"/>	<!-- This is to create Payroll Assignment for existing employee -->	
+      	</methods>
+      </class> 
+    
+    <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
+      	<methods>
+      		<include name="addPaymentsRandom"/>
+      		<include name="addDeductionsRandom"/>
+      		<include name="addUnitPayRandom"/>
+      		<include name="addEntitlementsTempRandom"/>
+      		<include name="addEntitlementsPermRandom"/>
+      		<include name="addEntitlementsUnitPayRandom"/>
+      		<include name="addNotionalAmountsPermRandom"/>
+      		<include name="addNotionalAmountsTempRandom"/>
+      	</methods>
+      </class> 
+    
+    <class name="gpmsUI.gpmsAutomation.functionValidations">
+      	<methods>
+      		<include name="lockEmployeeLevel"/>					
+      		<include name="resetEmployeeLevel"/>
+      		<include name="unconfirmEmployeeLevel"/>
+      		<include name="allPeriodProcessingsFromPayrollLevel"/>
+      		
+      	</methods>
+      </class>
+     
+     <class name="gpmsUI.gpmsAutomation.addingEPADetails">
+      	<methods>
+      		<include name="addEPARandom"/>					
+      		
+      	</methods>
+      </class>
+    
+    <class name="gpmsUI.gpmsAutomation.downloadUploadReports">
+      	<methods>
+      		<include name="downloadEmployeeDataUploadTemplate"/>
+      		<include name="adddDetailsInEmployeeDataUploadTemplate"/>											
+      	</methods>
+      </class>
+    
+    
+    
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -124,10 +125,10 @@ public class addingDetailsInEmployeeUploadTemplate {
 			}
 		}
 		
-		inputStream.close();
+		//inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		outputStream.close();
+		//outputStream.close();
 		
 		newEmpDetails.add(newEmpNos);
 		newEmpDetails.add(newEmpSurnames);
@@ -164,10 +165,448 @@ public class addingDetailsInEmployeeUploadTemplate {
 			newCellEmpFore.setCellValue(empFore.get(x));
 		}
 		
-		inputStream.close();
+		//inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		outputStream.close();
+		//outputStream.close();
 	}
 
+
+	public static void addingEntitlementPerm(String filePath, String fileName, String sheetName, String  empNo , Object[] entitlementDetails) throws IOException {
+		
+		//Object[] entitlement1Details= {entitlement1, "", ThreadLocalRandom.current().nextInt(100, 300)};
+		ArrayList<String> headers=new ArrayList<String>();
+		
+		File file=new File(filePath+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
+		
+		Sheet required=employeeUploadTemplate.getSheet(sheetName);
+		Row header=required.getRow(0);
+		Row bindingsRow=required.getRow(1);
+		int headerLenght=header.getLastCellNum();
+		int rowCountinRequiredSheet=required.getLastRowNum();
+		int rowNoOfEmp=0;
+		ArrayList<Integer> coloumnsNos=new ArrayList<Integer>();
+		for (int x=3; x<headerLenght; x++) {
+			Cell cell=header.getCell(x);
+			String cellValue=cell.getStringCellValue();
+			headers.add(cellValue);
+			coloumnsNos.add(x);
+			if(headers.size()>1 && headers.get(headers.size()-1)==headers.get(headers.size()-2)) {
+				headers.remove(headers.size()-1);
+				coloumnsNos.remove(coloumnsNos.size()-1);
+			}
+		}
+		
+		
+		for(int x=0; x<=rowCountinRequiredSheet; x++) {
+			Row row=required.getRow(x);
+			Cell cell=row.getCell(0);
+			if(cell!=null && cell.getStringCellValue().contentEquals(empNo)) { 	rowNoOfEmp=x; break;}
+   	 	}
+		
+		if(rowNoOfEmp==0) {	System.out.println("Failed "+empNo+" not found in sheet to add ETypes");	}
+		Row empRow=required.getRow(rowNoOfEmp);
+		Cell empNo1=empRow.getCell(0);
+		Boolean isEntitlementEntered=false;
+		int isEntitlementDuplicate=0;
+		
+		for(int x=0; x<headers.size(); x++) {
+			if(headers.get(x).substring(0, headers.get(x).length()-2).contentEquals(String.valueOf(entitlementDetails[0]))) {
+				if(empRow.getCell(coloumnsNos.get(x))==null || empRow.getCell(coloumnsNos.get(x)).getCellType()==CellType.BLANK) {
+					Cell x1=empRow.createCell(coloumnsNos.get(x));
+	   		   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+	   		   	 	
+	   		   	 	Cell x2=empRow.createCell(coloumnsNos.get(x)+1);
+	   		   	 	x2.setCellValue(String.valueOf(entitlementDetails[1]));
+	   		   	 	
+	   		   	 	Cell x3=empRow.createCell(coloumnsNos.get(x)+2);
+	   		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
+	   		   	 	
+	   		   	 	isEntitlementEntered=true;
+	   		   	 	break;
+				}else {
+					isEntitlementDuplicate++;
+					
+				}
+			}
+		}
+		
+		
+		if(isEntitlementEntered==false) {
+				
+				Cell z1=header.createCell(headerLenght);
+		   	 	z1.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell z2=header.createCell(headerLenght+1);
+		   	 	z2.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell z3=header.createCell(headerLenght+2);
+		   	 	z3.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell y1=bindingsRow.createCell(headerLenght);
+		   	 	y1.setCellValue("ENP!Element Type");
+		   	 	
+		   	 	Cell y2=bindingsRow.createCell(headerLenght+1);
+		   	 	y2.setCellValue("ENP!Effective To");
+		   	 	
+		   	 	Cell y3=bindingsRow.createCell(headerLenght+2);
+		   	 	y3.setCellValue("ENP!Amount");
+		   	 	
+		   	 	Cell x1=empRow.createCell(headerLenght);
+		   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+		   	 	
+		   	 	Cell x2=empRow.createCell(headerLenght+1);
+		   	 	x2.setCellValue(String.valueOf(entitlementDetails[1]));
+		   	 	
+		   	 	Cell x3=empRow.createCell(headerLenght+2);
+		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
+		}
+		
+		//inputStream.close();
+		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+		employeeUploadTemplate.write(outputStream);
+		//outputStream.close();
+	}
+	
+	
+	public static void addingEntitlementTemp(String filePath, String fileName, String sheetName, String  empNo , Object[] entitlementDetails) throws IOException {
+		
+		//Object[] entitlement1Details= {entitlement1, ThreadLocalRandom.current().nextInt(100, 300)};
+				ArrayList<String> headers=new ArrayList<String>();
+				
+				File file=new File(filePath+fileName);
+				FileInputStream inputStream = new FileInputStream(file);
+				
+				XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
+				
+				Sheet required=employeeUploadTemplate.getSheet(sheetName);
+				Row header=required.getRow(0);
+				Row bindingsRow=required.getRow(1);
+				int headerLenght=header.getLastCellNum();
+				int rowCountinRequiredSheet=required.getLastRowNum();
+				int rowNoOfEmp=0;
+				ArrayList<Integer> coloumnsNos=new ArrayList<Integer>();
+				for (int x=3; x<headerLenght; x++) {
+					Cell cell=header.getCell(x);
+					String cellValue=cell.getStringCellValue();
+					headers.add(cellValue);
+					coloumnsNos.add(x);
+					if(headers.size()>1 && headers.get(headers.size()-1)==headers.get(headers.size()-2)) {
+						headers.remove(headers.size()-1);
+						coloumnsNos.remove(coloumnsNos.size()-1);
+					}
+				}
+				
+				
+				for(int x=0; x<=rowCountinRequiredSheet; x++) {
+					Row row=required.getRow(x);
+					Cell cell=row.getCell(0);
+					if(cell!=null && cell.getStringCellValue().contentEquals(empNo)) { 	rowNoOfEmp=x; break;}
+		   	 	}
+				
+				if(rowNoOfEmp==0) {	System.out.println("Failed "+empNo+" not found in sheet to add ETypes");	}
+				Row empRow=required.getRow(rowNoOfEmp);
+				Cell empNo1=empRow.getCell(0);
+				Boolean isEntitlementEntered=false;
+				int isEntitlementDuplicate=0;
+				
+				for(int x=0; x<headers.size(); x++) {
+					if(headers.get(x).substring(0, headers.get(x).length()-2).contentEquals(String.valueOf(entitlementDetails[0]))) {
+						if(empRow.getCell(coloumnsNos.get(x))==null || empRow.getCell(coloumnsNos.get(x)).getCellType()==CellType.BLANK) {
+							Cell x1=empRow.createCell(coloumnsNos.get(x));
+			   		   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+			   		   	 	
+			   		   	 	Cell x2=empRow.createCell(coloumnsNos.get(x)+1);
+			   		   	 	x2.setCellValue((Integer) entitlementDetails[1]);
+			   		   	 	
+			   		   	 	isEntitlementEntered=true;
+			   		   	 	break;
+						}else {
+							isEntitlementDuplicate++;
+							
+						}
+					}
+				}
+				
+				
+				if(isEntitlementEntered==false) {
+						
+						Cell z1=header.createCell(headerLenght);
+				   	 	z1.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+				   	 	
+				   	 	Cell z2=header.createCell(headerLenght+1);
+				   	 	z2.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+				   	 	
+				   	 	Cell y1=bindingsRow.createCell(headerLenght);
+				   	 	y1.setCellValue("ENT!Element Type");
+				   	 	
+				   	 	Cell y2=bindingsRow.createCell(headerLenght+1);
+				   	 	y2.setCellValue("ENT!Amount");
+				   	 	
+				   	 	Cell x1=empRow.createCell(headerLenght);
+				   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+				   	 	
+				   	 	Cell x2=empRow.createCell(headerLenght+1);
+				   	 	x2.setCellValue((Integer) entitlementDetails[1]);
+				   	 	
+				}
+				
+				//inputStream.close();
+				FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+				employeeUploadTemplate.write(outputStream);
+				//outputStream.close();
+		
+	}
+	
+
+	
+	public static void addingEntitlementUnit(String filePath, String fileName, String sheetName, String  empNo , Object[] entitlementDetails) throws IOException {
+		
+		//Object[] entitlement1Details= {entitlement1, "", ThreadLocalRandom.current().nextInt(100, 300)};
+		ArrayList<String> headers=new ArrayList<String>();
+		
+		File file=new File(filePath+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
+		
+		Sheet required=employeeUploadTemplate.getSheet(sheetName);
+		Row header=required.getRow(0);
+		Row bindingsRow=required.getRow(1);
+		int headerLenght=header.getLastCellNum();
+		int rowCountinRequiredSheet=required.getLastRowNum();
+		int rowNoOfEmp=0;
+		ArrayList<Integer> coloumnsNos=new ArrayList<Integer>();
+		
+		for (int x=3; x<headerLenght; x++) {
+			Cell cell=header.getCell(x);
+			String cellValue=cell.getStringCellValue();
+			headers.add(cellValue);
+			coloumnsNos.add(x);
+			if(headers.size()>1 && headers.get(headers.size()-1)==headers.get(headers.size()-2)) {
+				headers.remove(headers.size()-1);
+				coloumnsNos.remove(coloumnsNos.size()-1);
+			}
+		}
+		
+		
+		for(int x=0; x<=rowCountinRequiredSheet; x++) {
+			Row row=required.getRow(x);
+			Cell cell=row.getCell(0);
+			if(cell!=null && cell.getStringCellValue().contentEquals(empNo)) { 	rowNoOfEmp=x; break;}
+   	 	}
+		
+		if(rowNoOfEmp==0) {	
+			System.out.println("Failed "+empNo+" not found in sheet to add ETypes");	
+			Assert.fail("Failed "+empNo+" not found in sheet to add ETypes");}
+		Row empRow=required.getRow(rowNoOfEmp);
+		Cell empNo1=empRow.getCell(0);
+		Boolean isEntitlementEntered=false;
+		int isEntitlementDuplicate=0;
+		
+		for(int x=0; x<headers.size(); x++) {
+			if(headers.get(x).substring(0, headers.get(x).length()-2).contentEquals(String.valueOf(entitlementDetails[0]))) {
+				if(empRow.getCell(coloumnsNos.get(x))==null || empRow.getCell(coloumnsNos.get(x)).getCellType()==CellType.BLANK) {
+					Cell x1=empRow.createCell(coloumnsNos.get(x));
+	   		   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+	   		   	 	
+	   		   	 	Cell x2=empRow.createCell(coloumnsNos.get(x)+1);
+	   		   	 	x2.setCellValue(String.valueOf(entitlementDetails[1]));
+	   		   	 	
+	   		   	 	Cell x3=empRow.createCell(coloumnsNos.get(x)+2);
+	   		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
+	   		   	 	
+	   		   	 	isEntitlementEntered=true;
+	   		   	 	break;
+				}else {
+					isEntitlementDuplicate++;
+					
+				}
+			}
+		}
+		
+		
+		if(isEntitlementEntered==false) {
+				
+				Cell z1=header.createCell(headerLenght);
+		   	 	z1.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell z2=header.createCell(headerLenght+1);
+		   	 	z2.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell z3=header.createCell(headerLenght+2);
+		   	 	z3.setCellValue(String.valueOf(entitlementDetails[0])+" "+isEntitlementDuplicate);
+		   	 	
+		   	 	Cell y1=bindingsRow.createCell(headerLenght);
+		   	 	y1.setCellValue("ENU!Element Type");
+		   	 	
+		   	 	Cell y2=bindingsRow.createCell(headerLenght+1);
+		   	 	y2.setCellValue("ENU!#Units");
+		   	 	
+		   	 	Cell y3=bindingsRow.createCell(headerLenght+2);
+		   	 	y3.setCellValue("ENU!Rate Override");
+		   	 	
+		   	 	Cell x1=empRow.createCell(headerLenght);
+		   	 	x1.setCellValue(String.valueOf(entitlementDetails[0]));
+		   	 	
+		   	 	Cell x2=empRow.createCell(headerLenght+1);
+		   	 	x2.setCellValue(String.valueOf(entitlementDetails[1]));
+		   	 	
+		   	 	Cell x3=empRow.createCell(headerLenght+2);
+		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
+		}
+		
+		//inputStream.close();
+		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+		employeeUploadTemplate.write(outputStream);
+		//outputStream.close();
+	}
+	
+	
+	public static void addingETypes(String filePath, String fileName, String sheetName, String  empNo , Object[] elementTypeDetails) throws IOException {
+		
+		//Object[] entitlement1Details= {entitlement1, "", ThreadLocalRandom.current().nextInt(100, 300)};
+		ArrayList<String> headers=new ArrayList<String>();
+		ArrayList<String> bindings=new ArrayList<String>();
+		if(sheetName=="Perm Entitlements") 		{	bindings.add("ENP!Element Type");	bindings.add("ENP!Effective To");	bindings.add("ENP!Amount");			}
+		if(sheetName=="Temp Entitlements") 		{	bindings.add("ENT!Element Type");										bindings.add("ENT!Amount");			}
+		if(sheetName=="Unit Entitlements") 		{	bindings.add("ENU!Element Type");	bindings.add("ENU!#Units");			bindings.add("ENU!Rate Override");	}
+		if(sheetName=="Perm Notional Amounts") 	{	bindings.add("NAP!Element Type");	bindings.add("NAP!End Period");		bindings.add("NAP!Amount");			}
+		if(sheetName=="Temp Notional Amounts") 	{	bindings.add("NAT!Element Type");										bindings.add("NAT!Amount");			}
+		if(sheetName=="Perm Paydeds") 			{	bindings.add("PDP!Element Type");	bindings.add("PDP!Effective To");	bindings.add("PDP!Amount");			}
+		if(sheetName=="Temp Paydeds") 			{	bindings.add("PDT!Element Type");										bindings.add("PDT!Amount");			}
+		if(sheetName=="Unit Pays") 				{	bindings.add("UP!Element Type");	bindings.add("UP!#Units");			bindings.add("UP!Rate Override");	}
+		
+		int elementTypeDetailsLenght=elementTypeDetails.length;
+		
+		File file=new File(filePath+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
+		
+		Sheet requiredSheet=employeeUploadTemplate.getSheet(sheetName);
+		Row header=requiredSheet.getRow(0);
+		Row bindingsRow=requiredSheet.getRow(1);
+		int headerLenght=header.getLastCellNum();
+		int rowCountinRequiredSheet=requiredSheet.getLastRowNum();
+		int rowNoOfEmp=0;
+		ArrayList<Integer> coloumnsNos=new ArrayList<Integer>();
+		for (int x=3; x<headerLenght; x++) {
+			Cell cell=header.getCell(x);
+			String cellValue=cell.getStringCellValue();
+			headers.add(cellValue);
+			coloumnsNos.add(x);
+			if(headers.size()>1 && headers.get(headers.size()-1)==headers.get(headers.size()-2)) {
+				headers.remove(headers.size()-1);
+				coloumnsNos.remove(coloumnsNos.size()-1);
+			}
+		}
+		
+		
+		for(int x=0; x<=rowCountinRequiredSheet; x++) {
+			Row row=requiredSheet.getRow(x);
+			Cell cell=row.getCell(0);
+			if(cell!=null && cell.getStringCellValue().contentEquals(empNo)) { 	rowNoOfEmp=x; break;}
+   	 	}
+		
+		if(rowNoOfEmp==0) {	System.out.println("Failed "+empNo+" not found in sheet to add ETypes");	
+				Assert.fail("Failed "+empNo+" not found in sheet to add ETypes");
+				}
+		
+		Row empRow=requiredSheet.getRow(rowNoOfEmp);
+		Cell empNo1=empRow.getCell(0);
+		Boolean isETypeEntered=false;
+		int isETypeDuplicate=0;
+		
+		for(int x=0; x<headers.size(); x++) {
+			if(headers.get(x).substring(0, headers.get(x).length()-2).contentEquals(String.valueOf(elementTypeDetails[0]))) {
+				if(empRow.getCell(coloumnsNos.get(x))==null || empRow.getCell(coloumnsNos.get(x)).getCellType()==CellType.BLANK) {
+					if(elementTypeDetailsLenght<=2) {
+						Cell x1=empRow.createCell(coloumnsNos.get(x));
+		   		   	 	x1.setCellValue(String.valueOf(elementTypeDetails[0]));
+		   		   	 	
+			   		   	Cell x2=empRow.createCell(coloumnsNos.get(x)+1);
+		   		   	 	x2.setCellValue((Integer) elementTypeDetails[1]);
+					}else {
+						Cell x1=empRow.createCell(coloumnsNos.get(x));
+		   		   	 	x1.setCellValue(String.valueOf(elementTypeDetails[0]));
+		   		   	 	
+		   		   	 	Cell x2=empRow.createCell(coloumnsNos.get(x)+1);
+		   		   	 	x2.setCellValue(String.valueOf(elementTypeDetails[1]));
+		   		   	 	
+		   		   	 	Cell x3=empRow.createCell(coloumnsNos.get(x)+2);
+			   		   	x3.setCellValue((Integer) elementTypeDetails[2]);
+					}
+					isETypeEntered=true;
+	   		   	 	break;
+				}else {
+					isETypeDuplicate++;
+					
+				}
+			}
+		}
+		
+		
+		if(isETypeEntered==false) {
+			
+			if(elementTypeDetailsLenght<=2) {
+				Cell z1=header.createCell(headerLenght);
+		   	 	z1.setCellValue(String.valueOf(elementTypeDetails[0])+" "+isETypeDuplicate);
+		   	 	
+		   	 	Cell z2=header.createCell(headerLenght+1);
+		   	 	z2.setCellValue(String.valueOf(elementTypeDetails[0])+" "+isETypeDuplicate);
+		   	 	
+		   	 	Cell y1=bindingsRow.createCell(headerLenght);
+		   	 	y1.setCellValue(bindings.get(0));
+		   	 	
+		   	 	Cell y2=bindingsRow.createCell(headerLenght+1);
+		   	 	y2.setCellValue(bindings.get(1));
+		   	 	
+		   	 	Cell x1=empRow.createCell(headerLenght);
+		   	 	x1.setCellValue(String.valueOf(elementTypeDetails[0]));
+		   	 	
+		   	 	Cell x2=empRow.createCell(headerLenght+1);
+		   	 	x2.setCellValue((Integer) elementTypeDetails[1]);
+		   	 	
+		   	 	
+			}else {
+				Cell z1=header.createCell(headerLenght);
+		   	 	z1.setCellValue(String.valueOf(elementTypeDetails[0])+" "+isETypeDuplicate);
+		   	 	
+		   	 	Cell z2=header.createCell(headerLenght+1);
+		   	 	z2.setCellValue(String.valueOf(elementTypeDetails[0])+" "+isETypeDuplicate);
+		   	 	
+		   	 	Cell z3=header.createCell(headerLenght+2);
+		   	 	z3.setCellValue(String.valueOf(elementTypeDetails[0])+" "+isETypeDuplicate);
+		   	 	
+		   	 	Cell y1=bindingsRow.createCell(headerLenght);
+		   	 	y1.setCellValue(bindings.get(0));
+		   	 	
+		   	 	Cell y2=bindingsRow.createCell(headerLenght+1);
+		   	 	y2.setCellValue(bindings.get(1));
+		   	 	
+		   	 	Cell y3=bindingsRow.createCell(headerLenght+2);
+		   	 	y3.setCellValue(bindings.get(2));
+		   	 	
+		   	 	Cell x1=empRow.createCell(headerLenght);
+		   	 	x1.setCellValue(String.valueOf(elementTypeDetails[0]));
+		   	 	
+		   	 	Cell x2=empRow.createCell(headerLenght+1);
+		   	 	x2.setCellValue(String.valueOf(elementTypeDetails[1]));
+		   	 		
+		   	 	Cell x3=empRow.createCell(headerLenght+2);
+		   	 	x3.setCellValue((Integer) elementTypeDetails[2]);
+			}
+		}
+		
+		//inputStream.close();
+		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+		employeeUploadTemplate.write(outputStream);
+		//outputStream.close();
+	}
+	
+	
 }

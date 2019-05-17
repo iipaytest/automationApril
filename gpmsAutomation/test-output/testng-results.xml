@@ -1,29 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="1" ignored="0" total="4" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="58460" started-at="2019-05-13T12:16:07Z" finished-at="2019-05-13T12:17:06Z">
+  <suite name="Default suite" duration-ms="86339" started-at="2019-05-17T11:57:07Z" finished-at="2019-05-17T11:58:33Z">
     <groups>
       <group name="regression">
-        <method signature="basicDetails.homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@271053e1]" name="homePage" class="gpmsUI.gpmsAutomation.basicDetails"/>
-        <method signature="basicDetails.loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@271053e1]" name="loginTST3" class="gpmsUI.gpmsAutomation.basicDetails"/>
+        <method signature="basicDetails.homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="homePage" class="gpmsUI.gpmsAutomation.basicDetails"/>
+        <method signature="basicDetails.loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="loginTST3" class="gpmsUI.gpmsAutomation.basicDetails"/>
       </group> <!-- regression -->
     </groups>
-    <test name="Default test" duration-ms="58460" started-at="2019-05-13T12:16:07Z" finished-at="2019-05-13T12:17:06Z">
-      <class name="gpmsUI.gpmsAutomation.downloadReports">
-        <test-method status="PASS" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@271053e1]" name="homePage" duration-ms="6337" started-at="2019-05-13T12:16:08Z" finished-at="2019-05-13T12:16:14Z">
+    <test name="Default test" duration-ms="86339" started-at="2019-05-17T11:57:07Z" finished-at="2019-05-17T11:58:33Z">
+      <class name="gpmsUI.gpmsAutomation.downloadUploadReports">
+        <test-method status="FAIL" signature="homePage()[pri:0, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="homePage" duration-ms="5407" started-at="2019-05-17T11:57:07Z" finished-at="2019-05-17T11:57:12Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed: Expected version 'tc3_#20 / 04.08.20', present '_#20 / 04.08.20']]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed: Expected version 'tc3_#20 / 04.08.20', present '_#20 / 04.08.20'
+at org.testng.Assert.fail(Assert.java:96)
+at gpmsUI.gpmsAutomation.basicDetails.homePage(basicDetails.java:68)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- homePage -->
-        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@271053e1]" name="loginTST3" duration-ms="2196" started-at="2019-05-13T12:16:14Z" finished-at="2019-05-13T12:16:16Z">
+        <test-method status="PASS" signature="loginTST3()[pri:0, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="loginTST3" duration-ms="2233" started-at="2019-05-17T11:57:12Z" finished-at="2019-05-17T11:57:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTST3 -->
-        <test-method status="PASS" signature="downloadEmployeeDataUploadTemplate()[pri:0, instance:gpmsUI.gpmsAutomation.downloadReports@271053e1]" name="downloadEmployeeDataUploadTemplate" duration-ms="49896" started-at="2019-05-13T12:16:16Z" finished-at="2019-05-13T12:17:06Z">
+        <test-method status="PASS" signature="downloadEmployeeDataUploadTemplate()[pri:1, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="downloadEmployeeDataUploadTemplate" duration-ms="37136" started-at="2019-05-17T11:57:14Z" finished-at="2019-05-17T11:57:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- downloadEmployeeDataUploadTemplate -->
-      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
+        <test-method status="PASS" signature="adddDetailsInEmployeeDataUploadTemplate()[pri:2, instance:gpmsUI.gpmsAutomation.downloadUploadReports@59ec2012]" name="adddDetailsInEmployeeDataUploadTemplate" duration-ms="41533" started-at="2019-05-17T11:57:52Z" finished-at="2019-05-17T11:58:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adddDetailsInEmployeeDataUploadTemplate -->
+      </class> <!-- gpmsUI.gpmsAutomation.downloadUploadReports -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

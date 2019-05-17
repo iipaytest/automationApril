@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Regression Suite">
+<suite name="Regression Suite" preserve-order="true">
  
   <listeners>
   	<listener class-name="reusableMethods.extentReports"/>
@@ -45,10 +45,10 @@
     
     <class name="gpmsUI.gpmsAutomation.functionValidations">
       	<methods>
-      		<exclude name="lockEmployeeLevel"/>					
-      		<exclude name="resetEmployeeLevel"/>
-      		<exclude name="unconfirmEmployeeLevel"/>
-      		<exclude name="allPeriodProcessingsFromPayrollLevel"/>
+      		<include name="lockEmployeeLevel"/>					
+      		<include name="resetEmployeeLevel"/>
+      		<include name="unconfirmEmployeeLevel"/>
+      		<include name="allPeriodProcessingsFromPayrollLevel"/>
       							
       		<exclude name="processPeriodPayrollLevel"/>
       		<exclude name="confirmPeriodPayrollLevel"/>
@@ -61,7 +61,7 @@
      
      <class name="gpmsUI.gpmsAutomation.addingEPADetails">
       	<methods>
-      		<exclude name="addEPARandom"/>					
+      		<include name="addEPARandom"/>					
       		<exclude name="addEPARequired"/>
       		
       	</methods>
@@ -75,9 +75,10 @@
       	</methods>
       </class>
     
-    <class name="gpmsUI.gpmsAutomation.downloadReports">
+    <class name="gpmsUI.gpmsAutomation.downloadUploadReports">
       	<methods>
-      		<exclude name="downloadEmployeeDataUploadTemplate"/>											
+      		<include name="downloadEmployeeDataUploadTemplate"/>
+      		<include name="adddDetailsInEmployeeDataUploadTemplate"/>											
       	</methods>
       </class>
     

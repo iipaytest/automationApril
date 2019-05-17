@@ -34,14 +34,14 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 			
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payments)).click();				
-				int noOfPaymentsToAdd=ThreadLocalRandom.current().nextInt(1, 3);	//Randomly picks either 1, 2 or 3 and will add that many payments randomly
+				int noOfPaymentsToAdd=ThreadLocalRandom.current().nextInt(2, 4);	//Randomly picks either 1, 2 or 3 and will add that many payments randomly
 				System.out.println("Totals Payments given are: "+noOfPaymentsToAdd);
 				for(int i=1; i<=noOfPaymentsToAdd; i++) {
 					String itemSelected=commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.payDedsDropDown);
 					if(i==1) {
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();Thread.sleep(500);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.payDedsEffectiveTo, effectiveFrom);
-						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(1000, 2000));
+						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(2000, 3000));
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To:"+effectiveFrom+"	Amount:"+amount);
@@ -50,7 +50,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 					else if (i==2){
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();
 						commonMethods.selectFromListPartialText(driver, employeeDetailsEPAPageObjects.payDedsEffectiveTo, "indefinite");
-						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(1000, 2000));
+						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(2000, 3000));
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.save)).click();Thread.sleep(1000);
 						System.out.println("	"+itemSelected+" > Effective From:"+effectiveFrom+"	Effective To: Indefinite	Amount:"+amount);
@@ -58,7 +58,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 					}else {
 						String effectiveFrom=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveFrom+"/option")).getText();Thread.sleep(1000);
 						commonMethods.selectFromListExactText(driver, employeeDetailsEPAPageObjects.payDedsEffectiveTo, effectiveFrom);
-						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(1000, 2000));
+						String amount=String.valueOf(ThreadLocalRandom.current().nextInt(2000, 3000));
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveTo)).sendKeys(Keys.ARROW_DOWN);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsEffectiveTo)).sendKeys(Keys.ARROW_DOWN);
 						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payDedsAmount)).sendKeys(amount);
@@ -86,7 +86,7 @@ public class addingPayDedsEntitlementsRandom extends basicDetails {
 			}else {	
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.deductions)).click();				
-				int noOfDeductionsToAdd=ThreadLocalRandom.current().nextInt(1, 3);	//Randomly picks either 1, 2 or 3 and will add that many deductions randomly
+				int noOfDeductionsToAdd=ThreadLocalRandom.current().nextInt(2, 3);	//Randomly picks either 1, 2 or 3 and will add that many deductions randomly
 				System.out.println("Totals Deductions given are: "+noOfDeductionsToAdd);
 				for(int i=1; i<=noOfDeductionsToAdd; i++) {
 					String itemSelected=commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.payDedsDropDown);

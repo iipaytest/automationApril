@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import reusableMethods.commonMethods;
+import testInputs.testInputGPMS;
 
 public class reportsPageObjects {
 	
@@ -38,18 +39,39 @@ public class reportsPageObjects {
 	
 	public static final String summaryWindowClose="//*[@id='processingMessages_close']";
 	public static final String summaryWindowFrame="//*[@id='processingMessages_iframe']";
+	public static final String summaryWindowFatalMessage="//*[text()='[FATAL]']/following-sibling::div[1]";
+	public static final String summaryWindowWarningMessage="//*[text()='[WARNING]']/following-sibling::div[1]";
 	
 	
-	public static void reportsInboxRefreshUntillComplete(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+	
+	
+	public static String reportsInboxRefreshUntillComplete(WebDriver driver) throws InterruptedException, AWTException, IOException {		
 		
 		Thread.sleep(1000);
 		int i=20; //no of seconds to wait before breaking while loop for clicking refresh button
 		while(driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText").contains("Processing") && i>=0) {Thread.sleep(1000);	driver.findElement(By.xpath(reportsPageObjects.refresh)).click();	i--; }
 		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
 		String reportName=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
-		System.out.println(reportName+"'s Status: "+status);
+		
+		return status;
 	}
-
+	
+	public static String reportsInboxErrorMessages(WebDriver driver) throws InterruptedException, AWTException, IOException {
+		driver.findElement(By.xpath(reportsPageObjects.runtimeDetailsSummary)).click();
+		driver.switchTo().frame(driver.findElement(By.xpath(reportsPageObjects.summaryWindowFrame)));
+		String errorMessage="";
+		if(driver.findElements(By.xpath(reportsPageObjects.summaryWindowFatalMessage)).size()>0) {
+			String fatalMessage=driver.findElement(By.xpath(reportsPageObjects.summaryWindowFatalMessage)).getText();
+			errorMessage=errorMessage+"Fatal message: "+fatalMessage;
+		}
+		if(driver.findElements(By.xpath(reportsPageObjects.summaryWindowWarningMessage)).size()>0) {
+			String warningMessage=driver.findElement(By.xpath(reportsPageObjects.summaryWindowWarningMessage)).getText();
+			errorMessage=errorMessage+"and Warning message: "+warningMessage;
+		}
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
+		return errorMessage;
+	}
 	public static Boolean isReportStatusComplete(WebDriver driver) throws InterruptedException, AWTException, IOException {	
 		Thread.sleep(1000);
 		Boolean isReportStatusComplete=false;
@@ -121,7 +143,7 @@ public class reportsPageObjects {
 		String strDateFormat = "yyyyMMdd"; 									//Date format is Specified
 		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
 		String date1=objSDF.format(date);
-		reportName=reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+"."+reportRequestTime.replace(":", "-")+").xlsx";
+		reportName=testInputGPMS.clientID+"."+reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+"."+reportRequestTime.replace(":", "-")+").xlsx";
 		return reportName;
 	}
 	
