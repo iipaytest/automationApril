@@ -28,11 +28,11 @@ import testInputs.testInputGPMS;
 
 public class downloadUploadReports extends basicDetails{
 
-	public static String fileName=null;
+	//public static String fileName=null;
 	public static final String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
 	
 	
-	@Test(priority = 1)
+	@Test
 	//This is to download Employee Data Upload Template Function from Employee level
 	public void downloadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
@@ -78,14 +78,13 @@ public class downloadUploadReports extends basicDetails{
 		driver.findElement(By.xpath(payrollPageObjects.reportsEmployeeDataUploadTemplate)).click();
 		driver.findElement(By.xpath(commonPageObjects.submitButton)).click();
 		reportsPageObjects.reportsInboxRefreshUntillComplete(driver);
-		reportsPageObjects.reportsInboxReportDownload(driver);
 			
 	}
 	
-	@Test(priority = 2)
+	@Test
 	public void adddDetailsInEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
-		fileName=reportsPageObjects.downloadedReportName(driver);
+		String fileName=reportsPageObjects.reportsInboxReportDownloadandGetReportName(driver, filePath);
 		System.out.println(fileName);
 		System.out.println(filePath);
 		
@@ -198,17 +197,22 @@ public class downloadUploadReports extends basicDetails{
 			//To set upload key as today's date MMMdd
 			Cell uploadKey=payrollValidationDetailsRow.getCell(3);
 			uploadKey.setCellValue(upladKey);
-
-			//Adding new employees
-			int noOfEmployeesToAdd=2;
-			ArrayList<ArrayList<String>> newEmpDetails=addingDetailsInEmployeeUploadTemplate.addingEmployeesDuplicateInMasterData(filePath, fileName, noOfEmployeesToAdd);
-			ArrayList<String> newEmpNosAdded=newEmpDetails.get(0);
 			
 			ArrayList<String> sheetsNames=new ArrayList<String>();
 			int noOfSheets=employeeUploadTemplate.getNumberOfSheets();
 			for(int i=0; i<noOfSheets; i++) {
 				sheetsNames.add(employeeUploadTemplate.getSheetName(i));
 			}
+			
+			inputStream.close();
+			FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+			employeeUploadTemplate.write(outputStream);
+			outputStream.close();
+
+			//Adding new employees
+			int noOfEmployeesToAdd=2;
+			ArrayList<ArrayList<String>> newEmpDetails=addingDetailsInEmployeeUploadTemplate.addingEmployeesDuplicateInMasterData(filePath, fileName, noOfEmployeesToAdd);
+			ArrayList<String> newEmpNosAdded=newEmpDetails.get(0);
 			
 			String entitlementPermSheet="Perm Entitlements";
 			String entitlementTempSheet="Temp Entitlements";
@@ -219,13 +223,22 @@ public class downloadUploadReports extends basicDetails{
 			String paydedsTempSheet="Temp Paydeds";
 			String unitPaysSheet="Unit Pays";
 			
+			for(String sheetName: sheetsNames) {	
+				if(sheetName.equals(entitlementPermSheet))	{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementPermSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(entitlementTempSheet))	{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementTempSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(entitlementUnitSheet))	{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementUnitSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(notionalPermSheet))		{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, notionalPermSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(notionalTempSheet))		{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, notionalTempSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(paydedsPermSheet))		{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, paydedsPermSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(paydedsTempSheet))		{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, paydedsTempSheet, newEmpDetails, noOfEmployeesToAdd);	}
+				if(sheetName.equals(unitPaysSheet))			{	addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, unitPaysSheet, newEmpDetails, noOfEmployeesToAdd);		}
+			}
+			
 			//based on the no of employee added to mater data Sheet above, add same employees to other all entitlements, paydeds, notional and unit pay sheet
 			//and also add random entitlements, paydeds, notional and unit pay values to each employee
 			for(int i=0; i<newEmpNosAdded.size(); i++) {
 				for(String sheetName: sheetsNames) {
 					if(sheetName.equals(entitlementPermSheet))	{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementPermSheet, newEmpDetails, noOfEmployeesToAdd);
-						
 						//pick two random number in size of entitlementsPerm for two different entitlements
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, entitlementsPerm.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, entitlementsPerm.size());
@@ -241,10 +254,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] entitlementPerm2= {entitlement, "", ThreadLocalRandom.current().nextInt(150, 200)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, entitlementPermSheet, newEmpNosAdded.get(i), entitlementPerm2);
 					}
-					
 					if(sheetName.equals(entitlementTempSheet))	{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementTempSheet, newEmpDetails, noOfEmployeesToAdd);
-						
 						//pick two random number in size of entitlementsTemp for two different entitlements
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, entitlementsTemp.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, entitlementsTemp.size());
@@ -260,10 +270,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] entitlementTemp2= {entitlement, ThreadLocalRandom.current().nextInt(150, 200)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, entitlementTempSheet, newEmpNosAdded.get(i), entitlementTemp2);
 					}
-					
 					if(sheetName.equals(entitlementUnitSheet))	{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, entitlementUnitSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number in size of entitlementsUnit for two different entitlements
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, entitlementsUnit.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, entitlementsUnit.size());
@@ -279,10 +286,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] entitlementUnit2= {entitlement, ThreadLocalRandom.current().nextInt(2, 6), ThreadLocalRandom.current().nextInt(5, 12)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, entitlementUnitSheet, newEmpNosAdded.get(i), entitlementUnit2);
 					}
-					
 					if(sheetName.equals(notionalPermSheet))		{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, notionalPermSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number in size of notionalPerm for two different notionals
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, notionalPerm.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, notionalPerm.size());
@@ -298,10 +302,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] notionalPerm2= {entitlement, "", ThreadLocalRandom.current().nextInt(5, 12)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, notionalPermSheet, newEmpNosAdded.get(i), notionalPerm2);
 					}
-					
 					if(sheetName.equals(notionalTempSheet))		{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, notionalTempSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number in size of notionalTemp for two different notionals
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, notionalTemp.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, notionalTemp.size());
@@ -317,10 +318,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] notionalTemp2= {entitlement, ThreadLocalRandom.current().nextInt(150, 200)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, notionalTempSheet, newEmpNosAdded.get(i), notionalTemp2);
 					}
-					
 					if(sheetName.equals(paydedsPermSheet))		{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, paydedsPermSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number from Payments size and deductions size
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, payments.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, deductions.size());
@@ -335,10 +333,7 @@ public class downloadUploadReports extends basicDetails{
 						Object[] deductionPerm= {entitlement, currentPeriod, ThreadLocalRandom.current().nextInt(150, 200)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, paydedsPermSheet, newEmpNosAdded.get(i), deductionPerm);
 					}
-					
 					if(sheetName.equals(paydedsTempSheet))		{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, paydedsTempSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number from Payments size and deductions size
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, payments.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, deductions.size());
@@ -346,17 +341,14 @@ public class downloadUploadReports extends basicDetails{
 						String entitlement=payments.get(randomNo1);
 						System.out.println(entitlement);
 						Object[] paymentTemp= {entitlement, ThreadLocalRandom.current().nextInt(100, 150)};
-						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, paydedsPermSheet, newEmpNosAdded.get(i), paymentTemp);
+						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, paydedsTempSheet, newEmpNosAdded.get(i), paymentTemp);
 						
 						entitlement=deductions.get(randomNo2);
 						System.out.println(entitlement);
 						Object[] deductionsTemp= {entitlement, ThreadLocalRandom.current().nextInt(150, 200)};
 						addingDetailsInEmployeeUploadTemplate.addingETypes(filePath, fileName, paydedsTempSheet, newEmpNosAdded.get(i), deductionsTemp);
 					}
-					
 					if(sheetName.equals(unitPaysSheet))			{
-						addingDetailsInEmployeeUploadTemplate.addingEmployeesInOtherSheets(filePath, fileName, unitPaysSheet, newEmpDetails, noOfEmployeesToAdd);
-
 						//pick two random number in size of unitPays for two different Unit Pays
 						int randomNo1=ThreadLocalRandom.current().nextInt(3, unitPays.size());
 						int randomNo2=ThreadLocalRandom.current().nextInt(3, unitPays.size());
@@ -377,14 +369,96 @@ public class downloadUploadReports extends basicDetails{
 				}
 				
 			}
-	
+			
+			
+			String payrollName=testInputGPMS.payrollName;
+		 	
+	/*	 	file=new File(filePath+fileName);
+			inputStream = new FileInputStream(file);
+			
+			employeeUploadTemplate = new XSSFWorkbook(inputStream);
+			
+			Date date = new Date(); 											
+			String strDateFormat = "MMMdd"; 									
+			SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+			String upladKey=objSDF.format(date);
+			
+			Sheet payrollValidaion=employeeUploadTemplate.getSheet("Payroll Validation");
+			Row payrollValidationDetailsRow=payrollValidaion.getRow(1);
+			Cell uploadKey=payrollValidationDetailsRow.getCell(3);
+			uploadKey.setCellValue(upladKey);
+			
 			inputStream.close();
 			FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 			employeeUploadTemplate.write(outputStream);
 			outputStream.close();
+	*/	 	
+			payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+			payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+			int activePeriodRowNumber=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver);
+			System.out.println(activePeriodRowNumber);
+			List<WebElement> activeRowElements=payrollPageObjects.getWebElementsOfRequiredPayrollPeriodRow(driver, activePeriodRowNumber);
+			activeRowElements.get(0).click();
+			driver.findElement(By.xpath(payrollPageObjects.uploadsEmployeeUpload)).click();
+			driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileBrowseTextInput)).sendKeys(filePath+fileName);
+			
+			Thread.sleep(1000);
+			driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileUploadFromLocalFile)).click();
+	   	 	String status=reportsPageObjects.reportsInboxRefreshUntillComplete(driver);	
+	   	 	Boolean isStatusComplete=reportsPageObjects.isReportStatusComplete(driver);
+	   	 	if(isStatusComplete==false) {
+	   	 		String errorMessage=reportsPageObjects.reportsInboxErrorMessages(driver);
+	   	 		System.out.println("Upload Failed, status message: "+status+", Message Summary: "+errorMessage);	
+	   	 	}else {
+	   	 		System.out.println("Upload successful, status message: "+status);
+	   	 	}
 	
 	}
 
-	
-
+/*	@Test(priority = 3)
+	public void uploadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
+		
+		String payrollName=testInputGPMS.payrollName;
+	 	
+	 	File file=new File(filePath+fileName);
+		FileInputStream inputStream = new FileInputStream(file);
+		
+		XSSFWorkbook employeeUploadTemplate = new XSSFWorkbook(inputStream);
+		
+		Date date = new Date(); 											
+		String strDateFormat = "MMMdd"; 									
+		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+		String upladKey=objSDF.format(date);
+		
+		Sheet payrollValidaion=employeeUploadTemplate.getSheet("Payroll Validation");
+		Row payrollValidationDetailsRow=payrollValidaion.getRow(1);
+		Cell uploadKey=payrollValidationDetailsRow.getCell(3);
+		uploadKey.setCellValue(upladKey);
+		
+		inputStream.close();
+		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+		employeeUploadTemplate.write(outputStream);
+		outputStream.close();
+	 	
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+		payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+		int activePeriodRowNumber=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver);
+		System.out.println(activePeriodRowNumber);
+		List<WebElement> activeRowElements=payrollPageObjects.getWebElementsOfRequiredPayrollPeriodRow(driver, activePeriodRowNumber);
+		activeRowElements.get(0).click();
+		driver.findElement(By.xpath(payrollPageObjects.uploadsEmployeeUpload)).click();
+		driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileBrowseTextInput)).sendKeys(filePath+fileName);
+		
+		Thread.sleep(1000);
+		driver.findElement(By.xpath(uploadFilesPageObjects.payrollFileUploadFromLocalFile)).click();
+   	 	String status=reportsPageObjects.reportsInboxRefreshUntillComplete(driver);	
+   	 	Boolean isStatusComplete=reportsPageObjects.isReportStatusComplete(driver);
+   	 	if(isStatusComplete==false) {
+   	 		String errorMessage=reportsPageObjects.reportsInboxErrorMessages(driver);
+   	 		System.out.println("Upload Failed, status message: "+status+", Message Summary: "+errorMessage);	
+   	 	}else {
+   	 		System.out.println("Upload successful, status message: "+status);
+   	 	}
+	}
+*/
 }

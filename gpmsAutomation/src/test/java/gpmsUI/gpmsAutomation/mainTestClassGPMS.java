@@ -49,7 +49,7 @@ public class mainTestClassGPMS {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
+/*		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
 		chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\reportsDownloaded\\");
@@ -127,7 +127,22 @@ public class mainTestClassGPMS {
    	 	}else {
    	 		System.out.println("Upload successful, status message: "+status);
    	 	}
-  	 	
+ */ 	 	
+   	 	String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
+   	 	String reportName="AUTO.Employee_Data_Upload_Template_Employee_Data_Upload_Template.(20190517.";
+   	 	File dir=new File(filePath);
+		File[] allDownloads=dir.listFiles();
+		
+		for(int i = allDownloads.length-1; i >=0 ; i--) {
+			System.out.println(allDownloads[i].getName());
+			if(allDownloads[i].getName().contains(reportName)) {
+				reportName=allDownloads[i].getName();
+				break;
+			}
+		}
+		if(reportName.startsWith("~$")) { reportName=reportName.replace("~$", "");}
+		
+		System.out.println(reportName);
 		
 /*	//Download employee upload template and capture file name, 				
 		String payrollName=null;

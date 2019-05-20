@@ -11,16 +11,6 @@
           <include name="homePage"/>
         </methods>
       </class> <!-- gpmsUI.gpmsAutomation.basicDetails -->
-      <class name="gpmsUI.gpmsAutomation.functionValidations">
-        <methods>
-          <include name="unconfirmEmployeeLevel"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
-      <class name="gpmsUI.gpmsAutomation.downloadReports">
-        <methods>
-          <include name="adddDetailsInEmployeeDataUploadTemplate"/>
-        </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.downloadReports -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Regression Suite] -->

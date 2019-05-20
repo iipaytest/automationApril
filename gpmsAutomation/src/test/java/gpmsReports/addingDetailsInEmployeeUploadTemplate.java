@@ -125,14 +125,14 @@ public class addingDetailsInEmployeeUploadTemplate {
 			}
 		}
 		
-		//inputStream.close();
-		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
-		employeeUploadTemplate.write(outputStream);
-		//outputStream.close();
-		
 		newEmpDetails.add(newEmpNos);
 		newEmpDetails.add(newEmpSurnames);
 		newEmpDetails.add(newEmpForenames);
+		
+		inputStream.close();
+		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
+		employeeUploadTemplate.write(outputStream);
+		outputStream.close();
 		
 		return newEmpDetails;
 		
@@ -165,10 +165,10 @@ public class addingDetailsInEmployeeUploadTemplate {
 			newCellEmpFore.setCellValue(empFore.get(x));
 		}
 		
-		//inputStream.close();
+		inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		//outputStream.close();
+		outputStream.close();
 	}
 
 
@@ -265,10 +265,10 @@ public class addingDetailsInEmployeeUploadTemplate {
 		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
 		}
 		
-		//inputStream.close();
+		inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		//outputStream.close();
+		outputStream.close();
 	}
 	
 	
@@ -354,15 +354,14 @@ public class addingDetailsInEmployeeUploadTemplate {
 				   	 	
 				}
 				
-				//inputStream.close();
+				inputStream.close();
 				FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 				employeeUploadTemplate.write(outputStream);
-				//outputStream.close();
+				outputStream.close();
 		
 	}
 	
 
-	
 	public static void addingEntitlementUnit(String filePath, String fileName, String sheetName, String  empNo , Object[] entitlementDetails) throws IOException {
 		
 		//Object[] entitlement1Details= {entitlement1, "", ThreadLocalRandom.current().nextInt(100, 300)};
@@ -459,10 +458,10 @@ public class addingDetailsInEmployeeUploadTemplate {
 		   	 	x3.setCellValue((Integer) entitlementDetails[2]);
 		}
 		
-		//inputStream.close();
+		inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		//outputStream.close();
+		outputStream.close();
 	}
 	
 	
@@ -602,10 +601,10 @@ public class addingDetailsInEmployeeUploadTemplate {
 			}
 		}
 		
-		//inputStream.close();
+		inputStream.close();
 		FileOutputStream outputStream=new FileOutputStream(filePath+fileName);
 		employeeUploadTemplate.write(outputStream);
-		//outputStream.close();
+		outputStream.close();
 	}
 	
 	

@@ -39,16 +39,6 @@
       		<include name="addNotionalAmountsTempRandom"/>
       	</methods>
       </class> 
-    
-    <class name="gpmsUI.gpmsAutomation.functionValidations">
-      	<methods>
-      		<include name="lockEmployeeLevel"/>					
-      		<include name="resetEmployeeLevel"/>
-      		<include name="unconfirmEmployeeLevel"/>
-      		<include name="allPeriodProcessingsFromPayrollLevel"/>
-      		
-      	</methods>
-      </class>
      
      <class name="gpmsUI.gpmsAutomation.addingEPADetails">
       	<methods>
@@ -60,11 +50,23 @@
     <class name="gpmsUI.gpmsAutomation.downloadUploadReports">
       	<methods>
       		<include name="downloadEmployeeDataUploadTemplate"/>
-      		<include name="adddDetailsInEmployeeDataUploadTemplate"/>											
+      		<include name="adddDetailsInEmployeeDataUploadTemplate"/>
+      		<exclude name="uploadEmployeeDataUploadTemplate"/>											
       	</methods>
       </class>
     
-    
+    <class name="gpmsUI.gpmsAutomation.functionValidations">
+      	<methods>
+      		
+      		<include name="lockProcessConfirmPeriodsFromPayrollLevel"/>
+      		<include name="unconfirmEmployeeLevel"/>				
+      		<include name="resetEmployeeLevel"/>
+      		<include name="lockEmployeeLevel"/>	
+      		<include name="unconfirmPeriodPayrollLevel"/>
+      		<include name="resetPeriodPayrollLevel"/>
+      		
+      	</methods>
+      </class>
     
     </classes>
   </test> <!-- Test -->

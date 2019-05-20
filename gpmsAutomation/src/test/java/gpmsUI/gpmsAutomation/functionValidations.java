@@ -17,99 +17,10 @@ public class functionValidations extends basicDetails {
 
 	
 	@Test
-	//This is verify Lock Function from Employee level
-	public void lockEmployeeLevel() throws AWTException, InterruptedException, IOException {
-	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
-		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
-				
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).isDisplayed()) {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).click();
-					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {	System.out.println("Passed: Lock function from employee level working"); }
-					else {
-						System.out.println("Failed: Lock function from employee level not working");
-						commonMethods.takeScreenShot(driver, "Lock fuction from employee level not working");
-						Assert.fail("Failed: Lock function from employee level not working");
-					}
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-				}else {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-					System.out.println("Failed: Lock function from employee level not available, as Employee is in Reset Status");
-					commonMethods.takeScreenShot(driver, "Lock fuction from employee level not available");
-					Assert.fail("Failed: Lock function from employee level not available, as Employee is in Reset Status");
-				}
-	}
-	
-	
-	@Test
-	//This is verify Reset Function from Employee level
-	public void resetEmployeeLevel() throws AWTException, InterruptedException, IOException {
-	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
-		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);		
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).click();
-					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).isDisplayed()) {	System.out.println("Passed: Reset function from employee level working"); }
-					else {
-						System.out.println("Failed: Reset function from employee level not working");
-						commonMethods.takeScreenShot(driver, "Reset fuction from employee level not working");
-						Assert.fail("Failed: Reset function from employee level not working");
-					}
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-				}else {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-					System.out.println("Failed: Reset function from employee level not available, as Employee is in Lock Status");
-					commonMethods.takeScreenShot(driver, "Reset fuction from employee level not available");
-					Assert.fail("Failed: Reset function from employee level not available, as Employee is in Lock Status");
-				}	
-	}
-	
-	
-	@Test
-	//This is verify Unconfirm Function from Employee level
-	public void unconfirmEmployeeLevel() throws AWTException, InterruptedException, IOException {
-	
-		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);	
-		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
-		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
-		
-				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unconfirm)).isDisplayed()) {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unconfirm)).click();
-					driver.switchTo().alert().accept();
-					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
-					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {	System.out.println("Passed: Unconfirm function from employee level working"); }
-					else {
-						System.out.println("Failed: Unconfirm function from employee level not working");
-						commonMethods.takeScreenShot(driver, "Unconfirm fuction from employee level not working");
-						Assert.fail("Failed: Unconfirm function from employee level not working");
-					}
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-				}else {
-					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
-					System.out.println("Failed: Unconfirm function from employee level not available, as Employee is not in Confirmed Status");
-					commonMethods.takeScreenShot(driver, "Unconfirm fuction from employee level not available");
-					Assert.fail("Failed: Unconfirm function from employee level not available, as Employee is not in Confirmed Status");
-				}
-	}
-
-	@Test
 	//This is verify Lock, Process, Confirm, Unconfirm and Reset period Function from payroll level
-	public void allPeriodProcessingsFromPayrollLevel() throws AWTException, InterruptedException, IOException {
+	public void lockProcessConfirmPeriodsFromPayrollLevel() throws AWTException, InterruptedException, IOException {
 		
-		String payrollName=null;
+		String payrollName=testInputGPMS.payrollName;;
 		String taxYear=null;
 		String periodNo=null;
 		String periodName=null;
@@ -123,8 +34,6 @@ public class functionValidations extends basicDetails {
 		Boolean isUnconfirmPeriodFunctionValidated=false;
 		Boolean isResetPeriodFunctionValidated=false;
 		
-		
-		payrollName=testInputGPMS.payrollName;
 		
 		//Navigate to required Payroll
 		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
@@ -280,76 +189,174 @@ public class functionValidations extends basicDetails {
 			System.out.println("Passed: Validated Confirm Period function from payroll level");
 		}else {
 			System.out.println("Info: Didn't validate Confirm Period function from payroll level, as Proceeded employees=0");
-		}
+		}	
+			
+	}
 	
-		//This try-catch loop will Unconfirm payroll and validates UnConfirm period function, return isUnconfirmPeriodFunctionValidated=true
-			try{
-				payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 7).click();
-				driver.findElement(By.xpath(payrollPageObjects.unconfirmPeriod)).click();
-				driver.switchTo().alert().accept();
-				String reportStatus=payrollQueuePageObjects.refreshUntillComplete(driver);
-				if(reportStatus.equalsIgnoreCase("completed")==false) {
-					payrollQueuePageObjects.getReportStatusMessages(driver);
+	@Test
+	//This is verify Unconfirm Function from Employee level
+	public void unconfirmEmployeeLevel() throws AWTException, InterruptedException, IOException {
+	
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);	
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
+		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
+		
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unconfirm)).isDisplayed()) {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.unconfirm)).click();
+					driver.switchTo().alert().accept();
+					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {	System.out.println("Passed: Unconfirm function from employee level working"); }
+					else {
+						System.out.println("Failed: Unconfirm function from employee level not working");
+						commonMethods.takeScreenShot(driver, "Unconfirm fuction from employee level not working");
+						Assert.fail("Failed: Unconfirm function from employee level not working");
+					}
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+				}else {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+					System.out.println("Failed: Unconfirm function from employee level not available, as Employee is not in Confirmed Status");
+					commonMethods.takeScreenShot(driver, "Unconfirm fuction from employee level not available");
+					Assert.fail("Failed: Unconfirm function from employee level not available, as Employee is not in Confirmed Status");
 				}
-				driver.findElement(By.xpath(payrollQueuePageObjects.backToPayroll)).click();
-				isUnconfirmPeriodFunctionValidated=true;
-			}catch(Exception e) {
-				System.out.println("Failed: Unconfirm function is not working as expected");
-				commonMethods.takeScreenShot(driver, "Validaing Unconfirm function");
+	}
+	
+	@Test
+	//This is verify Reset Function from Employee level
+	public void resetEmployeeLevel() throws AWTException, InterruptedException, IOException {
+	
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
+		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);		
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).click();
+					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).isDisplayed()) {	System.out.println("Passed: Reset function from employee level working"); }
+					else {
+						System.out.println("Failed: Reset function from employee level not working");
+						commonMethods.takeScreenShot(driver, "Reset fuction from employee level not working");
+						Assert.fail("Failed: Reset function from employee level not working");
+					}
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+				}else {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+					System.out.println("Failed: Reset function from employee level not available, as Employee is in Lock Status");
+					commonMethods.takeScreenShot(driver, "Reset fuction from employee level not available");
+					Assert.fail("Failed: Reset function from employee level not available, as Employee is in Lock Status");
+				}	
+	}
+	
+	@Test
+	//This is verify Lock Function from Employee level
+	public void lockEmployeeLevel() throws AWTException, InterruptedException, IOException {
+	
+		employeeSearchPageObjects.isEmployeeExists(driver, testInputGPMS.employeeNo);
+		driver.findElement(By.xpath(employeeSearchPageObjects.employeeToBeSelected(testInputGPMS.employeeNo))).click();
+		employeeDetailsPageObjects.isCurrentAssignmentExists(driver);
+				
+				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+				if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).isDisplayed()) {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.lock)).click();
+					commonMethods.waitForPageLoad(driver, driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)));
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.refresh)).click(); Thread.sleep(500);
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButton)).click();
+					if(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.reset)).isDisplayed()) {	System.out.println("Passed: Lock function from employee level working"); }
+					else {
+						System.out.println("Failed: Lock function from employee level not working");
+						commonMethods.takeScreenShot(driver, "Lock fuction from employee level not working");
+						Assert.fail("Failed: Lock function from employee level not working");
+					}
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+				}else {
+					driver.findElement(By.xpath(employeeDetailsEPAPageObjects.actionButtonClose)).click();
+					System.out.println("Failed: Lock function from employee level not available, as Employee is in Reset Status");
+					commonMethods.takeScreenShot(driver, "Lock fuction from employee level not available");
+					Assert.fail("Failed: Lock function from employee level not available, as Employee is in Reset Status");
+				}
+	}
+	
+	@Test
+	//This is verify unconfirm period Function from payroll level
+	public void unconfirmPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		
+		String payrollName=testInputGPMS.payrollName;
+				
+		//Navigate to required Payroll
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+		payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				
+		//Capture details of payroll landing page into a table and get rowNumber, taxYear and periodNo of active payroll
+		String[][] table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+		int rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)-1;
+		String taxYear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][2];
+		String periodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][3];
+		ArrayList<String> rowData=payrollPageObjects.getDisplayedDetailsOfRequiredPayrollPeriodRow(driver, rowNumOfPayPeriod);
+		String periodName=rowData.get(1);
+		Boolean isUnconfirmPeriodFunctionValidated=false;
+		
+		try{
+			payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 7).click();
+			driver.findElement(By.xpath(payrollPageObjects.unconfirmPeriod)).click();
+			driver.switchTo().alert().accept();
+			String reportStatus=payrollQueuePageObjects.refreshUntillComplete(driver);
+			if(reportStatus.equalsIgnoreCase("completed")==false) {
+				payrollQueuePageObjects.getReportStatusMessages(driver);
 			}
+			driver.findElement(By.xpath(payrollQueuePageObjects.backToPayroll)).click();
+			isUnconfirmPeriodFunctionValidated=true;
+		}catch(Exception e) {
+			System.out.println("Failed: Unconfirm function is not working as expected");
+			commonMethods.takeScreenShot(driver, "Validaing Unconfirm function");
+		}
 		if(isUnconfirmPeriodFunctionValidated==true)	{
 			System.out.println("Passed: Validated Unconfirm Period function from payroll level");
 		}else {
 			System.out.println("Info: Didn't validate Unconfirm Period function from payroll level, as Confirmed employees=0");
 		}
-			
-			
-	}
-	
-	
-	@Test
-	//This is verify Lock period Function from payroll level
-	public void lockPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
-		
-		if(payrollSearchPageObjects.isPayrollExists(driver, testInputGPMS.payrollName)==false) {
-			System.out.println("Failed: Lock Period from Payroll level step, as  Payroll Name'"+ testInputGPMS.payrollName +"' don't exists");
-			commonMethods.takeScreenShot(driver, "Payroll Name don't Exists");
-			Assert.fail("Failed: Lock Period from Payroll level step, as  Payroll Name'"+ testInputGPMS.payrollName +"' don't exists");
-		
-		}else {
-			driver.findElement(By.xpath(payrollSearchPageObjects.payrollToBeSelected(testInputGPMS.payrollName))).click();
-		}
-	}
-	
-	@Test
-	//This is verify Process period Function from payroll level
-	public void processPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
-		
-	}
-	
-	@Test
-	//This is verify Confirm period Function from payroll level
-	public void confirmPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
-		
-	}
-	
-	@Test
-	//This is verify Unconfirm period Function from payroll level
-	public void unconfirmPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
-		
 	}
 	
 	@Test
 	//This is verify Reset period Function from payroll level
 	public void resetPeriodPayrollLevel() throws AWTException, InterruptedException, IOException {
+		String payrollName=testInputGPMS.payrollName;
+		
+		//Navigate to required Payroll
+		payrollSearchPageObjects.isPayrollExists(driver, payrollName);
+		payrollSearchPageObjects.goToRequiredPayrollPage(driver, payrollName);
+				
+		//Capture details of payroll landing page into a table and get rowNumber, taxYear and periodNo of active payroll
+		String[][] table=payrollPageObjects.captureAllPayrollDetailsIntoTable(driver);
+		int rowNumOfPayPeriod=payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)-1;
+		String taxYear=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][2];
+		String periodNo=table[payrollPageObjects.getCurrentActivePayPeriodRowNumber(driver)][3];
+		ArrayList<String> rowData=payrollPageObjects.getDisplayedDetailsOfRequiredPayrollPeriodRow(driver, rowNumOfPayPeriod);
+		String periodName=rowData.get(1);
+		Boolean isResetPeriodFunctionValidated=false;
+		
+		try{
+			payrollPageObjects.getRequiredWebElement(driver, rowNumOfPayPeriod, 6).click();
+			driver.findElement(By.xpath(payrollPageObjects.resetPeriod)).click();
+			String reportStatus=payrollQueuePageObjects.refreshUntillComplete(driver);
+			if(reportStatus.equalsIgnoreCase("completed")==false) {
+				payrollQueuePageObjects.getReportStatusMessages(driver);
+			}
+			driver.findElement(By.xpath(payrollQueuePageObjects.backToPayroll)).click();
+			isResetPeriodFunctionValidated=true;
+		}catch(Exception e) {
+			System.out.println("Failed: Reset function is not working as expected");
+			commonMethods.takeScreenShot(driver, "Validaing Reset function");
+		}
+		
+		if(isResetPeriodFunctionValidated==true)	{
+			System.out.println("Passed: Validated Reset Period function from payroll level");
+		}
 		
 	}
-	
-	@Test
-	//This is verify View Employees Function from payroll level
-	public void viewEmployeeFromPayrollLevel() throws AWTException, InterruptedException, IOException {
 		
-	}
 
-	
 }

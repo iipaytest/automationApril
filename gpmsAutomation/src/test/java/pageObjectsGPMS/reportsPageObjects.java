@@ -1,6 +1,7 @@
 package pageObjectsGPMS;
 
 import java.awt.AWTException;
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,8 +84,11 @@ public class reportsPageObjects {
 		return isReportStatusComplete;
 	}
 	
-	public static void reportsInboxReportDownload(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+	public static String reportsInboxReportDownloadandGetReportName(WebDriver driver, String filePath) throws InterruptedException, AWTException, IOException {		
 		
+		String reportName="";
+		String reportLayout="";
+		String reportRequestTime="";
 		Thread.sleep(1000);
 		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
 		String reportNameType=driver.findElement(By.xpath(reportsPageObjects.typeReportName)).getAttribute("innerText");
@@ -108,12 +112,32 @@ public class reportsPageObjects {
 				driver.findElement(By.xpath(reportsPageObjects.summaryWindowClose)).click();
 				driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
 				commonMethods.takeScreenShotOfElement(driver, reportNameType+" generated successfully_Details", driver.findElement(By.xpath(reportsPageObjects.requestDetailsTable)));
+				reportLayout=driver.findElement(By.xpath(reportsPageObjects.layoutType)).getText();
+				reportRequestTime=driver.findElement(By.xpath(reportsPageObjects.requestTime)).getText();
 				driver.findElement(By.xpath(reportsPageObjects.requestDetailsButton)).click();
 		 }
-		
+		 	
+		 	Date date = new Date(); 											// Current System Date and time is assigned to objDate
+			String strDateFormat = "yyyyMMdd"; 									//Date format is Specified
+			SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
+			String date1=objSDF.format(date);
+			reportName=testInputGPMS.clientID+"."+reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+".";
+			
+			File dir=new File(filePath);
+			File[] allDownloads=dir.listFiles();
+			
+			for(int i = allDownloads.length-1; i >=0 ; i--) {
+				if(allDownloads[i].getName().contains(reportName)) {
+					reportName=allDownloads[i].getName();
+					break;
+				}
+			}
+			if(reportName.startsWith("~$")) { reportName=reportName.replace("~$", "");}
+			
+			return reportName;
 	}
 	
-	public static String downloadedReportName(WebDriver driver) throws InterruptedException, AWTException, IOException {		
+	public static String downloadedxxReportName(WebDriver driver, String filePath) throws InterruptedException, AWTException, IOException {		
 		
 		Thread.sleep(1000);
 		String status=driver.findElement(By.xpath(reportsPageObjects.status)).getAttribute("innerText");
@@ -143,7 +167,19 @@ public class reportsPageObjects {
 		String strDateFormat = "yyyyMMdd"; 									//Date format is Specified
 		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat);
 		String date1=objSDF.format(date);
-		reportName=testInputGPMS.clientID+"."+reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+"."+reportRequestTime.replace(":", "-")+").xlsx";
+		reportName=testInputGPMS.clientID+"."+reportNameType.replace(" ", "_")+"_"+reportLayout.replace(" ", "_")+".("+date1+".";
+		
+		File dir=new File(filePath);
+		File[] allDownloads=dir.listFiles();
+		
+		for(int i = allDownloads.length-1; i >=0 ; i--) {
+			if(allDownloads[i].getName().contains(reportName)) {
+				reportName=allDownloads[i].getName();
+				break;
+			}
+		}
+		if(reportName.startsWith("~$")) { reportName=reportName.replace("~$", "");}
+		
 		return reportName;
 	}
 	
