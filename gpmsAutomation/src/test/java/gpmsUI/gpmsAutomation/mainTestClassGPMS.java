@@ -52,6 +52,7 @@ public class mainTestClassGPMS {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
+		//new file for branch1
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
