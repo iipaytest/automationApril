@@ -16,7 +16,7 @@
 	
 	
 	<build>
-	  	<sourceDirectory>src/test/java</sourceDirectory>
+	  	
 	    <pluginManagement>
 	      <plugins>
 	        <plugin>
