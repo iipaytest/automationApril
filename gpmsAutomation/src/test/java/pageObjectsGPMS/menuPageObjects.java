@@ -42,6 +42,7 @@ public class menuPageObjects {
 		
 	public static final String addEmployee= "//div[contains(text(), 'Add Employee')]";
 	public static final String addPayroll= "//div[contains(text(), 'Add Payroll')]";
+	
 	public static final String userAdmin= "//div[contains(text(), 'User Admin')]";
 	public static final String userSecurityConfig= "//div[contains(text(), 'User Security Config')]";
 	public static final String elementTypeAdmin= "//div[contains(text(), 'Element Type Admin')]";

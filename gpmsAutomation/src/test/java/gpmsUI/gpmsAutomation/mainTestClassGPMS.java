@@ -103,9 +103,11 @@ public class mainTestClassGPMS {
 		String elementTypeGroupsHeader= "Element Type Groups";
 		String notionalAmountETpyeAdminHeader= "Notional Amount EType Selection";
 		String userQueueAdminHeader= "User Queue";
+		String requestReport="Request a Report";
+		String reportsInbox="Reports Inbox";
 		
 		try {
-/*			menuBarLinks.goToForEmployee(driver);
+			menuBarLinks.goToForEmployee(driver);
 			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(forEmployeeHeader)) {
 				System.out.println("Passed: "+forEmployeeHeader+" page is available");
 			}else {
@@ -168,7 +170,7 @@ public class mainTestClassGPMS {
 				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
 				System.out.println("Failed: navigated to "+header+" page when tried for "+elementTypeGroupsHeader+" page");
 			}
-*/			
+			
 			menuBarLinks.goToNotionalAmountETpyeAdmin(driver);
 			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(notionalAmountETpyeAdminHeader)) {
 				System.out.println("Passed: "+notionalAmountETpyeAdminHeader+" page is available");
