@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,7 +52,7 @@ public class mainTestClassGPMS {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		
-/*		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\cofigFiles\\chromedriver.exe");
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
 		chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\reportsDownloaded\\");
@@ -65,26 +68,137 @@ public class mainTestClassGPMS {
 		
 		
 		driver.get(testInputGPMS.urlTST3redirector);
-		if(driver.findElements(By.cssSelector("input#ClientId")).size()==0) {
+		if(driver.findElements(By.xpath(loginPageObjects.clientID)).size()==0) {
 			System.out.println("Failed: Login Page Not working");
-			commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
-			Assert.fail("Failed: Login Page Not working");
-		}
-		driver.findElement(By.cssSelector("input#ClientId")).clear();
-		driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
-		driver.findElement(By.cssSelector("input[type='submit']")).click();
-		
-		if(driver.findElements(By.cssSelector("input#Username")).size()==0) {
-			System.out.println("Failed: Login Page Not working");
-			commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
-			Assert.fail("Failed: Login Page Not working");
+			commonMethods.takeScreenShot(driver, "Login Page not found");
 		}
 		
-		driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
-		driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
-		driver.findElement(By.cssSelector("button[type='submit']")).click();
+		driver.findElement(By.xpath(loginPageObjects.clientID)).clear();
+		driver.findElement(By.xpath(loginPageObjects.clientID)).sendKeys(testInputGPMS.clientID);
+		driver.findElement(By.xpath(loginPageObjects.submit)).click();
+		
+		if(driver.findElements(By.xpath(loginPageObjects.login)).size()==0) {
+			System.out.println("Failed: Login Page Not working");
+			commonMethods.takeScreenShot(driver, "Login Page not found");
+			Assert.fail("Failed: Login Page Not working");
+		}
+		
+		driver.findElement(By.xpath(loginPageObjects.userName)).sendKeys(testInputGPMS.userName);
+		driver.findElement(By.xpath(loginPageObjects.password)).sendKeys(testInputGPMS.password);
+		driver.findElement(By.xpath(loginPageObjects.login)).click();
+		
+		if(driver.findElements(By.xpath(menuPageObjects.search)).size()!=1) {
+			System.out.println("Failed: GPMS Login failed");
+			commonMethods.takeScreenShot(driver, "GPMS LogIn Failed");
+			Assert.fail("Failed: GPMS LogIn Failed");
+		}
+		
+		String forEmployeeHeader="Employee Search";
+		String forPayrollHeader="Payroll Search";
+		String addEmployeeHeader="Add New Employee";
+		String addPayrollHeader="Add New Payroll";
+		String userAdminHeader="User Selection";
+		String userSecurityConfigHeader= "User Security Configuration";
+		String elementTypeAdminHeader= "Element Type Selection";
+		String elementTypeGroupsHeader= "Element Type Groups";
+		String notionalAmountETpyeAdminHeader= "Notional Amount EType Selection";
+		String userQueueAdminHeader= "User Queue";
+		
+		try {
+/*			menuBarLinks.goToForEmployee(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(forEmployeeHeader)) {
+				System.out.println("Passed: "+forEmployeeHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+forEmployeeHeader+" page");
+			}
+			
+			menuBarLinks.goToForPayroll(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(forPayrollHeader)) {
+				System.out.println("Passed: "+forPayrollHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+forPayrollHeader+" page");
+			}
+			
+			menuBarLinks.goToAddEmployee(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(addEmployeeHeader)) {
+				System.out.println("Passed: "+addEmployeeHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+addEmployeeHeader+" page");
+			}
+			
+			menuBarLinks.goToAddPayroll(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(addPayrollHeader)) {
+				System.out.println("Passed: "+addPayrollHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+addPayrollHeader+" page");
+			}
+			
+			menuBarLinks.goToUserAdmin(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(userAdminHeader)) {
+				System.out.println("Passed: "+userAdminHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+userAdminHeader+" page");
+			}
+			
+			menuBarLinks.goToUserSecurityConfig(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(userSecurityConfigHeader)) {
+				System.out.println("Passed: "+userSecurityConfigHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+userSecurityConfigHeader+" page");
+			}
+			
+			menuBarLinks.goToElementTypeAdmin(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(elementTypeAdminHeader)) {
+				System.out.println("Passed: "+elementTypeAdminHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+elementTypeAdminHeader+" page");
+			}
+			
+			menuBarLinks.goToElementTypeGroups(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(elementTypeGroupsHeader)) {
+				System.out.println("Passed: "+elementTypeGroupsHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+elementTypeGroupsHeader+" page");
+			}
+*/			
+			menuBarLinks.goToNotionalAmountETpyeAdmin(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(notionalAmountETpyeAdminHeader)) {
+				System.out.println("Passed: "+notionalAmountETpyeAdminHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+notionalAmountETpyeAdminHeader+" page");
+			}
+			
+			menuBarLinks.goToUserQueueAdmin(driver);
+			if(driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText().contentEquals(userQueueAdminHeader)) {
+				System.out.println("Passed: "+userQueueAdminHeader+" page is available");
+			}else {
+				String header=driver.findElement(By.xpath(menuBarLinks.pageHeader)).getText();
+				System.out.println("Failed: navigated to "+header+" page when tried for "+userQueueAdminHeader+" page");
+			}
+			
+			
+			
+			
+		
+		
+		}catch(Exception e) {
+			throw e;
+		}
+		
+		
+		}
+}
 
-	 	String payrollName=testInputGPMS.payrollName;
+/*	 	String payrollName=testInputGPMS.payrollName;
 	 	String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
 	 	String fileName="AUTO.Employee_Data_Upload_Template_Employee_Data_Upload_Template.(20190516.14-47-38).xlsx";
 	 	
@@ -128,7 +242,7 @@ public class mainTestClassGPMS {
    	 		System.out.println("Upload successful, status message: "+status);
    	 	}
  */ 	 	
-   	 	String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
+ /*  	 	String filePath=System.getProperty("user.dir")+"\\reportsDownloaded\\";
    	 	String reportName="AUTO.Employee_Data_Upload_Template_Employee_Data_Upload_Template.(20190517.";
    	 	File dir=new File(filePath);
 		File[] allDownloads=dir.listFiles();
@@ -143,7 +257,7 @@ public class mainTestClassGPMS {
 		if(reportName.startsWith("~$")) { reportName=reportName.replace("~$", "");}
 		
 		System.out.println(reportName);
-		
+*/		
 /*	//Download employee upload template and capture file name, 				
 		String payrollName=null;
 		String payPeriodTaxyear=null;
@@ -315,8 +429,8 @@ public class mainTestClassGPMS {
 		}System.out.println("--");
 		
 	*/	
-		}
-	}
+
+	
 
 		
 /*		if(stateOfPayroll[0]!=0) {

@@ -4,6 +4,7 @@ package pageObjectsGPMS;
 
 public class menuPageObjects {
 
+	public static final String pageHeader="//*[@id='iipHeader_title']";
 	
 	public static final String search="//table[@id='eo_ele_1']//div[contains(text(), 'Search')]";
 	public static final String admin="//table[@id='eo_ele_1']//div[contains(text(), 'Admin')]";
@@ -45,7 +46,7 @@ public class menuPageObjects {
 	public static final String userSecurityConfig= "//div[contains(text(), 'User Security Config')]";
 	public static final String elementTypeAdmin= "//div[contains(text(), 'Element Type Admin')]";
 	public static final String elementTypeGroups= "//div[contains(text(), 'Element Type Groups')]";
-	public static final String notionalAmountETpyeAdmin= "//div[contains(text(), 'Notional Amount ETpye Admin')]";
+	public static final String notionalAmountETpyeAdmin= "//div[contains(text(), 'Notional Amount EType Admin')]";
 	public static final String userQueueAdmin= "//div[contains(text(), 'User Queue Admin')]";
 	
 	

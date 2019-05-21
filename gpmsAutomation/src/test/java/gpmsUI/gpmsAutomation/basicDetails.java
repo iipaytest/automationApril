@@ -1,14 +1,18 @@
 package gpmsUI.gpmsAutomation;
 
+import java.awt.AWTException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
@@ -49,22 +53,31 @@ public class basicDetails {
 			//variable(); //this to print console data into external txt file as defined in above variable() method
 			
 			driver.get(testInputGPMS.urlTST3redirector);
-			if(driver.findElements(By.cssSelector("input#ClientId")).size()==0) {
+			if(driver.findElements(By.xpath(loginPageObjects.clientID)).size()==0) {
 				System.out.println("Failed: Login Page Not working");
-				commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
+				commonMethods.takeScreenShot(driver, "Login Page not found");
 				Assert.fail("Failed: Login Page Not working");
 			}
-			driver.findElement(By.cssSelector("input#ClientId")).sendKeys(testInputGPMS.clientID);
-			driver.findElement(By.cssSelector("input[type='submit']")).click();
 			
-			String version=driver.findElement(By.xpath("//img[@class='loginProviderImage']/parent::p/following-sibling::p[1]")).getText();	
+			driver.findElement(By.xpath(loginPageObjects.clientID)).clear();
+			driver.findElement(By.xpath(loginPageObjects.clientID)).sendKeys(testInputGPMS.clientID);
+			driver.findElement(By.xpath(loginPageObjects.submit)).click();
+			
+			if(driver.findElements(By.xpath(loginPageObjects.login)).size()==0) {
+				System.out.println("Failed: Login Page Not working");
+				commonMethods.takeScreenShot(driver, "Login Page not found");
+				Assert.fail("Failed: Login Page Not working");
+			}
+			
+			
+			String version=driver.findElement(By.xpath(loginPageObjects.version)).getText();	
 			
 			if(version.contains(testInputGPMS.versionNo) & version.contains(testInputGPMS.versionTC)) {
 				System.out.println("Passed: GPMS current version: "+version);
-				commonMethods.takeScreenShot(driver, "GPMS Version Verified");
+				commonMethods.takeScreenShotOfElement(driver, "GPMS Version Verified", driver.findElement(By.xpath(loginPageObjects.versionElement)));
 			}else {
 				System.out.println("Failed: Expected version '"+testInputGPMS.versionTC+" / "+testInputGPMS.versionNo+"', present '"+version+"'");
-				commonMethods.takeScreenShot(driver, "GPMS Version Incorrect");
+				commonMethods.takeScreenShotOfElement(driver, "GPMS Version Incorrect", driver.findElement(By.xpath(loginPageObjects.versionElement)));
 				Assert.fail("Failed: Expected version '"+testInputGPMS.versionTC+" / "+testInputGPMS.versionNo+"', present '"+version+"'");
 			}
 			
@@ -73,9 +86,9 @@ public class basicDetails {
 		@Test (groups = { "regression" })
 		//Login to TST3 for given Client ID and user credentials
 		public void loginTST3() throws IOException {
-			driver.findElement(By.cssSelector("input#Username")).sendKeys(testInputGPMS.userName);
-			driver.findElement(By.cssSelector("input#Password")).sendKeys(testInputGPMS.password);
-			driver.findElement(By.cssSelector("button[type='submit']")).click();
+			driver.findElement(By.xpath(loginPageObjects.userName)).sendKeys(testInputGPMS.userName);
+			driver.findElement(By.xpath(loginPageObjects.password)).sendKeys(testInputGPMS.password);
+			driver.findElement(By.xpath(loginPageObjects.login)).click();
 			
 			if(driver.findElements(By.xpath(menuPageObjects.search)).size()==1) {
 				System.out.println("Passed: GPMS Login successful");
@@ -86,6 +99,43 @@ public class basicDetails {
 				Assert.fail("Failed: GPMS LogIn Failed");
 			}
 		}
-	}
+	
+
+		@Test (groups = { "regression" })
+		//Login to TST3 for given Client ID and user credentials
+		public void VerifyMenuBarSearchOption() throws IOException, AWTException, InterruptedException {
+			
+			String url = "";
+			
+			menuBarLinks.goToForEmployee(driver);
+			List<WebElement> links = driver.findElements(By.tagName("a"));
+			Iterator<WebElement> it = links.iterator();
+			while(it.hasNext()){
+	            
+	            url = it.next().getAttribute("href");
+	            
+	            System.out.println(url);
+			}
+		}
+
+		@Test (groups = { "regression" })
+		//Login to TST3 for given Client ID and user credentials
+		public void VerifyMenuBarAdminOption() throws IOException {
+			
+		}
+
+		@Test (groups = { "regression" })
+		//Login to TST3 for given Client ID and user credentials
+		public void VerifyMenuBarReportsOption() throws IOException {
+			
+		}
+		
+		@Test (groups = { "regression" })
+		//Login to TST3 for given Client ID and user credentials
+		public void VerifyMenuBarSupportOption() throws IOException {
+			
+		}
+
+}
 
 
