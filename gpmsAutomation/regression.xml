@@ -49,8 +49,8 @@
     
     <class name="gpmsUI.gpmsAutomation.downloadUploadReports">
       	<methods>
-      		<include name="downloadEmployeeDataUploadTemplate"/>
-      		<include name="adddDetailsInEmployeeDataUploadTemplate"/>
+      		<exclude name="downloadEmployeeDataUploadTemplate"/>
+      		<exclude name="adddDetailsInEmployeeDataUploadTemplate"/>
       		<exclude name="uploadEmployeeDataUploadTemplate"/>											
       	</methods>
       </class>
