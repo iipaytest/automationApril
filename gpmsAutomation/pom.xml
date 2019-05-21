@@ -24,9 +24,7 @@
 	          <artifactId>maven-surefire-plugin</artifactId>
 	          <version>3.0.0-M3</version>
 	          <configuration>
-	                    <includes>
-	                        <include>gpmsAutomation/src/test/java/**/main.java</include>
-	                    </includes>
+	                    
 	                    <suiteXmlFiles>
                      		<suiteXmlFile>/gpmsAutomation/regression.xml</suiteXmlFile>
                   		</suiteXmlFiles>
