@@ -415,7 +415,7 @@ public class downloadUploadReports extends basicDetails{
 	
 	}
 
-/*	@Test(priority = 3)
+/*	@Test
 	public void uploadEmployeeDataUploadTemplate() throws AWTException, InterruptedException, IOException {
 		
 		String payrollName=testInputGPMS.payrollName;

@@ -24,9 +24,9 @@
 	          <artifactId>maven-surefire-plugin</artifactId>
 	          <version>3.0.0-M3</version>
 	          <configuration>
-	                    
+	                    <useSystemClassLoader>false</useSystemClassLoader>
 	                    <suiteXmlFiles>
-                     		<suiteXmlFile>/gpmsAutomation/regression.xml</suiteXmlFile>
+                     		<suiteXmlFile>regression.xml</suiteXmlFile>
                   		</suiteXmlFiles>
 	                </configuration>
 	        </plugin>
@@ -79,7 +79,12 @@
 	    <version>4.1.0</version>
 	    <scope>compile</scope>
 	</dependency>
-		
+	
+	<dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>3.9</version>
+	</dependency>	
 		
   </dependencies>
   

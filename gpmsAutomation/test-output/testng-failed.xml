@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Regression Suite]">
+  <listeners>
+    <listener class-name="reusableMethods.extentReports"/>
+  </listeners>
+  <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="gpmsUI.gpmsAutomation.verifyMenuBarLinks">
+      <class name="gpmsUI.gpmsAutomation.addingNewDetails">
         <methods>
-          <include name="forgottenPassword"/>
+          <include name="addEmployee"/>
+          <include name="createPayrollAssignment"/>
+          <include name="addPayroll"/>
+          <include name="editPayrollPeriods"/>
         </methods>
-      </class> <!-- gpmsUI.gpmsAutomation.verifyMenuBarLinks -->
+      </class> <!-- gpmsUI.gpmsAutomation.addingNewDetails -->
+      <class name="gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom">
+        <methods>
+          <include name="addUnitPayRandom"/>
+          <include name="addNotionalAmountsPermRandom"/>
+          <include name="addNotionalAmountsTempRandom"/>
+          <include name="addPaymentsRandom"/>
+          <include name="addEntitlementsPermRandom"/>
+          <include name="addEntitlementsTempRandom"/>
+          <include name="addDeductionsRandom"/>
+          <include name="addEntitlementsUnitPayRandom"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom -->
+      <class name="gpmsUI.gpmsAutomation.functionValidations">
+        <methods>
+          <include name="unconfirmPeriodPayrollLevel"/>
+          <include name="lockProcessConfirmPeriodsFromPayrollLevel"/>
+          <include name="resetEmployeeLevel"/>
+          <include name="unconfirmEmployeeLevel"/>
+          <include name="lockEmployeeLevel"/>
+          <include name="resetPeriodPayrollLevel"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.functionValidations -->
+      <class name="gpmsUI.gpmsAutomation.addingEPADetails">
+        <methods>
+          <include name="addEPARandom"/>
+        </methods>
+      </class> <!-- gpmsUI.gpmsAutomation.addingEPADetails -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Regression Suite] -->

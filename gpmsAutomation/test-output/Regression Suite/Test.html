@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>22/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/19/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon May 20 09:59:33 BST 2019</td>
+<td>Started on:</td><td>Wed May 22 11:42:15 BST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>314 seconds (314082 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (161 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,13 +75,20 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='gpmsUI.gpmsAutomation.basicDetails.homePage()'><b>homePage</b><br>Test class: gpmsUI.gpmsAutomation.basicDetails</td>
-<td><div><pre>java.lang.AssertionError: Failed: Expected version &apos;tc3_#20 / 04.08.20&apos;, present &apos;_#20 / 04.08.20&apos;
-	at gpmsUI.gpmsAutomation.basicDetails.homePage(basicDetails.java:68)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1188401255", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1188401255'><pre>java.lang.AssertionError: Failed: Expected version &apos;tc3_#20 / 04.08.20&apos;, present &apos;_#20 / 04.08.20&apos;
-	at org.testng.Assert.fail(Assert.java:96)
-	at gpmsUI.gpmsAutomation.basicDetails.homePage(basicDetails.java:68)
+<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom()'><b>addDeductionsRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom(addingPayDedsEntitlementsRandom.java:80)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace809762318", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace809762318'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom(addingPayDedsEntitlementsRandom.java:80)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -108,126 +115,778 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>5</td>
-<td>gpmsUI.gpmsAutomation.basicDetails@e45f292</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom()'><b>addDeductionsRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>13</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingEPADetails.addEPARandom()'><b>addEPARandom</b><br>Test class: gpmsUI.gpmsAutomation.addingEPADetails</td>
-<td></td>
-<td>12</td>
-<td>gpmsUI.gpmsAutomation.addingEPADetails@3f49dace</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingEPADetails.addEPARandom(addingEPADetails.java:30)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1297149880", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1297149880'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingEPADetails.addEPARandom(addingEPADetails.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingEPADetails@53b32d7</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingNewDetails.addEmployee()'><b>addEmployee</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td></td>
-<td>4</td>
-<td>gpmsUI.gpmsAutomation.addingNewDetails@5f2108b5</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:31)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1399499405", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1399499405'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@57baeedf</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsPermRandom()'><b>addEntitlementsPermRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>12</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsPermRandom(addingPayDedsEntitlementsRandom.java:232)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace110771485", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace110771485'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsPermRandom(addingPayDedsEntitlementsRandom.java:232)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsTempRandom()'><b>addEntitlementsTempRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>9</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsTempRandom(addingPayDedsEntitlementsRandom.java:185)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace525571", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace525571'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsTempRandom(addingPayDedsEntitlementsRandom.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsUnitPayRandom()'><b>addEntitlementsUnitPayRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>7</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsUnitPayRandom(addingPayDedsEntitlementsRandom.java:292)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1208736537", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1208736537'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsUnitPayRandom(addingPayDedsEntitlementsRandom.java:292)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsPermRandom()'><b>addNotionalAmountsPermRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>8</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsPermRandom(addingPayDedsEntitlementsRandom.java:343)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2104545713", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2104545713'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsPermRandom(addingPayDedsEntitlementsRandom.java:343)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsTempRandom()'><b>addNotionalAmountsTempRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>7</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsTempRandom(addingPayDedsEntitlementsRandom.java:404)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1018298342", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1018298342'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsTempRandom(addingPayDedsEntitlementsRandom.java:404)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addPaymentsRandom()'><b>addPaymentsRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>13</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addPaymentsRandom(addingPayDedsEntitlementsRandom.java:26)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1991294891", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1991294891'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addPaymentsRandom(addingPayDedsEntitlementsRandom.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingNewDetails.addPayroll()'><b>addPayroll</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td></td>
-<td>4</td>
-<td>gpmsUI.gpmsAutomation.addingNewDetails@5f2108b5</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:158)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace32863545", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace32863545'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:158)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@57baeedf</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addUnitPayRandom()'><b>addUnitPayRandom</b><br>Test class: gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td>
-<td></td>
-<td>7</td>
-<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@31a5c39e</td></tr>
-<tr>
-<td title='gpmsUI.gpmsAutomation.downloadUploadReports.adddDetailsInEmployeeDataUploadTemplate()'><b>adddDetailsInEmployeeDataUploadTemplate</b><br>Test class: gpmsUI.gpmsAutomation.downloadUploadReports</td>
-<td></td>
-<td>63</td>
-<td>gpmsUI.gpmsAutomation.downloadUploadReports@1e397ed7</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addUnitPayRandom(addingPayDedsEntitlementsRandom.java:133)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace198761306", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace198761306'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addUnitPayRandom(addingPayDedsEntitlementsRandom.java:133)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom@343f4d3d</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment()'><b>createPayrollAssignment</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td></td>
-<td>7</td>
-<td>gpmsUI.gpmsAutomation.addingNewDetails@5f2108b5</td></tr>
-<tr>
-<td title='gpmsUI.gpmsAutomation.downloadUploadReports.downloadEmployeeDataUploadTemplate()'><b>downloadEmployeeDataUploadTemplate</b><br>Test class: gpmsUI.gpmsAutomation.downloadUploadReports</td>
-<td></td>
-<td>51</td>
-<td>gpmsUI.gpmsAutomation.downloadUploadReports@1e397ed7</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment(addingNewDetails.java:241)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1150538133", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1150538133'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment(addingNewDetails.java:241)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@57baeedf</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods()'><b>editPayrollPeriods</b><br>Test class: gpmsUI.gpmsAutomation.addingNewDetails</td>
-<td></td>
-<td>6</td>
-<td>gpmsUI.gpmsAutomation.addingNewDetails@5f2108b5</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:223)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1883919084", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1883919084'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:223)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.addingNewDetails@57baeedf</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.lockEmployeeLevel()'><b>lockEmployeeLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>2</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.lockEmployeeLevel(functionValidations.java:258)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2048834776", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2048834776'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.lockEmployeeLevel(functionValidations.java:258)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.lockProcessConfirmPeriodsFromPayrollLevel()'><b>lockProcessConfirmPeriodsFromPayrollLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>37</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
-<tr>
-<td title='gpmsUI.gpmsAutomation.basicDetails.loginTST3()'><b>loginTST3</b><br>Test class: gpmsUI.gpmsAutomation.basicDetails</td>
-<td></td>
-<td>2</td>
-<td>gpmsUI.gpmsAutomation.basicDetails@e45f292</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.lockProcessConfirmPeriodsFromPayrollLevel(functionValidations.java:39)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1110623531", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1110623531'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.lockProcessConfirmPeriodsFromPayrollLevel(functionValidations.java:39)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.resetEmployeeLevel()'><b>resetEmployeeLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>3</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.resetEmployeeLevel(functionValidations.java:230)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace289639718", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace289639718'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.resetEmployeeLevel(functionValidations.java:230)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.resetPeriodPayrollLevel()'><b>resetPeriodPayrollLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>14</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.resetPeriodPayrollLevel(functionValidations.java:329)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace22429093", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace22429093'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.resetPeriodPayrollLevel(functionValidations.java:329)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.unconfirmEmployeeLevel()'><b>unconfirmEmployeeLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>3</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmEmployeeLevel(functionValidations.java:200)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace811587677", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace811587677'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmEmployeeLevel(functionValidations.java:200)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 <tr>
 <td title='gpmsUI.gpmsAutomation.functionValidations.unconfirmPeriodPayrollLevel()'><b>unconfirmPeriodPayrollLevel</b><br>Test class: gpmsUI.gpmsAutomation.functionValidations</td>
-<td></td>
-<td>15</td>
-<td>gpmsUI.gpmsAutomation.functionValidations@490ab905</td></tr>
+<td><div><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmPeriodPayrollLevel(functionValidations.java:290)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1384722895", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1384722895'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmPeriodPayrollLevel(functionValidations.java:290)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>gpmsUI.gpmsAutomation.functionValidations@5442a311</td></tr>
 </table><p>
 </body>
 </html>

@@ -8,11 +8,141 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="7">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">7,697</td><td></td><td></td></tr>
+<tr><th colspan="7">Regression Suite</th></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">19</td><td class="num">161</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">gpmsUI.gpmsAutomation.verifyMenuBarLinks</td><td><a href="#m0">forgottenPassword</a></td><td rowspan="1">1558362149422</td><td rowspan="1">7662</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Regression Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">gpmsUI.gpmsAutomation.addingEPADetails</td><td><a href="#m0">addEPARandom</a></td><td rowspan="1">1558521735234</td><td rowspan="1">1</td></tr><tr class="failedodd"><td rowspan="4">gpmsUI.gpmsAutomation.addingNewDetails</td><td><a href="#m1">addEmployee</a></td><td rowspan="1">1558521735129</td><td rowspan="1">32</td></tr><tr class="failedodd"><td><a href="#m2">addPayroll</a></td><td rowspan="1">1558521735166</td><td rowspan="1">1</td></tr><tr class="failedodd"><td><a href="#m3">createPayrollAssignment</a></td><td rowspan="1">1558521735175</td><td rowspan="1">2</td></tr><tr class="failedodd"><td><a href="#m4">editPayrollPeriods</a></td><td rowspan="1">1558521735170</td><td rowspan="1">2</td></tr><tr class="failedeven"><td rowspan="8">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom</td><td><a href="#m5">addDeductionsRandom</a></td><td rowspan="1">1558521735207</td><td rowspan="1">2</td></tr><tr class="failedeven"><td><a href="#m6">addEntitlementsPermRandom</a></td><td rowspan="1">1558521735215</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m7">addEntitlementsTempRandom</a></td><td rowspan="1">1558521735213</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m8">addEntitlementsUnitPayRandom</a></td><td rowspan="1">1558521735223</td><td rowspan="1">2</td></tr><tr class="failedeven"><td><a href="#m9">addNotionalAmountsPermRandom</a></td><td rowspan="1">1558521735226</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m10">addNotionalAmountsTempRandom</a></td><td rowspan="1">1558521735228</td><td rowspan="1">4</td></tr><tr class="failedeven"><td><a href="#m11">addPaymentsRandom</a></td><td rowspan="1">1558521735202</td><td rowspan="1">1</td></tr><tr class="failedeven"><td><a href="#m12">addUnitPayRandom</a></td><td rowspan="1">1558521735210</td><td rowspan="1">1</td></tr><tr class="failedodd"><td rowspan="6">gpmsUI.gpmsAutomation.functionValidations</td><td><a href="#m13">lockEmployeeLevel</a></td><td rowspan="1">1558521735189</td><td rowspan="1">4</td></tr><tr class="failedodd"><td><a href="#m14">lockProcessConfirmPeriodsFromPayrollLevel</a></td><td rowspan="1">1558521735180</td><td rowspan="1">1</td></tr><tr class="failedodd"><td><a href="#m15">resetEmployeeLevel</a></td><td rowspan="1">1558521735186</td><td rowspan="1">1</td></tr><tr class="failedodd"><td><a href="#m16">resetPeriodPayrollLevel</a></td><td rowspan="1">1558521735198</td><td rowspan="1">1</td></tr><tr class="failedodd"><td><a href="#m17">unconfirmEmployeeLevel</a></td><td rowspan="1">1558521735183</td><td rowspan="1">1</td></tr><tr class="failedodd"><td><a href="#m18">unconfirmPeriodPayrollLevel</a></td><td rowspan="1">1558521735194</td><td rowspan="1">1</td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">gpmsUI.gpmsAutomation.verifyMenuBarLinks#forgottenPassword</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">gpmsUI.gpmsAutomation.addingEPADetails#addEPARandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingEPADetails.addEPARandom(addingEPADetails.java:30)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">gpmsUI.gpmsAutomation.addingNewDetails#addEmployee</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addEmployee(addingNewDetails.java:31)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">gpmsUI.gpmsAutomation.addingNewDetails#addPayroll</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at gpmsUI.gpmsAutomation.addingNewDetails.addPayroll(addingNewDetails.java:158)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">gpmsUI.gpmsAutomation.addingNewDetails#createPayrollAssignment</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingNewDetails.createPayrollAssignment(addingNewDetails.java:241)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">gpmsUI.gpmsAutomation.addingNewDetails#editPayrollPeriods</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.addingNewDetails.editPayrollPeriods(addingNewDetails.java:223)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addDeductionsRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addDeductionsRandom(addingPayDedsEntitlementsRandom.java:80)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addEntitlementsPermRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsPermRandom(addingPayDedsEntitlementsRandom.java:232)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addEntitlementsTempRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsTempRandom(addingPayDedsEntitlementsRandom.java:185)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addEntitlementsUnitPayRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addEntitlementsUnitPayRandom(addingPayDedsEntitlementsRandom.java:292)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addNotionalAmountsPermRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsPermRandom(addingPayDedsEntitlementsRandom.java:343)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addNotionalAmountsTempRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addNotionalAmountsTempRandom(addingPayDedsEntitlementsRandom.java:404)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addPaymentsRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addPaymentsRandom(addingPayDedsEntitlementsRandom.java:26)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom#addUnitPayRandom</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.addingPayDedsEntitlementsRandom.addUnitPayRandom(addingPayDedsEntitlementsRandom.java:133)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">gpmsUI.gpmsAutomation.functionValidations#lockEmployeeLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.lockEmployeeLevel(functionValidations.java:258)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">gpmsUI.gpmsAutomation.functionValidations#lockProcessConfirmPeriodsFromPayrollLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.lockProcessConfirmPeriodsFromPayrollLevel(functionValidations.java:39)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">gpmsUI.gpmsAutomation.functionValidations#resetEmployeeLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.resetEmployeeLevel(functionValidations.java:230)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m16">gpmsUI.gpmsAutomation.functionValidations#resetPeriodPayrollLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.resetPeriodPayrollLevel(functionValidations.java:329)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m17">gpmsUI.gpmsAutomation.functionValidations#unconfirmEmployeeLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForEmployee(menuBarLinks.java:18)
+	at pageObjectsGPMS.employeeSearchPageObjects.isEmployeeExists(employeeSearchPageObjects.java:32)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmEmployeeLevel(functionValidations.java:200)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m18">gpmsUI.gpmsAutomation.functionValidations#unconfirmPeriodPayrollLevel</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.interactions.Actions.&lt;init&gt;(Actions.java:65)
+	at pageObjectsGPMS.menuBarLinks.goToForPayroll(menuBarLinks.java:29)
+	at pageObjectsGPMS.payrollSearchPageObjects.isPayrollExists(payrollSearchPageObjects.java:31)
+	at gpmsUI.gpmsAutomation.functionValidations.unconfirmPeriodPayrollLevel(functionValidations.java:290)
+... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

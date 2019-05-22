@@ -93,8 +93,18 @@ public class addingEPADetails extends basicDetails{
 			
 			if(payrollConstraints.contentEquals("Non-Concurrent, Non-Continuous")) {
 				if(driver.findElements(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount)).size()>4) {
+					Select startDatePreviouos=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
+					String startDate1=startDatePreviouos.getFirstSelectedOption().getText();
+					
+					
 					Select endDatePrevious=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")));
 					String endDate1=endDatePrevious.getFirstSelectedOption().getText();
+					
+					if(endDate1.contentEquals("indefinite")) {
+						endDatePrevious.deselectByVisibleText(startDate1);
+						driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[5]//td[3]//select")).sendKeys(Keys.ARROW_DOWN);	
+						endDate1=endDatePrevious.getFirstSelectedOption().getText();
+					}
 					
 					Select date=new Select(driver.findElement(By.xpath(employeeDetailsEPAPageObjects.jobDetailsRowsCount+"[4]//td[2]//select")));
 					date.selectByVisibleText(endDate1);
