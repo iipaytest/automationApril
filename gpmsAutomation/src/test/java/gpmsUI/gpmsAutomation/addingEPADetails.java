@@ -42,7 +42,7 @@ public class addingEPADetails extends basicDetails{
 			String EPASelected=driver.findElement(By.xpath(employeeDetailsEPAPageObjects.payrollDetailType)).getText();
 			System.out.println("	EPA Selected: "+EPASelected);
 			//this while loop will select different element type if the current selected one is "Payment Information (Configurable)"
-			while(EPASelected.contentEquals("Payment Information (Configurable)")){
+			while(EPASelected.contentEquals("Payment Information (Configurable)")||EPASelected.contentEquals("Job Title")||EPASelected.contentEquals("Capital Forming (savings scheme)")||EPASelected.contentEquals("Children Details")){
 				driver.findElement(By.xpath(employeeDetailsEPAPageObjects.backToButton)).click();
 				commonMethods.selectRandomFromList(driver, employeeDetailsEPAPageObjects.dropDownEmployeePayrollDetails);
 			}
